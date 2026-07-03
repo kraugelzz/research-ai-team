@@ -44,6 +44,7 @@
   .opts{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:.86rem;color:var(--muted)}
   .opts label{display:flex;gap:6px;align-items:center;cursor:pointer}
   .opts input[type=number]{width:56px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;font-family:inherit}
+  .opts select{padding:5px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;background:#fff;color:var(--ink);cursor:pointer}
   .hint{font-size:.8rem;color:var(--muted);margin-top:11px}
   .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
   .chip{font-size:.8rem;background:#f2f4fa;border:1px solid var(--line);padding:6px 13px;border-radius:999px;cursor:pointer;transition:.15s}
@@ -122,6 +123,31 @@
   .oa{font-size:.72rem;font-weight:800;color:#2e9e5b}
   .cc{font-weight:800}
   .paper-links a{margin-right:8px;font-size:.8rem;white-space:nowrap}
+  /* flags / meta chips / screening / prisma */
+  .flag{font-size:.66rem;font-weight:800;padding:2px 6px;border-radius:5px;white-space:nowrap;display:inline-block;margin-top:3px}
+  .flag-ret{background:#fde0e0;color:#c0392b;border:1px solid #f3b0b0}
+  .flag-pre{background:#fff2d6;color:#9a6b00;border:1px solid #f0d69a}
+  .flag-rev{background:#e7e0fb;color:#6b4bc0;border:1px solid #cdbef0}
+  .mchip{font-size:.7rem;background:#eef6f0;border:1px solid #cfe6d6;color:#2e7d52;border-radius:6px;padding:1px 6px;margin:2px 2px 0 0;display:inline-block}
+  .mchip.m-method{background:#eef2fb;border-color:#cdd9f0;color:#3a5bb0}
+  .mchip.m-org{background:#faf0ee;border-color:#efd3cc;color:#b05a45}
+  .scrn{display:flex;gap:3px}
+  .scrn button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:3px 7px;font-size:.82rem;cursor:pointer;font-family:inherit;line-height:1}
+  .scrn button.on[data-v=include]{background:#dff5e6;border-color:#8fd6a8;color:#1f8f4d}
+  .scrn button.on[data-v=maybe]{background:#fff3cf;border-color:#e8cf7a;color:#9a7400}
+  .scrn button.on[data-v=exclude]{background:#fde0e6;border-color:#eaa3b5;color:#c03a5b}
+  .scrn-note{margin-top:4px;width:100%;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:3px 6px;font-family:inherit}
+  tr.screen-include td{background:#f3fbf5!important}
+  tr.screen-maybe td{background:#fffbf0!important}
+  tr.screen-exclude td{opacity:.5}
+  tr.screen-exclude:hover td{opacity:.85}
+  .pz{font-size:.82rem;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--line)}
+  .pz-i{background:#dff5e6;color:#1f8f4d} .pz-m{background:#fff3cf;color:#9a7400}
+  .pz-e{background:#fde0e6;color:#c03a5b} .pz-u{background:#eef1f6;color:var(--muted)}
+  .conflict{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+  .conflict > div{flex:1 1 240px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#fbfcff}
+  .conflict h4{font-size:.9rem;margin-bottom:4px} .conflict .up h4{color:#c03a5b} .conflict .down h4{color:#1f7ab0}
+  .conflict li{font-size:.82rem;margin:3px 0}
 
   .synth{white-space:pre-wrap;background:#f7f8fc;border:1px solid var(--line);border-radius:14px;padding:17px 19px;font-size:.92rem}
   .synth mark{background:#fff2c6;padding:0 2px;border-radius:3px}
@@ -149,7 +175,7 @@
   <div class="wrap">
     <h1>🔬 ทีมวิจัย AI — เวอร์ชันทำงานจริง</h1>
     <p>พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + Semantic Scholar พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล</p>
-    <div class="navlinks"><a href="office.html">👥 หน้าตัวละคร (แนะนำทีม)</a></div>
+    <div class="navlinks"><a href="office.html">👥 หน้าตัวละคร (แนะนำทีม)</a> <a href="guide.html">📖 คู่มือใช้งาน</a></div>
   </div>
 </header>
 
@@ -162,10 +188,25 @@
       </div>
     </div>
     <div class="opts">
+      <label>เรียงตาม:
+        <select id="sortMode">
+          <option value="smart">✨ อัจฉริยะ (ตรงคีย์เวิร์ด + ปีล่าสุด) — แนะนำ</option>
+          <option value="relevance">🎯 ความเกี่ยวข้องล้วน</option>
+          <option value="newest">🆕 ใหม่สุดก่อน</option>
+          <option value="cited">⭐ อ้างอิงมากสุด</option>
+        </select>
+      </label>
+      <label>ตั้งแต่ปี: <input type="number" id="minYear" placeholder="ทุกปี" min="1900" max="2030" style="width:70px"></label>
       <label>จำนวนเปเปอร์: <input type="number" id="limit" value="25" min="5" max="100"></label>
       <label><input type="checkbox" id="oaOnly"> เฉพาะ Open Access</label>
-      <label><input type="checkbox" id="s2" checked> เสริม TLDR จาก Semantic Scholar</label>
-      <label><input type="checkbox" id="thai" checked> 🌐 แปลเป็นไทย (ทีมคนที่ 6)</label>
+      <label><input type="checkbox" id="s2" checked> เสริม TLDR</label>
+      <label><input type="checkbox" id="thai" checked> 🌐 แปลไทย</label>
+    </div>
+    <div class="opts" style="margin-top:8px">
+      <span style="font-weight:700;color:var(--ink)">ตัวกรองคุณภาพ:</span>
+      <label><input type="checkbox" id="hideRet" checked> ⛔ ซ่อนงานที่ถูกถอน (retracted)</label>
+      <label><input type="checkbox" id="noReview"> 📄 เฉพาะงานทดลองต้นฉบับ (ตัด review)</label>
+      <label><input type="checkbox" id="noPre"> ตัด preprint ออก</label>
     </div>
     <div class="chips" id="chips"></div>
     <p class="hint">💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ</p>
@@ -192,16 +233,32 @@
       <div class="stat" id="stats"></div>
     </div>
 
+    <!-- Search log + PRISMA -->
+    <div class="section">
+      <h2>🧾 บันทึกการค้นหา (ทำซ้ำได้) + คัดกรอง PRISMA</h2>
+      <div class="sub">คัดลอกไปใส่ Methods/Supplementary ได้ · สถานะคัดกรองถูกบันทึกในเครื่องอัตโนมัติ (localStorage)</div>
+      <div id="searchlog" class="synth" style="font-size:.86rem"></div>
+      <div id="prisma" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"></div>
+      <div class="exports">
+        <button class="exbtn" onclick="exportPrisma()">⬇ PRISMA / search log</button>
+        <button class="exbtn" onclick="exportScreenCSV()">⬇ ผลคัดกรอง (CSV)</button>
+        <button class="exbtn" onclick="clearScreen()">🗑 ล้างสถานะคัดกรองทั้งหมด</button>
+      </div>
+    </div>
+
     <!-- Analyst -->
     <div class="section">
       <h2>📊 แอนนา <span style="font-size:.8rem;color:var(--muted);font-weight:400">— ตารางสกัดข้อมูล (คลิกหัวคอลัมน์เพื่อเรียง)</span></h2>
-      <div class="sub">แต่ละแถว = เปเปอร์จริงหนึ่งชิ้น พร้อมลิงก์กลับต้นฉบับ (DOI / PubMed / Full text)</div>
+      <div class="sub">แต่ละแถว = เปเปอร์จริงหนึ่งชิ้น · 🧪 = ข้อมูลสกัด (cell line / วิธี / สิ่งมีชีวิต) · ✅ = คัดกรอง include/exclude/maybe</div>
       <div class="tscroll">
         <table id="tbl"><thead><tr>
-          <th data-s="year">ปี</th><th data-s="title">ชื่อเรื่อง</th>
-          <th>🌐 สรุปไทย (เปเปอร์นี้ทำอะไร)</th>
-          <th data-s="journal">วารสาร</th>
-          <th data-s="cc">อ้างอิง</th><th data-s="oa">OA</th><th>ลิงก์</th>
+          <th data-s="year">ปี</th>
+          <th data-s="title">ชื่อเรื่อง / วารสาร / ธง</th>
+          <th>🌐 สรุปไทย</th>
+          <th>🧪 สกัด</th>
+          <th>✅ คัดกรอง</th>
+          <th data-s="cc">อ้างอิง</th>
+          <th>ลิงก์</th>
         </tr></thead><tbody id="tbody"></tbody></table>
       </div>
     </div>
@@ -213,21 +270,92 @@
       <div id="synth"></div>
       <div class="exports">
         <button class="exbtn" onclick="exportCSV()">⬇ CSV (ตาราง)</button>
-        <button class="exbtn" onclick="exportBib()">⬇ BibTeX (อ้างอิง)</button>
+        <button class="exbtn" onclick="exportBib()">⬇ BibTeX</button>
+        <button class="exbtn" onclick="exportRIS()">⬇ RIS (EndNote/Zotero)</button>
         <button class="exbtn" onclick="exportMD()">⬇ Markdown (สรุป)</button>
         <button class="exbtn" onclick="copyMD(event)">📋 คัดลอกสรุป</button>
       </div>
     </div>
   </div>
 
-  <footer>ข้อมูลจริงจาก <a href="https://europepmc.org" target="_blank">Europe PMC</a> &amp; <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a> · ราคาเครื่องมือ ณ ก.ค. 2026 · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง</footer>
+  <footer>
+    ข้อมูลจริงจาก <a href="https://europepmc.org" target="_blank">Europe PMC</a> &amp; <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>
+    <span style="display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
+  </footer>
 </div>
 
 <script>
 const $ = s => document.querySelector(s);
 let RESULTS = [], QUERY = "";
 let LAST_SYNTH = null, THAI_SYNTH = null, TR_MAP = {};
+let SEARCH_LOG = null, HIT_COUNT = 0, QUERY_SENT = "";
 const escH = s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const pkey = p => String(p.pmid || p.doi || p.title || "").toLowerCase();
+
+// ===== ระบบคัดกรอง (screening) เก็บถาวรใน localStorage =====
+let SCREEN = {};
+try{ SCREEN = JSON.parse(localStorage.getItem("rai_screen")||"{}"); }catch(e){ SCREEN = {}; }
+function saveScreen(){ try{ localStorage.setItem("rai_screen", JSON.stringify(SCREEN)); }catch(e){} }
+function getScreen(k){ return SCREEN[k] || {status:"", note:""}; }
+function setScreenStatus(k, status){
+  const cur = getScreen(k); cur.status = (cur.status===status? "" : status);
+  SCREEN[k]=cur; saveScreen(); updatePrisma();
+  document.querySelectorAll(`.scrn[data-k="${cssEsc(k)}"] button`).forEach(b=>b.classList.toggle("on", b.dataset.v===cur.status));
+}
+function setScreenNote(k, note){ const cur=getScreen(k); cur.note=note; SCREEN[k]=cur; saveScreen(); }
+const cssEsc = s => String(s).replace(/["\\]/g,"\\$&");
+
+// ===== สกัด metadata สาย wet-lab จาก title+abstract =====
+const CELL_LINES = ["786-O","769-P","Caki-1","Caki-2","A498","ACHN","OS-RC-2","SN12C","RCC4","RCC10",
+  "MCF-7","MCF7","MDA-MB-231","MDA-MB-468","T47D","BT-549","SK-BR-3","ZR-75-1","MCF-10A",
+  "A549","H1299","NCI-H1975","PC-9","H460","H358","H1975",
+  "HeLa","HEK293T","HEK293","HEK-293","293T","NIH3T3","NIH-3T3","HUVEC","RAW264.7","BEAS-2B",
+  "HCT116","HCT-116","HT-29","SW480","SW620","Caco-2","DLD-1","LoVo",
+  "HepG2","Huh7","Huh-7","SMMC-7721","Hep3B",
+  "PC-3","PC3","DU145","LNCaP","22Rv1",
+  "PANC-1","MIA PaCa-2","BxPC-3","AsPC-1",
+  "AGS","MGC-803","BGC-823","SGC-7901",
+  "U87","U87MG","U-87 MG","U251","LN229","T98G",
+  "K562","HL-60","Jurkat","THP-1",
+  "U2OS","U-2 OS","SaOS-2","MG-63","143B",
+  "A375","B16","SK-MEL-28","SKOV3","SK-OV-3","A2780","OVCAR-3",
+  "T24","5637","UMUC3","SH-SY5Y","CNE-2","KYSE-150"];
+function extractMeta(text){
+  const t = " "+(text||"")+" ", low = t.toLowerCase();
+  // cell lines
+  const cells = [];
+  CELL_LINES.forEach(c=>{ const re=new RegExp("(?<![A-Za-z0-9])"+c.replace(/[-.*+?^${}()|[\]\\]/g,"\\$&")+"(?![A-Za-z0-9])","i"); if(re.test(t)&&!cells.some(x=>x.toLowerCase()===c.toLowerCase())) cells.push(c); });
+  // knockdown / editing method
+  const methods = [];
+  const mMap = [[/crispri/i,"CRISPRi"],[/crispra/i,"CRISPRa"],[/crispr|cas9|sgrna|single guide/i,"CRISPR"],
+    [/shrna|short hairpin/i,"shRNA"],[/sirna|small interfering|si-?rna/i,"siRNA"],
+    [/morpholino/i,"morpholino"],[/knock-?out|knockout|\bko\b|[^a-z]-\/-/i,"knockout"],
+    [/knock-?down|knockdown/i,"knockdown"],[/overexpress|ectopic expression|lentivir.{0,20}express/i,"overexpression"]];
+  mMap.forEach(([re,name])=>{ if(re.test(low)&&!methods.includes(name)) methods.push(name); });
+  // organism
+  const orgs=[];
+  const oMap=[[/\bhuman|patient|clinical|primary tumou?r/i,"human"],[/mouse|murine|c57bl|balb\/?c|xenograft|nude mice/i,"mouse"],
+    [/\brat\b|sprague|wistar/i,"rat"],[/zebrafish|danio/i,"zebrafish"],[/drosophila/i,"fly"]];
+  oMap.forEach(([re,name])=>{ if(re.test(low)&&!orgs.includes(name)) orgs.push(name); });
+  return { cells:cells.slice(0,4), methods:methods.slice(0,3), organisms:orgs.slice(0,2) };
+}
+// ธงประเภทงาน
+function paperFlags(p){
+  const out=[];
+  if(p.isRetracted) out.push(`<span class="flag flag-ret" title="งานนี้ถูกถอน (retracted) — อย่าอ้างอิง">⛔ RETRACTED</span>`);
+  if(p.isPreprint)  out.push(`<span class="flag flag-pre" title="preprint ยังไม่ผ่าน peer review">📄 preprint</span>`);
+  if(p.isReview)    out.push(`<span class="flag flag-rev" title="เป็นบทความรีวิว ไม่ใช่งานทดลองต้นฉบับ">📚 review</span>`);
+  return out.join(" ");
+}
+// นับ PRISMA จากสถานะคัดกรองปัจจุบัน
+function updatePrisma(){
+  if(!RESULTS.length){ return; }
+  let inc=0,exc=0,may=0,un=0;
+  RESULTS.forEach(p=>{ const s=getScreen(pkey(p)).status; if(s==="include")inc++; else if(s==="exclude")exc++; else if(s==="maybe")may++; else un++; });
+  const el=$("#prisma"); if(el) el.innerHTML =
+    `<span class="pz pz-i">✓ รับเข้า ${inc}</span> <span class="pz pz-m">? รอพิจารณา ${may}</span> `+
+    `<span class="pz pz-e">✗ ตัดออก ${exc}</span> <span class="pz pz-u">ยังไม่คัด ${un}</span>`;
+}
 
 // tiny flat office character (SVG) — friendly, configurable
 function avatar(color, skin, hair, prop){
@@ -298,25 +426,61 @@ drop.addEventListener("drop", async e=>{
 });
 
 // ---- API helpers ----
-async function searchEuropePMC(query, limit, oaOnly){
+async function searchEuropePMC(query, limit, oaOnly, sortMode, minYear){
   let q = query;
+  if(minYear) q += ` AND (PUB_YEAR:[${minYear} TO 3000])`;
   if(oaOnly) q += " AND OPEN_ACCESS:Y";
-  const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(q)}&format=json&pageSize=${limit}&resultType=core&sort=CITED%20desc`;
+  // smart = ดึงตามความเกี่ยวข้องก้อนใหญ่ แล้วจัดอันดับใหม่ (ตรงคีย์เวิร์ด + ดันปีล่าสุด)
+  const isSmart = (sortMode==="smart") || !sortMode;
+  const sortMap = { relevance:"", newest:"P_PDATE_D desc", cited:"CITED desc" };
+  const sortParam = isSmart ? "" : (sortMap[sortMode]||"");
+  const fetchSize = isSmart ? Math.min(100, Math.max(limit*3, 45)) : limit;
+  let url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(q)}&format=json&pageSize=${fetchSize}&resultType=core`;
+  if(sortParam) url += `&sort=${encodeURIComponent(sortParam)}`;
+  QUERY_SENT = q;
   const r = await fetch(url);
   if(!r.ok) throw new Error("Europe PMC ตอบกลับ "+r.status);
   const j = await r.json();
+  HIT_COUNT = +(j.hitCount)||0;
   const rows = (j.resultList && j.resultList.result) || [];
-  return rows.map(x=>({
-    id:x.id, source:x.source, pmid:x.pmid, pmcid:x.pmcid, doi:x.doi,
-    title:(x.title||"").replace(/\.$/,""),
-    authors:x.authorString||"",
-    journal:(x.journalInfo && x.journalInfo.journal && x.journalInfo.journal.title) || x.journalTitle || "",
-    year:+(x.pubYear)||0,
-    cc:+(x.citedByCount)||0,
-    oa:x.isOpenAccess==="Y",
-    abstract:x.abstractText ? x.abstractText.replace(/<[^>]+>/g,"") : "",
-    tldr:""
-  }));
+  let out = rows.map((x,i)=>{
+    const abstract = x.abstractText ? x.abstractText.replace(/<[^>]+>/g,"") : "";
+    const pubTypes = (x.pubTypeList && x.pubTypeList.pubType) || [];
+    const ptLow = pubTypes.map(s=>String(s).toLowerCase());
+    const ft = (x.fullTextUrlList && x.fullTextUrlList.fullTextUrl) || [];
+    const pdf = ft.find(u=>u.documentStyle==="pdf" && /^https?:/.test(u.url||""));
+    return {
+      _rank:i,
+      id:x.id, source:x.source, pmid:x.pmid, pmcid:x.pmcid, doi:x.doi,
+      title:(x.title||"").replace(/\.$/,""),
+      authors:x.authorString||"",
+      journal:(x.journalInfo && x.journalInfo.journal && x.journalInfo.journal.title) || x.journalTitle || "",
+      year:+(x.pubYear)||0,
+      cc:+(x.citedByCount)||0,
+      oa:x.isOpenAccess==="Y",
+      abstract,
+      pubTypes,
+      isPreprint: x.source==="PPR",
+      isRetracted: ptLow.some(t=>t.includes("retracted")),
+      isReview: ptLow.some(t=>t.includes("review")),
+      pdfUrl: pdf ? pdf.url : "",
+      meta: extractMeta((x.title||"")+" "+abstract),
+      tldr:""
+    };
+  });
+  if(isSmart && out.length){
+    // คะแนนผสม: 62% ตรงคีย์เวิร์ด (อันดับความเกี่ยวข้อง) + 38% ความใหม่ (ภายใน 10 ปี)
+    const CUR = new Date().getFullYear(), N = out.length;
+    out.forEach(p=>{
+      const rel = (N - p._rank) / N;
+      const rec = p.year ? Math.max(0, Math.min(1, (p.year-(CUR-10))/10)) : 0;
+      p._smart = 0.62*rel + 0.38*rec;
+    });
+    out.sort((a,b)=> b._smart - a._smart);
+    out = out.slice(0, limit);
+    out.forEach((p,i)=> p._rank = i);   // ลำดับที่จะแสดงในตาราง
+  }
+  return out;
 }
 async function enrichS2(papers){
   // fetch TLDRs by DOI where missing abstract or to add one-liner; best-effort, ignore failures
@@ -391,7 +555,7 @@ function renderStats(papers){
     ["อ้างอิงสูงสุด", papers.length? Math.max(...papers.map(p=>p.cc)):0],
   ].map(([l,v])=>`<div><b>${v}</b><div class="lab">${l}</div></div>`).join("");
 }
-let sortKey="cc", sortDir=-1;
+let sortKey="_rank", sortDir=1;
 function renderTable(){
   const ps = [...RESULTS].sort((a,b)=>{
     let x=a[sortKey], y=b[sortKey];
@@ -404,32 +568,60 @@ function renderTable(){
     if(p.doi) links.push(`<a href="https://doi.org/${p.doi}" target="_blank">DOI↗</a>`);
     if(p.pmid) links.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}" target="_blank">PubMed↗</a>`);
     if(p.pmcid) links.push(`<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}" target="_blank">FullText↗</a>`);
+    if(p.pdfUrl) links.push(`<a href="${p.pdfUrl}" target="_blank" style="color:#c0392b;font-weight:700">PDF↗</a>`);
     const tip = p.tldr ? ` title="TLDR: ${p.tldr.replace(/"/g,'&quot;')}"` : "";
     const auth = p.authors.split(",").slice(0,3).join(", ")+(p.authors.split(",").length>3?" et al.":"");
     const safe = String(p.pmid||p.doi||(p.year+"_"+p.cc)).replace(/[^a-z0-9]/gi,"_");
     TR_MAP[safe] = p;
     const gist = p.gist_th
       ? `<span style="font-size:.83rem">${escH(p.gist_th)}</span>`
-      : `<span style="color:var(--muted);font-size:.8rem">${p.tldr?escH(p.tldr):"— (เปิด \"แปลเป็นไทย\" แล้วกด Run)"}</span>`;
-    return `<tr${tip}>
+      : `<span style="color:var(--muted);font-size:.8rem">${p.tldr?escH(p.tldr):"— (เปิด \"แปลไทย\" แล้วกด Run)"}</span>`;
+    // 🧪 สกัด metadata
+    const m=p.meta||{cells:[],methods:[],organisms:[]};
+    let metaHtml = m.methods.map(x=>`<span class="mchip m-method">${escH(x)}</span>`).join("")
+                 + m.cells.map(x=>`<span class="mchip">${escH(x)}</span>`).join("")
+                 + m.organisms.map(x=>`<span class="mchip m-org">${escH(x)}</span>`).join("");
+    if(!metaHtml) metaHtml = `<span style="color:var(--muted);font-size:.75rem">—</span>`;
+    // ✅ คัดกรอง
+    const st = getScreen(pkey(p)).status;
+    const note = getScreen(pkey(p)).note||"";
+    const scrn = `<div class="scrn" data-k="${safe}">
+        <button data-v="include" class="${st==='include'?'on':''}" title="รับเข้า" onclick="scrnSet('${safe}','include')">✓</button>
+        <button data-v="maybe" class="${st==='maybe'?'on':''}" title="รอพิจารณา" onclick="scrnSet('${safe}','maybe')">?</button>
+        <button data-v="exclude" class="${st==='exclude'?'on':''}" title="ตัดออก" onclick="scrnSet('${safe}','exclude')">✗</button>
+      </div>
+      <input class="scrn-note" placeholder="เหตุผล/โน้ต…" value="${escH(note).replace(/"/g,'&quot;')}" onchange="scrnNote('${safe}',this.value)">`;
+    const flags = paperFlags(p);
+    return `<tr id="row_${safe}" class="${st?'screen-'+st:''}"${tip}>
       <td>${p.year||"–"}</td>
-      <td style="max-width:300px">
+      <td style="max-width:290px">
         <b>${escH(p.title)||"(ไม่มีชื่อ)"}</b>
         ${p.title_th?`<br><span style="color:var(--writer);font-size:.82rem;font-weight:700">🌐 ${escH(p.title_th)}</span>`:""}
-        <br><span style="color:var(--muted);font-size:.78rem">${escH(auth)}</span>
+        <br><span style="color:var(--muted);font-size:.78rem">${escH(auth)} · ${escH(p.journal)}</span>
+        ${flags?`<br>${flags}`:""}
       </td>
-      <td style="max-width:260px">
+      <td style="max-width:240px">
         ${gist}
         <div><button style="margin-top:5px;font-size:.72rem;background:#e9f6f5;border:1px solid #cfe9e7;border-radius:8px;padding:3px 9px;cursor:pointer;font-family:inherit;color:#207d78" onclick="fullTranslate(this,'${safe}')">🌐 บทคัดย่อไทยเต็ม</button></div>
         <div id="absth_${safe}" style="display:none;margin-top:6px;font-size:.82rem;background:#f2fbfa;border:1px solid #d8efed;border-radius:8px;padding:8px 10px;white-space:pre-wrap"></div>
       </td>
-      <td style="max-width:120px">${escH(p.journal)}</td>
-      <td class="cc">${p.cc}</td>
-      <td>${p.oa?'<span class="oa">OA</span>':'–'}</td>
+      <td style="max-width:150px">${metaHtml}</td>
+      <td style="min-width:120px">${scrn}</td>
+      <td class="cc">${p.cc}${p.oa?'<br><span class="oa">OA</span>':''}</td>
       <td class="paper-links">${links.join(" ")||"–"}</td>
     </tr>`;
   }).join("");
 }
+// ปุ่มคัดกรอง (บันทึกถาวรใน localStorage)
+function scrnSet(safe, status){
+  const p=TR_MAP[safe]; if(!p) return;
+  const k=pkey(p), cur=getScreen(k);
+  cur.status = (cur.status===status ? "" : status);
+  SCREEN[k]=cur; saveScreen(); updatePrisma();
+  document.querySelectorAll(`.scrn[data-k="${safe}"] button`).forEach(b=>b.classList.toggle("on", b.dataset.v===cur.status));
+  const row=document.getElementById("row_"+safe); if(row) row.className = cur.status?("screen-"+cur.status):"";
+}
+function scrnNote(safe, v){ const p=TR_MAP[safe]; if(!p) return; const cur=getScreen(pkey(p)); cur.note=v; SCREEN[pkey(p)]=cur; saveScreen(); }
 document.querySelectorAll("#tbl th[data-s]").forEach(th=>th.onclick=()=>{
   const k=th.dataset.s; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=(k==="title"||k==="journal")?1:-1;}
   renderTable();
@@ -453,11 +645,37 @@ function renderSynth(papers, query, thaiMap){
   } else {
     html += `<div class="synth">ไม่พบประโยคที่ตรงเกณฑ์พอ — ลองปรับคำค้นให้เจาะจงขึ้น หรือดูตารางด้านบนโดยตรง</div>`;
   }
+  // ⚖️ จัดกลุ่มผลที่อาจขัดแย้งกัน (เพิ่ม vs ลด)
+  const UP=/increas|upregulat|up-regulat|promot|enhanc|elevat|higher|activat|gain of|oncogen/i;
+  const DOWN=/decreas|downregulat|down-regulat|reduc|inhibit|suppress|lower|loss of|attenuat|tumou?r suppress/i;
+  const up=[], down=[];
+  picked.forEach(it=>{ const s=it.s; const cite=it.p.pmid?`[PMID ${it.p.pmid}]`:"";
+    if(UP.test(s)&&!DOWN.test(s)) up.push({s,cite}); else if(DOWN.test(s)&&!UP.test(s)) down.push({s,cite}); });
+  if(up.length && down.length){
+    html += `<div class="conflict">
+      <div class="up"><h4>⬆️ ทิศทาง "เพิ่ม/ส่งเสริม" (${up.length})</h4><ul>`+
+        up.slice(0,4).map(x=>`<li>${escH(x.s.slice(0,140))}… ${x.cite}</li>`).join("")+`</ul></div>
+      <div class="down"><h4>⬇️ ทิศทาง "ลด/ยับยั้ง" (${down.length})</h4><ul>`+
+        down.slice(0,4).map(x=>`<li>${escH(x.s.slice(0,140))}… ${x.cite}</li>`).join("")+`</ul></div>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted);margin-top:6px">⚠️ พบผลทั้งสองทิศทาง — อาจเป็นเพราะบริบทต่างกัน (cell line/วิธี) ควรอ่านต้นฉบับเทียบก่อนสรุป</p>`;
+  }
   if(themes.length){
     html += `<div class="theme"><h4>🏷️ ธีม/คำที่พบบ่อยในชุดเปเปอร์นี้</h4><ul>` +
       themes.map(([w,n])=>`<li><b>${w}</b> — พบใน ${n} เปเปอร์</li>`).join("") + `</ul></div>`;
   }
   $("#synth").innerHTML = html;
+}
+// บันทึกการค้นหา (reproducible)
+function renderSearchLog(){
+  if(!SEARCH_LOG) return;
+  const L=SEARCH_LOG;
+  $("#searchlog").innerHTML =
+    `<b>คำค้น (query ที่ส่งจริง):</b> <code>${escH(L.querySent)}</code>\n`+
+    `<b>ฐานข้อมูล:</b> Europe PMC (REST API)   <b>วันที่ค้น:</b> ${L.date}\n`+
+    `<b>เรียงตาม:</b> ${L.sortLabel}   <b>ตัวกรอง:</b> ${L.filters||"—"}\n`+
+    `<b>ผลตรงทั้งหมดในฐาน (hitCount):</b> ${L.hitCount.toLocaleString()}   `+
+    `<b>ดึงมา:</b> ${L.retrieved}   <b>หลังกันซ้ำ:</b> ${L.afterDedup}   <b>หลังกรอง:</b> ${L.afterFilter}`;
 }
 
 // ===== นักแปล (ทีมคนที่ 6): อังกฤษ → ไทย ครบทุกตัวอักษร =====
@@ -534,22 +752,43 @@ async function run(){
   const oaOnly = $("#oaOnly").checked;
   const useS2 = $("#s2").checked;
   const useThai = $("#thai").checked;
+  const sortMode = $("#sortMode").value;
+  const minYear = (+$("#minYear").value)||0;
+  const hideRet = $("#hideRet").checked;
+  const noReview = $("#noReview").checked;
+  const noPre = $("#noPre").checked;
   THAI_SYNTH = null;
+  sortKey="_rank"; sortDir=1;   // เริ่มตารางด้วยลำดับที่เลือกเสมอ
 
   try{
     // 1) Scout
     setAgent("scout","active","กำลังค้นหา…"); progress(20);
-    let papers = await searchEuropePMC(query, limit, oaOnly);
-    if(!papers.length){ throw new Error("ไม่พบเปเปอร์ — ลองคำค้นภาษาอังกฤษที่กว้างขึ้น"); }
-    setAgent("scout","done","พบ "+papers.length+" ชิ้น");
+    let papers = await searchEuropePMC(query, limit, oaOnly, sortMode, minYear);
+    if(!papers.length){ throw new Error("ไม่พบเปเปอร์ — ลองปรับคำค้น หรือลดปีกรอง/ปิด Open Access"); }
+    const sortLabel = {smart:"อัจฉริยะ",relevance:"ความเกี่ยวข้อง",newest:"ใหม่สุด",cited:"อ้างอิงมาก"}[sortMode]||"อัจฉริยะ";
+    setAgent("scout","done","พบ "+papers.length+" ชิ้น ("+sortLabel+")");
 
-    // 2) Validator: dedupe by doi/title, keep those with real ids
+    // 2) Validator: dedupe + filter คุณภาพ
     setAgent("validator","active","ตรวจสอบ & กันซ้ำ…"); progress(40);
+    const retrieved = papers.length;
     const seen=new Set(); papers = papers.filter(p=>{
       const k=(p.doi||p.title).toLowerCase(); if(seen.has(k))return false; seen.add(k); return (p.pmid||p.doi);
     });
+    const afterDedup = papers.length;
+    // ตัวกรองคุณภาพ
+    const filterNotes=[];
+    if(hideRet){ papers=papers.filter(p=>!p.isRetracted); filterNotes.push("ซ่อน retracted"); }
+    if(noReview){ papers=papers.filter(p=>!p.isReview); filterNotes.push("ตัด review"); }
+    if(noPre){ papers=papers.filter(p=>!p.isPreprint); filterNotes.push("ตัด preprint"); }
+    if(oaOnly) filterNotes.push("เฉพาะ OA");
+    if(minYear) filterNotes.push("ตั้งแต่ปี "+minYear);
+    const afterFilter = papers.length;
+    if(!papers.length){ throw new Error("ผลถูกกรองออกหมด — ลองปิดตัวกรองบางตัว"); }
+    // เก็บ log แบบทำซ้ำได้
+    SEARCH_LOG = { querySent:QUERY_SENT, date:new Date().toLocaleString('th-TH'), sortLabel,
+      filters:filterNotes.join(", "), hitCount:HIT_COUNT, retrieved, afterDedup, afterFilter };
     await new Promise(r=>setTimeout(r,250));
-    setAgent("validator","done","ยืนยัน "+papers.length+" ชิ้น (มี PMID/DOI จริง)");
+    setAgent("validator","done","เหลือ "+papers.length+" ชิ้น (กันซ้ำ+กรองแล้ว)");
 
     // 3) Analyst
     setAgent("analyst","active","สกัดเป็นตาราง…"); progress(58);
@@ -558,17 +797,17 @@ async function run(){
     await new Promise(r=>setTimeout(r,200));
     setAgent("analyst","done","สร้างตาราง "+papers.length+" แถว");
 
-    // 4) Checker
-    setAgent("checker","active","จัดอันดับหลักฐาน…"); progress(76);
-    RESULTS.sort((a,b)=>b.cc-a.cc);
+    // 4) Checker — คงลำดับตามที่เลือก (ไม่บังคับเรียงตามอ้างอิงแล้ว)
+    setAgent("checker","active","ตรวจหลักฐาน…"); progress(76);
+    RESULTS.sort((a,b)=>a._rank-b._rank);
     await new Promise(r=>setTimeout(r,200));
     const oaPct = Math.round(RESULTS.filter(p=>p.oa).length/RESULTS.length*100);
-    setAgent("checker","done","เรียงตามอ้างอิง · OA "+oaPct+"%");
+    setAgent("checker","done","จัดลำดับ ("+sortLabel+") · OA "+oaPct+"%");
 
     // 5) Writer
     setAgent("writer","active","สังเคราะห์สรุป…"); progress(84);
     $("#scoutSub").textContent = `ค้นด้วย: “${query}” — จาก Europe PMC${useS2?" + Semantic Scholar (TLDR)":""}`;
-    renderStats(RESULTS); renderTable(); renderSynth(RESULTS, query);
+    renderStats(RESULTS); renderSearchLog(); renderTable(); updatePrisma(); renderSynth(RESULTS, query);
     await new Promise(r=>setTimeout(r,200));
     setAgent("writer","done","สรุปเสร็จ ✔");
     $("#out").classList.add("show"); progress(90);
@@ -650,6 +889,59 @@ function exportMD(){ if(RESULTS.length) dl("synthesis.md", synthMarkdown(), "tex
 function copyMD(ev){ if(!RESULTS.length) return; navigator.clipboard.writeText(synthMarkdown()).then(()=>{
   const b=(ev&&ev.target)||document.activeElement; if(!b)return; const t=b.textContent; b.textContent="✓ คัดลอกแล้ว"; setTimeout(()=>b.textContent=t,1500);
 }); }
+// RIS (EndNote/Zotero/Mendeley)
+function exportRIS(){
+  if(!RESULTS.length) return;
+  const ris = RESULTS.map(p=>{
+    let s="TY  - "+(p.isPreprint?"UNPB":"JOUR")+"\n";
+    s+=`TI  - ${p.title}\n`;
+    (p.authors?p.authors.split(",").map(a=>a.trim()).filter(Boolean):[]).forEach(a=> s+=`AU  - ${a}\n`);
+    if(p.journal) s+=`JO  - ${p.journal}\n`;
+    if(p.year) s+=`PY  - ${p.year}\n`;
+    if(p.doi) s+=`DO  - ${p.doi}\n`;
+    if(p.pmid) s+=`AN  - ${p.pmid}\n`;
+    if(p.abstract) s+=`AB  - ${p.abstract.replace(/[\r\n]+/g," ")}\n`;
+    return s+"ER  - \n";
+  }).join("\n");
+  dl("references.ris", ris);
+}
+// PRISMA / search log (ทำซ้ำได้ — ใส่ Methods ได้)
+function exportPrisma(){
+  if(!SEARCH_LOG){ alert("ยังไม่มีข้อมูล — กด Run ก่อน"); return; }
+  const L=SEARCH_LOG; let inc=0,exc=0,may=0,un=0;
+  RESULTS.forEach(p=>{const st=getScreen(pkey(p)).status; if(st==="include")inc++;else if(st==="exclude")exc++;else if(st==="maybe")may++;else un++;});
+  let t=`PRISMA / SEARCH LOG\n===================\n\n`;
+  t+=`Database        : Europe PMC (REST API)\n`;
+  t+=`Date of search  : ${L.date}\n`;
+  t+=`Query string    : ${L.querySent}\n`;
+  t+=`Sort            : ${L.sortLabel}\n`;
+  t+=`Filters         : ${L.filters||"none"}\n\n`;
+  t+=`Records identified (hitCount) : ${L.hitCount}\n`;
+  t+=`Records retrieved             : ${L.retrieved}\n`;
+  t+=`After duplicates removed      : ${L.afterDedup}\n`;
+  t+=`After quality filters         : ${L.afterFilter}\n\n`;
+  t+=`SCREENING\n  Included  : ${inc}\n  Maybe     : ${may}\n  Excluded  : ${exc}\n  Unscreened: ${un}\n\n`;
+  t+=`--- Suggested Methods sentence ---\n`;
+  t+=`Literature was searched in Europe PMC on ${L.date} using the query "${L.querySent}" (sort: ${L.sortLabel}). `;
+  t+=`${L.hitCount} records were identified; ${L.retrieved} were retrieved and ${L.afterDedup} remained after duplicate removal. `;
+  t+=`After applying filters (${L.filters||"none"}), ${L.afterFilter} records were screened, of which ${inc} were included.\n`;
+  dl("prisma_search_log.txt", t);
+}
+// ผลคัดกรอง + metadata สกัด (CSV)
+function exportScreenCSV(){
+  if(!RESULTS.length) return;
+  const esc=v=>`"${String(v==null?"":v).replace(/"/g,'""')}"`;
+  const head=["status","reason","year","title","journal","citedBy","pmid","doi","methods","cellLines","organisms","retracted","preprint","review"];
+  const rows=RESULTS.map(p=>{ const sc=getScreen(pkey(p)); const m=p.meta||{}; return [
+    sc.status||"unscreened", sc.note||"", p.year, p.title, p.journal, p.cc, p.pmid, p.doi,
+    (m.methods||[]).join("; "),(m.cells||[]).join("; "),(m.organisms||[]).join("; "),
+    p.isRetracted?"Y":"", p.isPreprint?"Y":"", p.isReview?"Y":"" ].map(esc).join(","); });
+  dl("screening.csv", head.join(",")+"\n"+rows.join("\n"), "text/csv");
+}
+function clearScreen(){
+  if(!confirm("ล้างสถานะคัดกรองทั้งหมดที่บันทึกไว้? (ย้อนกลับไม่ได้)")) return;
+  SCREEN={}; saveScreen(); updatePrisma(); if(RESULTS.length) renderTable();
+}
 </script>
 </body>
 </html>

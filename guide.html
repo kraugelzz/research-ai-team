@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>คู่มือใช้งาน — ทีมวิจัย AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfbfc; --ink:#2c2f36; --muted:#8a909c; --line:#ecedf1;
+    --accent:#3f7dc4; --card:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Nunito","Segoe UI","Tahoma",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* top nav */
+  .topnav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:22px 0 0}
+  .topnav a{font-size:.84rem;padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:#fff}
+  .topnav a.here{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+  .topnav a:hover{text-decoration:none;border-color:var(--accent)}
+
+  header{text-align:center;padding:34px 0 10px}
+  header h1{font-size:1.9rem;letter-spacing:-.01em}
+  header p{color:var(--muted);margin-top:6px}
+
+  section{margin:34px 0}
+  h2{font-size:1.15rem;padding-bottom:8px;border-bottom:2px solid var(--line);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+  /* quick start steps */
+  .steps{counter-reset:s;display:flex;flex-direction:column;gap:12px}
+  .step{display:flex;gap:14px;align-items:flex-start}
+  .step .n{counter-increment:s;flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-weight:800;font-size:.9rem}
+  .step .n::before{content:counter(s)}
+  .step .t{padding-top:2px}
+  .step .t b{color:var(--ink)}
+  .step .t span{color:var(--muted);font-size:.9rem}
+
+  /* icon rows */
+  .rows{display:flex;flex-direction:column;gap:2px}
+  .row{display:flex;gap:14px;align-items:baseline;padding:11px 4px;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .ic{flex-shrink:0;width:118px;font-weight:700;font-size:.9rem}
+  .row .d{font-size:.92rem;color:#4a4e57}
+  .row .d small{color:var(--muted)}
+
+  /* small badge samples reused from app */
+  .badge{font-size:.7rem;font-weight:800;padding:2px 7px;border-radius:5px;display:inline-block}
+  .b-ret{background:#fde0e0;color:#c0392b;border:1px solid #f3b0b0}
+  .b-pre{background:#fff2d6;color:#9a6b00;border:1px solid #f0d69a}
+  .b-rev{background:#e7e0fb;color:#6b4bc0;border:1px solid #cdbef0}
+  .chip{font-size:.72rem;border-radius:6px;padding:1px 7px;display:inline-block}
+  .c-method{background:#eef2fb;border:1px solid #cdd9f0;color:#3a5bb0}
+  .c-cell{background:#eef6f0;border:1px solid #cfe6d6;color:#2e7d52}
+  .c-org{background:#faf0ee;border:1px solid #efd3cc;color:#b05a45}
+  .sbtn{border:1px solid var(--line);background:#fff;border-radius:7px;padding:2px 8px;font-weight:700;display:inline-block}
+  .sb-i{background:#dff5e6;border-color:#8fd6a8;color:#1f8f4d}
+  .sb-m{background:#fff3cf;border-color:#e8cf7a;color:#9a7400}
+  .sb-e{background:#fde0e6;border-color:#eaa3b5;color:#c03a5b}
+
+  /* tips */
+  .tip{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:14px 16px;margin:10px 0;font-size:.92rem}
+  .tip b{color:var(--ink)}
+
+  .cta{display:block;text-align:center;background:var(--accent);color:#fff;font-weight:800;padding:14px;border-radius:12px;margin:30px 0 10px}
+  .cta:hover{text-decoration:none;filter:brightness(1.05)}
+
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:26px 0 50px;border-top:1px solid var(--line);margin-top:30px}
+  footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="topnav">
+    <a href="app.html">🔬 หน้าใช้งาน</a>
+    <a href="office.html">👥 แนะนำทีม</a>
+    <a href="guide.html" class="here">📖 คู่มือใช้งาน</a>
+  </nav>
+
+  <header>
+    <h1>📖 คู่มือใช้งานเบื้องต้น</h1>
+    <p>วิธีใช้งาน + ความหมายของไอคอนทุกตัวในเว็บ</p>
+  </header>
+
+  <!-- QUICK START -->
+  <section>
+    <h2>🚀 เริ่มใช้งานใน 4 ขั้น</h2>
+    <div class="steps">
+      <div class="step"><div class="n"></div><div class="t"><b>พิมพ์คำค้นเป็นภาษาอังกฤษ</b><br><span>เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง หรือลากไฟล์ .txt มาวาง</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b>ตั้งค่า (ถ้าต้องการ)</b><br><span>เลือกวิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b>กดปุ่ม ▶ Run ทีม</b><br><span>ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b>อ่านผล + คัดกรอง + ดาวน์โหลด</b><br><span>กดปุ่มคัดกรองแต่ละเปเปอร์ (บันทึกอัตโนมัติ) แล้ว export เป็น CSV / RIS / PRISMA</span></div></div>
+    </div>
+  </section>
+
+  <!-- SORT MODES -->
+  <section>
+    <h2>🔀 โหมดการเรียงผลลัพธ์</h2>
+    <div class="rows">
+      <div class="row"><div class="ic">✨ อัจฉริยะ</div><div class="d">ตรงคีย์เวิร์ดเป็นหลัก + ดันเปเปอร์ปีล่าสุดขึ้นมา <small>(แนะนำ — ค่าเริ่มต้น)</small></div></div>
+      <div class="row"><div class="ic">🎯 ความเกี่ยวข้อง</div><div class="d">ตรงคีย์เวิร์ดที่สุด ไม่สนใจปี</div></div>
+      <div class="row"><div class="ic">🆕 ใหม่สุดก่อน</div><div class="d">เรียงตามวันที่ตีพิมพ์ล้วน <small>(อาจมีนอกเรื่องปนบ้าง)</small></div></div>
+      <div class="row"><div class="ic">⭐ อ้างอิงมากสุด</div><div class="d">งานคลาสสิกที่ถูกอ้างอิงเยอะ <small>(มักเป็นงานเก่า)</small></div></div>
+    </div>
+  </section>
+
+  <!-- FLAGS -->
+  <section>
+    <h2>🚩 ธงเตือนคุณภาพงาน</h2>
+    <div class="rows">
+      <div class="row"><div class="ic"><span class="badge b-ret">⛔ RETRACTED</span></div><div class="d"><b>งานถูกถอน</b> — ห้ามอ้างอิง! (ระบบซ่อนให้อัตโนมัติ เปิดดูได้ในตัวกรอง)</div></div>
+      <div class="row"><div class="ic"><span class="badge b-pre">📄 preprint</span></div><div class="d">ยังไม่ผ่าน peer review — ใช้อย่างระวัง ยังไม่ถือว่าตรวจสอบแล้ว</div></div>
+      <div class="row"><div class="ic"><span class="badge b-rev">📚 review</span></div><div class="d">บทความรีวิว ไม่ใช่งานทดลองต้นฉบับ <small>(ตัดออกได้ในตัวกรอง)</small></div></div>
+    </div>
+  </section>
+
+  <!-- META CHIPS -->
+  <section>
+    <h2>🧪 ชิปข้อมูลสกัด (คอลัมน์ "สกัด")</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">ระบบดึงข้อมูลสาย wet-lab จากบทคัดย่ออัตโนมัติ แยกด้วยสี</p>
+    <div class="rows">
+      <div class="row"><div class="ic"><span class="chip c-method">shRNA</span></div><div class="d"><b>สีน้ำเงิน = วิธีทดลอง</b> — siRNA / shRNA / CRISPR / knockout / overexpression</div></div>
+      <div class="row"><div class="ic"><span class="chip c-cell">786-O</span></div><div class="d"><b>สีเขียว = cell line</b> — เซลล์ที่ใช้ในงาน (คลังกว่า 90 สาย)</div></div>
+      <div class="row"><div class="ic"><span class="chip c-org">human</span></div><div class="d"><b>สีส้ม = สิ่งมีชีวิต</b> — human / mouse / rat / zebrafish</div></div>
+    </div>
+  </section>
+
+  <!-- SCREENING -->
+  <section>
+    <h2>✅ ปุ่มคัดกรอง (คอลัมน์ "คัดกรอง")</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">กดเพื่อจัดสถานะแต่ละเปเปอร์ — บันทึกในเครื่องอัตโนมัติ เปิดใหม่ก็ยังอยู่</p>
+    <div class="rows">
+      <div class="row"><div class="ic"><span class="sbtn sb-i">✓</span></div><div class="d"><b>รับเข้า (include)</b> — เปเปอร์ที่เข้าเกณฑ์ ใช้ในรีวิว (แถวขึ้นสีเขียว)</div></div>
+      <div class="row"><div class="ic"><span class="sbtn sb-m">?</span></div><div class="d"><b>รอพิจารณา (maybe)</b> — ยังไม่แน่ใจ ไว้กลับมาดู</div></div>
+      <div class="row"><div class="ic"><span class="sbtn sb-e">✗</span></div><div class="d"><b>ตัดออก (exclude)</b> — ไม่เข้าเกณฑ์ (แถวจางลง) · ใส่เหตุผลในช่องโน้ตได้</div></div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section>
+    <h2>🔗 ลิงก์แหล่งข้อมูล (คอลัมน์ "ลิงก์")</h2>
+    <div class="rows">
+      <div class="row"><div class="ic">DOI↗</div><div class="d">ไปหน้าทางการของเปเปอร์ (สำนักพิมพ์)</div></div>
+      <div class="row"><div class="ic">PubMed↗</div><div class="d">หน้า PubMed พร้อมบทคัดย่อและข้อมูลอ้างอิง</div></div>
+      <div class="row"><div class="ic">FullText↗</div><div class="d">ฉบับเต็มบน Europe PMC (ถ้ามี)</div></div>
+      <div class="row"><div class="ic" style="color:#c0392b">PDF↗</div><div class="d"><b>โหลด PDF ฉบับเต็มฟรี</b> — เฉพาะงาน open access</div></div>
+      <div class="row"><div class="ic"><span class="badge" style="background:#e7f6ee;color:#2e9e5b">OA</span></div><div class="d">Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก</div></div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section>
+    <h2>👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)</h2>
+    <div class="rows">
+      <div class="row"><div class="ic">🔍 สกาวต์</div><div class="d">ค้นหาเปเปอร์จาก Europe PMC</div></div>
+      <div class="row"><div class="ic">✅ วาลิดา</div><div class="d">ตรวจสอบ กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
+      <div class="row"><div class="ic">📊 แอนนา</div><div class="d">สกัดเป็นตาราง + ดึงข้อมูล wet-lab</div></div>
+      <div class="row"><div class="ic">⚖️ เชค</div><div class="d">จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน</div></div>
+      <div class="row"><div class="ic">✍️ ไรเตอร์</div><div class="d">สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)</div></div>
+      <div class="row"><div class="ic">🌐 ทรานส์</div><div class="d">แปลอังกฤษ→ไทย + สรุปว่าเปเปอร์ทำอะไร</div></div>
+    </div>
+    <p style="font-size:.86rem;color:var(--muted);margin-top:10px">ดูรายละเอียดตัวละครแต่ละคน + เครื่องมือจริงได้ที่ <a href="office.html">หน้าแนะนำทีม →</a></p>
+  </section>
+
+  <!-- EXPORT -->
+  <section>
+    <h2>⬇️ ปุ่มดาวน์โหลด (Export)</h2>
+    <div class="rows">
+      <div class="row"><div class="ic">CSV</div><div class="d">ตารางเปเปอร์ — เปิดใน Excel</div></div>
+      <div class="row"><div class="ic">BibTeX / RIS</div><div class="d">นำเข้า Zotero / EndNote / Mendeley ได้เลย</div></div>
+      <div class="row"><div class="ic">Markdown</div><div class="d">สรุปสังเคราะห์ พร้อมลิงก์อ้างอิง</div></div>
+      <div class="row"><div class="ic">PRISMA log</div><div class="d"><b>บันทึกการค้นหาแบบทำซ้ำได้</b> + ประโยค Methods สำเร็จรูป ใส่ paper ได้</div></div>
+      <div class="row"><div class="ic">ผลคัดกรอง</div><div class="d">CSV รวมสถานะ include/exclude + เหตุผล + ข้อมูลสกัด</div></div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section>
+    <h2>💡 เคล็ดลับ</h2>
+    <div class="tip"><b>พิมพ์ภาษาอังกฤษ</b> — ฐานข้อมูลงานวิจัยเป็นอังกฤษเกือบทั้งหมด พิมพ์ไทยจะหาไม่ค่อยเจอ</div>
+    <div class="tip"><b>เจอน้อยไป?</b> ตัดคำให้กว้างขึ้น เช่น <code>ANK3 renal cell carcinoma</code> → <code>ANK3 kidney cancer</code></div>
+    <div class="tip"><b>อยากได้ทั้งใหม่ทั้งตรง</b> ใช้โหมด "✨ อัจฉริยะ" + ใส่ช่อง "ตั้งแต่ปี 2023"</div>
+    <div class="tip"><b>โควตาแปลหมด?</b> รอวันถัดไป หรือปิด "🌐 แปลไทย" แล้วยังค้นได้ปกติ (การแปลใช้บริการฟรีที่มีลิมิตรายวัน ไม่กิน token ใดๆ)</div>
+    <div class="tip"><b>สรุปเป็นแบบสกัด</b> — ทุกประโยคดึงจากบทคัดย่อจริง ไม่มีการกุ แต่ควรเปิดอ่านต้นฉบับก่อนอ้างอิงเสมอ</div>
+  </section>
+
+  <a class="cta" href="app.html">🔬 เริ่มใช้งานเลย →</a>
+
+  <footer>
+    ข้อมูลจริงจาก Europe PMC &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>
+    <span style="display:inline-block;margin-top:8px">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
+  </footer>
+</div>
+</body>
+</html>
