@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>ทีมวิจัย AI — The Research Office</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --floor: #e7e0d3;
+    --wall: #efe9dd;
+    --ink: #2a2620;
+    --muted: #7d7565;
+    --scout: #4f9dde;
+    --validator: #f0a441;
+    --analyst: #7bc86c;
+    --checker: #e0688a;
+    --writer: #a682e0;
+    --shadow: 0 10px 30px rgba(60,50,30,.14);
+    --card-shadow: 0 6px 22px rgba(60,50,30,.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Tahoma", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    text-align: center; padding: 60px 20px 30px;
+    background: radial-gradient(1000px 380px at 50% -80px, rgba(166,130,224,.16), transparent);
+  }
+  header .eyebrow { color: var(--muted); letter-spacing: .18em; text-transform: uppercase; font-size: .8rem; }
+  header h1 { font-size: 2.5rem; margin: 8px 0; letter-spacing: -.01em; }
+  header .sub { color: var(--muted); max-width: 640px; margin: 10px auto 0; font-size: 1.05rem; }
+
+  /* Office scene */
+  .office {
+    position: relative;
+    margin: 30px auto 10px;
+    background:
+      linear-gradient(180deg, var(--wall) 0%, var(--wall) 55%, var(--floor) 55%, var(--floor) 100%);
+    border-radius: 26px;
+    padding: 40px 30px 50px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  /* wall decor */
+  .window {
+    position: absolute; top: 26px; width: 120px; height: 90px; border-radius: 12px;
+    background: linear-gradient(160deg, #bfe3f5, #e9f6ff); border: 6px solid #fff;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.03);
+  }
+  .window::after { content:""; position:absolute; inset: 0; background:
+     linear-gradient(90deg, transparent 48%, rgba(255,255,255,.7) 48%, rgba(255,255,255,.7) 52%, transparent 52%),
+     linear-gradient(0deg, transparent 48%, rgba(255,255,255,.7) 48%, rgba(255,255,255,.7) 52%, transparent 52%);
+     border-radius: 6px; }
+  .plant {
+    position:absolute; bottom: 34px; font-size: 2.4rem; filter: drop-shadow(0 4px 3px rgba(0,0,0,.1));
+  }
+
+  .team {
+    position: relative; z-index: 2;
+    display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  }
+  .desk-col { flex: 1 1 180px; display: flex; flex-direction: column; align-items: center; min-width: 160px; }
+
+  /* Character card */
+  .char {
+    width: 100%; max-width: 210px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center;
+    transition: transform .2s ease;
+  }
+  .char:hover { transform: translateY(-8px); }
+  .char:hover .bubble { opacity: 1; transform: translateY(0) scale(1); }
+  .char:hover .avatar-float { animation-play-state: paused; }
+
+  .bubble {
+    background: #fff; border-radius: 14px; padding: 9px 13px; font-size: .82rem; color: var(--ink);
+    box-shadow: var(--card-shadow); position: relative; margin-bottom: 14px; max-width: 200px; text-align: center;
+    opacity: 0; transform: translateY(6px) scale(.96); transition: all .22s ease; pointer-events: none;
+  }
+  .bubble::after {
+    content:""; position: absolute; bottom: -7px; left: 50%; transform: translateX(-50%);
+    border: 7px solid transparent; border-top-color: #fff; border-bottom: 0;
+  }
+
+  .avatar-float { animation: bob 3.4s ease-in-out infinite; }
+  @keyframes bob { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} }
+  svg.avatar { width: 130px; height: 150px; display:block; filter: drop-shadow(0 8px 10px rgba(60,50,30,.16)); }
+
+  .desk {
+    width: 100%; max-width: 190px; height: 26px; border-radius: 8px 8px 4px 4px;
+    background: linear-gradient(180deg, #c9a17a, #b5895f);
+    box-shadow: 0 6px 0 #9a7550, var(--card-shadow); margin-top: -8px; position: relative;
+  }
+  .desk::before { content:""; position:absolute; left:14px; right:14px; bottom:-14px; height:14px;
+    background: #a2794f; border-radius: 0 0 6px 6px; }
+
+  .name { margin-top: 20px; font-weight: 700; font-size: 1.02rem; text-align:center; }
+  .role { font-size: .78rem; color: var(--muted); text-align:center; text-transform: uppercase; letter-spacing:.05em; }
+  .step-pill {
+    margin-top: 8px; font-size: .72rem; font-weight:700; color:#fff; padding: 3px 11px; border-radius: 999px;
+  }
+
+  /* connecting arrows between desks */
+  .arrow { align-self:center; color: var(--muted); font-size: 1.6rem; opacity:.5; flex: 0 0 auto; align-self:flex-start; margin-top: 120px; }
+
+  /* Detail panels */
+  .detail {
+    background:#fff; border-radius: 18px; padding: 24px 26px; box-shadow: var(--card-shadow);
+    margin: 14px 0; display:none; border-left: 6px solid var(--muted);
+  }
+  .detail.open { display:block; animation: fade .25s ease; }
+  @keyframes fade { from{opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
+  .detail h3 { font-size: 1.35rem; display:flex; align-items:center; gap:10px; }
+  .detail .tools { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .detail .tools a { font-size:.85rem; background: var(--bg); padding: 6px 12px; border-radius: 8px; color: var(--ink); font-weight:600; }
+  .detail .tools a:hover { text-decoration:none; box-shadow: inset 0 0 0 2px currentColor; }
+  .detail p { color:#42392c; }
+  .detail .job { color: var(--muted); font-style: italic; margin-bottom: 8px; }
+
+  /* section titles */
+  h2.sec { text-align:center; font-size:1.7rem; margin: 60px 0 6px; }
+  h2.sec + .lead { text-align:center; color:var(--muted); margin-bottom: 10px; }
+
+  /* pipeline strip */
+  .pipeline { display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; margin: 30px 0 10px; }
+  .pipe-node { background:#fff; border-radius: 12px; padding: 12px 16px; box-shadow: var(--card-shadow); font-weight:600; font-size:.9rem; display:flex; align-items:center; gap:8px; }
+  .pipe-dot { width:12px; height:12px; border-radius:50%; }
+  .pipe-arr { color: var(--muted); font-size:1.3rem; }
+
+  footer { text-align:center; color: var(--muted); font-size:.82rem; padding: 40px 20px 60px; }
+  footer a { color:#7a6bd0; }
+
+  @media (max-width:820px){
+    .arrow{ display:none; }
+    header h1{ font-size:1.9rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">The Research Office</p>
+    <h1>👩‍🔬 ทีม AI นักวิจัยของคุณ</h1>
+    <p class="sub">เครื่องมือ AI แต่ละตัวคือ "พนักงานออฟฟิส" ที่มีหน้าที่ต่างกัน — ทำงานส่งต่อกันเป็นสายพานงานวิจัย ตั้งแต่ค้นหา → ตรวจสอบ → สกัดข้อมูล → เช็กหลักฐาน → เขียนสรุป <br>คลิกที่ตัวละครแต่ละคนเพื่อดูรายละเอียดเครื่องมือจริง</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="office">
+    <div class="window" style="left:40px;"></div>
+    <div class="window" style="right:40px;"></div>
+    <span class="plant" style="left:16px;">🪴</span>
+    <span class="plant" style="right:16px;">🌿</span>
+
+    <div class="team" id="team"></div>
+  </div>
+
+  <div id="details"></div>
+
+  <h2 class="sec">🔄 สายพานงานวิจัย (Research Pipeline)</h2>
+  <p class="lead">แต่ละคนส่งงานต่อให้คนถัดไป — ผลลัพธ์สุดท้ายคือรีวิววรรณกรรมที่อ้างอิงได้จริง</p>
+  <div class="pipeline" id="pipeline"></div>
+
+  <footer>
+    ราคาตรวจสอบ ณ ก.ค. 2026 — โปรดยืนยันที่เว็บไซต์จริงก่อนสมัคร · หลักการสำคัญ: ให้ AI <b>ค้นและจัดระเบียบ</b> แต่ทุกข้อสรุปต้องกลับไปเปิดอ่านแหล่งอ้างอิงจริงเสมอ<br>
+    ลองใช้งานจริงได้ที่ <a href="app.html">app.html</a>
+  </footer>
+</div>
+
+<script>
+// avatar generator — simple flat character with configurable color + prop emoji
+function avatar(color, skin, hair, prop){
+  return `<svg class="avatar" viewBox="0 0 130 150" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="65" cy="142" rx="34" ry="6" fill="rgba(0,0,0,.08)"/>
+    <!-- body -->
+    <path d="M30 145 Q30 95 65 95 Q100 95 100 145 Z" fill="${color}"/>
+    <path d="M30 145 Q30 118 44 106 L44 145 Z" fill="rgba(0,0,0,.08)"/>
+    <!-- neck -->
+    <rect x="57" y="80" width="16" height="20" rx="6" fill="${skin}"/>
+    <!-- head -->
+    <circle cx="65" cy="60" r="27" fill="${skin}"/>
+    <!-- hair -->
+    <path d="M38 58 Q36 30 65 30 Q94 30 92 58 Q92 44 65 44 Q38 44 38 58 Z" fill="${hair}"/>
+    <!-- eyes -->
+    <circle cx="55" cy="60" r="3.4" fill="#2a2620"/>
+    <circle cx="75" cy="60" r="3.4" fill="#2a2620"/>
+    <!-- smile -->
+    <path d="M56 70 Q65 78 74 70" stroke="#2a2620" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <!-- blush -->
+    <circle cx="48" cy="68" r="4" fill="rgba(224,104,138,.35)"/>
+    <circle cx="82" cy="68" r="4" fill="rgba(224,104,138,.35)"/>
+    <!-- prop -->
+    <text x="98" y="112" font-size="26" text-anchor="middle">${prop}</text>
+  </svg>`;
+}
+
+const team = [
+  { key:"scout", step:1, name:"สกาวต์ (Scout)", role:"Retriever · นักค้นหา",
+    color:"var(--scout)", skin:"#f6cfa8", hair:"#3a2a1a", prop:"🔍", bubble:"เดี๋ยวไปกวาดหาเปเปอร์ที่เกี่ยวข้องมาให้หมดเลย!",
+    job:"ออกไปสำรวจงานวิจัยทั้งโลกแบบ agentic — ค้นซ้ำ ปรับคำค้นเอง จนได้ครบ",
+    desc:"รับผิดชอบการค้นหาเชิงลึกแบบอัตโนมัติ ครอบคลุมทั้งงานตีพิมพ์และ preprint เหมาะกับคำถามเชิงกลไกที่ต้องการความครบถ้วนสูง",
+    tools:[["Undermind","https://undermind.ai"],["FutureHouse Falcon","https://futurehouse.org"],["Semantic Scholar","https://semanticscholar.org"]] },
+  { key:"validator", step:2, name:"วาลิดา (Valida)", role:"Validator · ผู้ตรวจสอบ",
+    color:"var(--validator)", skin:"#e8b98c", hair:"#1f1a14", prop:"✅", bubble:"เปเปอร์นี้มีอยู่จริงไหม? ขอเช็กใน PubMed ก่อนนะ",
+    job:"ด่านกันข้อมูลมั่ว — ยืนยันว่าเปเปอร์มีอยู่จริงและดึง metadata ที่สะอาด",
+    desc:"จุดตรวจกันการ hallucination ที่สำคัญที่สุด ยืนยันการมีอยู่ของงานวิจัยจากฐานข้อมูลที่เชื่อถือได้ พร้อม metadata และ MeSH",
+    tools:[["PubMed","https://pubmed.ncbi.nlm.nih.gov"],["Europe PMC","https://europepmc.org"]] },
+  { key:"analyst", step:3, name:"แอนนา (Anna)", role:"Analyst · นักสกัดข้อมูล",
+    color:"var(--analyst)", skin:"#f6cfa8", hair:"#6b4a2a", prop:"📊", bubble:"จัดเป็นตารางให้เลย — cell line, วิธี knockdown, ผลลัพธ์",
+    job:"อ่านทุกเปเปอร์แล้วสกัดออกมาเป็นตาราง หนึ่งแถวต่อหนึ่งงาน แต่ละช่องลิงก์กลับแหล่ง",
+    desc:"หัวใจของการรีวิวเชิงระบบ สร้างตารางสกัดข้อมูลตามคอลัมน์สาย wet-lab: cell line, วิธี knockdown (siRNA/shRNA/CRISPR), ประสิทธิภาพ, readout, ข้อค้นพบ, ข้อจำกัด",
+    tools:[["Elicit ⭐","https://elicit.com"],["SciSpace","https://scispace.com"]] },
+  { key:"checker", step:4, name:"เชค (Check)", role:"Fact-Checker · ผู้ตรวจหลักฐาน",
+    color:"var(--checker)", skin:"#e8b98c", hair:"#2a1f2a", prop:"⚖️", bubble:"งานนี้มีคนทำซ้ำได้ไหม? หรือมีคนแย้ง?",
+    job:"ดูทิศทางโดยรวมของหลักฐาน และเช็กว่าผลถูกยืนยันหรือถูกโต้แย้งภายหลัง",
+    desc:"ใช้ Consensus Meter สรุปทิศทางของหลักฐาน และ Smart Citations ของ scite เพื่อดูว่างานสำคัญถูก support หรือ contrast ก่อนจะเอาไปวางแผนการทดลอง",
+    tools:[["Consensus","https://consensus.app"],["scite.ai","https://scite.ai"]] },
+  { key:"writer", step:5, name:"ไรเตอร์ (Writer)", role:"Synthesizer · นักเขียนสรุป",
+    color:"var(--writer)", skin:"#f6cfa8", hair:"#141414", prop:"✍️", bubble:"อัปโหลด PDF มา เดี๋ยวเขียนสรุปพร้อมอ้างอิงทุกประโยค",
+    job:"รวมทุกอย่างเป็นเรื่องเล่าเดียว โดยตอบจากไฟล์ที่อัปโหลดเท่านั้น — อ้างอิงระดับประโยค",
+    desc:"ขั้นสังเคราะห์สุดท้าย อัปโหลด PDF ~10–20 ไฟล์ที่คัดแล้ว ระบบตอบจากแหล่งเหล่านั้นเท่านั้น จึงแทบไม่มีการกุอ้างอิง",
+    tools:[["NotebookLM ⭐","https://notebooklm.google.com"],["Scholarcy","https://scholarcy.com"]] },
+  { key:"translator", step:6, name:"ทรานส์ (Trans)", role:"Translator · นักแปลไทย",
+    color:"#3fb6b0", skin:"#e8b98c", hair:"#241d16", prop:"🌐", bubble:"เดี๋ยวแปลอังกฤษเป็นไทยให้ครบทุกตัวอักษร พร้อมสรุปว่าเปเปอร์นี้ทำอะไร!",
+    job:"แปลผลลัพธ์ทั้งหมดเป็นไทยแบบไม่ตกหล่น และสรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร",
+    desc:"ด่านสุดท้ายเพื่อคนไทย — แปลชื่อเรื่องและบทคัดย่ออังกฤษเป็นไทยครบทุกตัวอักษร พร้อมสรุปสั้นๆ ว่าเปเปอร์นี้ศึกษาอะไร ทำให้อ่านเข้าใจเร็วโดยไม่ต้องแปลเอง",
+    tools:[["Google Translate","https://translate.google.com"],["MyMemory","https://mymemory.translated.net"]] },
+];
+
+// render team
+const teamEl = document.getElementById('team');
+team.forEach((c, i) => {
+  const col = document.createElement('div');
+  col.className = 'desk-col';
+  col.innerHTML = `
+    <div class="char" data-key="${c.key}">
+      <div class="bubble">${c.bubble}</div>
+      <div class="avatar-float" style="animation-delay:${i*0.4}s">${avatar(c.color, c.skin, c.hair, c.prop)}</div>
+      <div class="desk"></div>
+      <div class="name">${c.name}</div>
+      <div class="role">${c.role}</div>
+      <div class="step-pill" style="background:${c.color}">ขั้นที่ ${c.step}</div>
+    </div>`;
+  teamEl.appendChild(col);
+  if (i < team.length - 1) {
+    const arr = document.createElement('div');
+    arr.className = 'arrow'; arr.textContent = '➜';
+    teamEl.appendChild(arr);
+  }
+});
+
+// detail panels
+const detailsEl = document.getElementById('details');
+team.forEach(c => {
+  const d = document.createElement('div');
+  d.className = 'detail'; d.id = 'detail-' + c.key;
+  d.style.borderLeftColor = c.color;
+  d.innerHTML = `
+    <h3><span style="font-size:1.6rem">${c.prop}</span> ${c.name} <span style="font-size:.85rem;color:var(--muted);font-weight:400">— ${c.role}</span></h3>
+    <p class="job">“${c.job}”</p>
+    <p>${c.desc}</p>
+    <div class="tools">${c.tools.map(t=>`<a href="${t[1]}" target="_blank" rel="noopener" style="color:${c.color}">${t[0]} ↗</a>`).join('')}</div>`;
+  detailsEl.appendChild(d);
+});
+
+// click to toggle detail
+document.querySelectorAll('.char').forEach(ch => {
+  ch.addEventListener('click', () => {
+    const key = ch.dataset.key;
+    const panel = document.getElementById('detail-' + key);
+    const wasOpen = panel.classList.contains('open');
+    document.querySelectorAll('.detail').forEach(p => p.classList.remove('open'));
+    if (!wasOpen) { panel.classList.add('open'); panel.scrollIntoView({behavior:'smooth', block:'center'}); }
+  });
+});
+
+// pipeline strip
+const pipeEl = document.getElementById('pipeline');
+const labels = ["ค้นหา","ตรวจสอบ","สกัดข้อมูล","เช็กหลักฐาน","เขียนสรุป","แปลไทย"];
+team.forEach((c,i) => {
+  const n = document.createElement('div');
+  n.className = 'pipe-node';
+  n.innerHTML = `<span class="pipe-dot" style="background:${c.color}"></span>${labels[i]}`;
+  pipeEl.appendChild(n);
+  if (i < team.length-1){ const a=document.createElement('span'); a.className='pipe-arr'; a.textContent='→'; pipeEl.appendChild(a); }
+});
+</script>
+</body>
+</html>
