@@ -46,11 +46,47 @@ git push -u origin main
 ---
 
 ## อัปเดตเว็บภายหลัง (เฉพาะวิธี B)
-แก้ไฟล์แล้วรัน:
+
+repo นี้ตั้งค่าเสร็จแล้ว — ตอนนี้อยู่ที่
+`https://github.com/kraugelzz/research-ai-team` → เว็บจริง
+`https://kraugelzz.github.io/research-ai-team/app.html`
+
+แก้ไฟล์แล้วรันใน Git Bash ที่โฟลเดอร์นี้:
+
 ```bash
-cd /d/research-ai-tools
+cd "/d/Claude Code/ความรู้/research-ai-tools"
 git add -A
-git commit -m "update"
+git commit -m "อธิบายสั้นๆ ว่าแก้อะไร"
 git push
 ```
-เว็บจะอัปเดตเองใน 1–2 นาที
+
+เว็บจะอัปเดตเองใน 1–2 นาที เช็กว่าขึ้นแล้วจริงด้วย:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://kraugelzz.github.io/research-ai-team/app.html
+```
+
+### ⚠️ ถ้าแก้ `i18n.js` ต้องเปลี่ยนเลขเวอร์ชันด้วย
+
+ไฟล์ HTML มี `<meta http-equiv="Cache-Control" content="no-store">` อยู่แล้ว
+แต่ `i18n.js` เป็นไฟล์แยก เบราว์เซอร์จะ cache ไว้ ถ้าไม่เปลี่ยนเลข
+ผู้ใช้เก่าจะยังเห็นคำแปลชุดเดิม
+
+แก้เลขท้าย `?v=` ให้เป็นวันที่วันนี้ ทั้ง 3 หน้าในครั้งเดียว:
+
+```bash
+cd "/d/Claude Code/ความรู้/research-ai-tools"
+sed -i "s|i18n.js?v=[0-9]*|i18n.js?v=$(date +%Y%m%d)|" app.html office.html guide.html
+```
+
+### เช็กก่อน push (ไม่บังคับ แต่กันพลาด)
+
+เปิดเซิร์ฟเวอร์ในเครื่องดูก่อนได้:
+
+```bash
+cd "/d/Claude Code/ความรู้/research-ai-tools"
+py -m http.server 8020
+```
+
+แล้วเปิด `http://localhost:8020/app.html` — กดปุ่ม ไทย/EN มุมขวาบนดูว่าสลับครบ
+ถ้าเห็นคำแปลเก่า ให้กด Ctrl+Shift+R (hard reload) เพราะเป็น cache ของ `i18n.js`
