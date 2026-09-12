@@ -6,6 +6,8 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <title>คู่มือใช้งาน — ทีมวิจัย AI</title>
+<meta name="i18n-title" content="guide.docTitle">
+<script src="i18n.js?v=20260912"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -79,121 +81,121 @@
 <body>
 <div class="wrap">
   <nav class="topnav">
-    <a href="app.html">🔬 หน้าใช้งาน</a>
-    <a href="office.html">👥 แนะนำทีม</a>
-    <a href="guide.html" class="here">📖 คู่มือใช้งาน</a>
+    <a href="app.html" data-i18n="nav.app">🔬 หน้าใช้งาน</a>
+    <a href="office.html" data-i18n="nav.team">👥 แนะนำทีม</a>
+    <a href="guide.html" class="here" data-i18n="nav.guide">📖 คู่มือใช้งาน</a>
   </nav>
 
   <header>
-    <h1>📖 คู่มือใช้งานเบื้องต้น</h1>
-    <p>วิธีใช้งาน + ความหมายของไอคอนทุกตัวในเว็บ</p>
+    <h1 data-i18n="guide.h1">📖 คู่มือใช้งานเบื้องต้น</h1>
+    <p data-i18n="guide.sub">วิธีใช้งาน + ความหมายของไอคอนทุกตัวในเว็บ</p>
   </header>
 
   <!-- QUICK START -->
   <section>
-    <h2>🚀 เริ่มใช้งานใน 4 ขั้น</h2>
+    <h2 data-i18n="guide.quick.h">🚀 เริ่มใช้งานใน 4 ขั้น</h2>
     <div class="steps">
-      <div class="step"><div class="n"></div><div class="t"><b>พิมพ์คำค้นเป็นภาษาอังกฤษ</b><br><span>เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง หรือลากไฟล์ .txt มาวาง</span></div></div>
-      <div class="step"><div class="n"></div><div class="t"><b>ตั้งค่า (ถ้าต้องการ)</b><br><span>เลือกวิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ</span></div></div>
-      <div class="step"><div class="n"></div><div class="t"><b>กดปุ่ม ▶ Run ทีม</b><br><span>ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย</span></div></div>
-      <div class="step"><div class="n"></div><div class="t"><b>อ่านผล + คัดกรอง + ดาวน์โหลด</b><br><span>กดปุ่มคัดกรองแต่ละเปเปอร์ (บันทึกอัตโนมัติ) แล้ว export เป็น CSV / RIS / PRISMA</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.1.t">พิมพ์คำค้นเป็นภาษาอังกฤษ</b><br><span data-i18n-html="guide.quick.1.dHtml">เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง หรือลากไฟล์ .txt มาวาง</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.2.t">ตั้งค่า (ถ้าต้องการ)</b><br><span data-i18n-html="guide.quick.2.dHtml">เลือกวิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.3.t">กดปุ่ม ▶ Run ทีม</b><br><span data-i18n-html="guide.quick.3.dHtml">ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.4.t">อ่านผล + คัดกรอง + ดาวน์โหลด</b><br><span data-i18n-html="guide.quick.4.dHtml">กดปุ่มคัดกรองแต่ละเปเปอร์ (บันทึกอัตโนมัติ) แล้ว export เป็น CSV / RIS / PRISMA</span></div></div>
     </div>
   </section>
 
   <!-- SORT MODES -->
   <section>
-    <h2>🔀 โหมดการเรียงผลลัพธ์</h2>
+    <h2 data-i18n="guide.sort.h">🔀 โหมดการเรียงผลลัพธ์</h2>
     <div class="rows">
-      <div class="row"><div class="ic">✨ อัจฉริยะ</div><div class="d">ตรงคีย์เวิร์ดเป็นหลัก + ดันเปเปอร์ปีล่าสุดขึ้นมา <small>(แนะนำ — ค่าเริ่มต้น)</small></div></div>
-      <div class="row"><div class="ic">🎯 ความเกี่ยวข้อง</div><div class="d">ตรงคีย์เวิร์ดที่สุด ไม่สนใจปี</div></div>
-      <div class="row"><div class="ic">🆕 ใหม่สุดก่อน</div><div class="d">เรียงตามวันที่ตีพิมพ์ล้วน <small>(อาจมีนอกเรื่องปนบ้าง)</small></div></div>
-      <div class="row"><div class="ic">⭐ อ้างอิงมากสุด</div><div class="d">งานคลาสสิกที่ถูกอ้างอิงเยอะ <small>(มักเป็นงานเก่า)</small></div></div>
+      <div class="row"><div class="ic" data-i18n="guide.sort.smart.ic">✨ อัจฉริยะ</div><div class="d" data-i18n-html="guide.sort.smart.dHtml">ตรงคีย์เวิร์ดเป็นหลัก + ดันเปเปอร์ปีล่าสุดขึ้นมา <small>(แนะนำ — ค่าเริ่มต้น)</small></div></div>
+      <div class="row"><div class="ic" data-i18n="guide.sort.rel.ic">🎯 ความเกี่ยวข้อง</div><div class="d" data-i18n-html="guide.sort.rel.dHtml">ตรงคีย์เวิร์ดที่สุด ไม่สนใจปี</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.sort.new.ic">🆕 ใหม่สุดก่อน</div><div class="d" data-i18n-html="guide.sort.new.dHtml">เรียงตามวันที่ตีพิมพ์ล้วน <small>(อาจมีนอกเรื่องปนบ้าง)</small></div></div>
+      <div class="row"><div class="ic" data-i18n="guide.sort.cited.ic">⭐ อ้างอิงมากสุด</div><div class="d" data-i18n-html="guide.sort.cited.dHtml">งานคลาสสิกที่ถูกอ้างอิงเยอะ <small>(มักเป็นงานเก่า)</small></div></div>
     </div>
   </section>
 
   <!-- FLAGS -->
   <section>
-    <h2>🚩 ธงเตือนคุณภาพงาน</h2>
+    <h2 data-i18n="guide.flags.h">🚩 ธงเตือนคุณภาพงาน</h2>
     <div class="rows">
-      <div class="row"><div class="ic"><span class="badge b-ret">⛔ RETRACTED</span></div><div class="d"><b>งานถูกถอน</b> — ห้ามอ้างอิง! (ระบบซ่อนให้อัตโนมัติ เปิดดูได้ในตัวกรอง)</div></div>
-      <div class="row"><div class="ic"><span class="badge b-pre">📄 preprint</span></div><div class="d">ยังไม่ผ่าน peer review — ใช้อย่างระวัง ยังไม่ถือว่าตรวจสอบแล้ว</div></div>
-      <div class="row"><div class="ic"><span class="badge b-rev">📚 review</span></div><div class="d">บทความรีวิว ไม่ใช่งานทดลองต้นฉบับ <small>(ตัดออกได้ในตัวกรอง)</small></div></div>
+      <div class="row"><div class="ic"><span class="badge b-ret">⛔ RETRACTED</span></div><div class="d" data-i18n-html="guide.flags.ret.dHtml"><b>งานถูกถอน</b> — ห้ามอ้างอิง! (ระบบซ่อนให้อัตโนมัติ เปิดดูได้ในตัวกรอง)</div></div>
+      <div class="row"><div class="ic"><span class="badge b-pre">📄 preprint</span></div><div class="d" data-i18n-html="guide.flags.pre.dHtml">ยังไม่ผ่าน peer review — ใช้อย่างระวัง ยังไม่ถือว่าตรวจสอบแล้ว</div></div>
+      <div class="row"><div class="ic"><span class="badge b-rev">📚 review</span></div><div class="d" data-i18n-html="guide.flags.rev.dHtml">บทความรีวิว ไม่ใช่งานทดลองต้นฉบับ <small>(ตัดออกได้ในตัวกรอง)</small></div></div>
     </div>
   </section>
 
   <!-- META CHIPS -->
   <section>
-    <h2>🧪 ชิปข้อมูลสกัด (คอลัมน์ "สกัด")</h2>
-    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">ระบบดึงข้อมูลสาย wet-lab จากบทคัดย่ออัตโนมัติ แยกด้วยสี</p>
+    <h2 data-i18n="guide.chips.h">🧪 ชิปข้อมูลสกัด (คอลัมน์ "สกัด")</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px" data-i18n="guide.chips.lead">ระบบดึงข้อมูลสาย wet-lab จากบทคัดย่ออัตโนมัติ แยกด้วยสี</p>
     <div class="rows">
-      <div class="row"><div class="ic"><span class="chip c-method">shRNA</span></div><div class="d"><b>สีน้ำเงิน = วิธีทดลอง</b> — siRNA / shRNA / CRISPR / knockout / overexpression</div></div>
-      <div class="row"><div class="ic"><span class="chip c-cell">786-O</span></div><div class="d"><b>สีเขียว = cell line</b> — เซลล์ที่ใช้ในงาน (คลังกว่า 90 สาย)</div></div>
-      <div class="row"><div class="ic"><span class="chip c-org">human</span></div><div class="d"><b>สีส้ม = สิ่งมีชีวิต</b> — human / mouse / rat / zebrafish</div></div>
+      <div class="row"><div class="ic"><span class="chip c-method">shRNA</span></div><div class="d" data-i18n-html="guide.chips.method.dHtml"><b>สีน้ำเงิน = วิธีทดลอง</b> — siRNA / shRNA / CRISPR / knockout / overexpression</div></div>
+      <div class="row"><div class="ic"><span class="chip c-cell">786-O</span></div><div class="d" data-i18n-html="guide.chips.cell.dHtml"><b>สีเขียว = cell line</b> — เซลล์ที่ใช้ในงาน (คลังกว่า 90 สาย)</div></div>
+      <div class="row"><div class="ic"><span class="chip c-org">human</span></div><div class="d" data-i18n-html="guide.chips.org.dHtml"><b>สีส้ม = สิ่งมีชีวิต</b> — human / mouse / rat / zebrafish</div></div>
     </div>
   </section>
 
   <!-- SCREENING -->
   <section>
-    <h2>✅ ปุ่มคัดกรอง (คอลัมน์ "คัดกรอง")</h2>
-    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">กดเพื่อจัดสถานะแต่ละเปเปอร์ — บันทึกในเครื่องอัตโนมัติ เปิดใหม่ก็ยังอยู่</p>
+    <h2 data-i18n="guide.screen.h">✅ ปุ่มคัดกรอง (คอลัมน์ "คัดกรอง")</h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px" data-i18n="guide.screen.lead">กดเพื่อจัดสถานะแต่ละเปเปอร์ — บันทึกในเครื่องอัตโนมัติ เปิดใหม่ก็ยังอยู่</p>
     <div class="rows">
-      <div class="row"><div class="ic"><span class="sbtn sb-i">✓</span></div><div class="d"><b>รับเข้า (include)</b> — เปเปอร์ที่เข้าเกณฑ์ ใช้ในรีวิว (แถวขึ้นสีเขียว)</div></div>
-      <div class="row"><div class="ic"><span class="sbtn sb-m">?</span></div><div class="d"><b>รอพิจารณา (maybe)</b> — ยังไม่แน่ใจ ไว้กลับมาดู</div></div>
-      <div class="row"><div class="ic"><span class="sbtn sb-e">✗</span></div><div class="d"><b>ตัดออก (exclude)</b> — ไม่เข้าเกณฑ์ (แถวจางลง) · ใส่เหตุผลในช่องโน้ตได้</div></div>
+      <div class="row"><div class="ic"><span class="sbtn sb-i">✓</span></div><div class="d" data-i18n-html="guide.screen.inc.dHtml"><b>รับเข้า (include)</b> — เปเปอร์ที่เข้าเกณฑ์ ใช้ในรีวิว (แถวขึ้นสีเขียว)</div></div>
+      <div class="row"><div class="ic"><span class="sbtn sb-m">?</span></div><div class="d" data-i18n-html="guide.screen.may.dHtml"><b>รอพิจารณา (maybe)</b> — ยังไม่แน่ใจ ไว้กลับมาดู</div></div>
+      <div class="row"><div class="ic"><span class="sbtn sb-e">✗</span></div><div class="d" data-i18n-html="guide.screen.exc.dHtml"><b>ตัดออก (exclude)</b> — ไม่เข้าเกณฑ์ (แถวจางลง) · ใส่เหตุผลในช่องโน้ตได้</div></div>
     </div>
   </section>
 
   <!-- LINKS -->
   <section>
-    <h2>🔗 ลิงก์แหล่งข้อมูล (คอลัมน์ "ลิงก์")</h2>
+    <h2 data-i18n="guide.links.h">🔗 ลิงก์แหล่งข้อมูล (คอลัมน์ "ลิงก์")</h2>
     <div class="rows">
-      <div class="row"><div class="ic">DOI↗</div><div class="d">ไปหน้าทางการของเปเปอร์ (สำนักพิมพ์)</div></div>
-      <div class="row"><div class="ic">PubMed↗</div><div class="d">หน้า PubMed พร้อมบทคัดย่อและข้อมูลอ้างอิง</div></div>
-      <div class="row"><div class="ic">FullText↗</div><div class="d">ฉบับเต็มบน Europe PMC (ถ้ามี)</div></div>
-      <div class="row"><div class="ic" style="color:#c0392b">PDF↗</div><div class="d"><b>โหลด PDF ฉบับเต็มฟรี</b> — เฉพาะงาน open access</div></div>
-      <div class="row"><div class="ic"><span class="badge" style="background:#e7f6ee;color:#2e9e5b">OA</span></div><div class="d">Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก</div></div>
+      <div class="row"><div class="ic">DOI↗</div><div class="d" data-i18n="guide.links.doi.d">ไปหน้าทางการของเปเปอร์ (สำนักพิมพ์)</div></div>
+      <div class="row"><div class="ic">PubMed↗</div><div class="d" data-i18n="guide.links.pubmed.d">หน้า PubMed พร้อมบทคัดย่อและข้อมูลอ้างอิง</div></div>
+      <div class="row"><div class="ic">FullText↗</div><div class="d" data-i18n="guide.links.ft.d">ฉบับเต็มบน Europe PMC (ถ้ามี)</div></div>
+      <div class="row"><div class="ic" style="color:#c0392b">PDF↗</div><div class="d" data-i18n-html="guide.links.pdf.dHtml"><b>โหลด PDF ฉบับเต็มฟรี</b> — เฉพาะงาน open access</div></div>
+      <div class="row"><div class="ic"><span class="badge" style="background:#e7f6ee;color:#2e9e5b">OA</span></div><div class="d" data-i18n="guide.links.oa.d">Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก</div></div>
     </div>
   </section>
 
   <!-- TEAM -->
   <section>
-    <h2>👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)</h2>
+    <h2 data-i18n="guide.team.h">👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)</h2>
     <div class="rows">
-      <div class="row"><div class="ic">🔍 สกาวต์</div><div class="d">ค้นหาเปเปอร์จาก Europe PMC</div></div>
-      <div class="row"><div class="ic">✅ วาลิดา</div><div class="d">ตรวจสอบ กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
-      <div class="row"><div class="ic">📊 แอนนา</div><div class="d">สกัดเป็นตาราง + ดึงข้อมูล wet-lab</div></div>
-      <div class="row"><div class="ic">⚖️ เชค</div><div class="d">จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน</div></div>
-      <div class="row"><div class="ic">✍️ ไรเตอร์</div><div class="d">สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)</div></div>
-      <div class="row"><div class="ic">🌐 ทรานส์</div><div class="d">แปลอังกฤษ→ไทย + สรุปว่าเปเปอร์ทำอะไร</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.scout.ic">🔍 สกาวต์</div><div class="d" data-i18n="guide.team.scout.d">ค้นหาเปเปอร์จาก Europe PMC</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.validator.ic">✅ วาลิดา</div><div class="d" data-i18n="guide.team.validator.d">ตรวจสอบ กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.analyst.ic">📊 แอนนา</div><div class="d" data-i18n="guide.team.analyst.d">สกัดเป็นตาราง + ดึงข้อมูล wet-lab</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.checker.ic">⚖️ เชค</div><div class="d" data-i18n="guide.team.checker.d">จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.writer.ic">✍️ ไรเตอร์</div><div class="d" data-i18n="guide.team.writer.d">สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.translator.ic">🌐 ทรานส์</div><div class="d" data-i18n="guide.team.translator.d">แปลอังกฤษ→ไทย + สรุปว่าเปเปอร์ทำอะไร</div></div>
     </div>
-    <p style="font-size:.86rem;color:var(--muted);margin-top:10px">ดูรายละเอียดตัวละครแต่ละคน + เครื่องมือจริงได้ที่ <a href="office.html">หน้าแนะนำทีม →</a></p>
+    <p style="font-size:.86rem;color:var(--muted);margin-top:10px" data-i18n-html="guide.team.moreHtml">ดูรายละเอียดตัวละครแต่ละคน + เครื่องมือจริงได้ที่ <a href="office.html">หน้าแนะนำทีม →</a></p>
   </section>
 
   <!-- EXPORT -->
   <section>
-    <h2>⬇️ ปุ่มดาวน์โหลด (Export)</h2>
+    <h2 data-i18n="guide.export.h">⬇️ ปุ่มดาวน์โหลด (Export)</h2>
     <div class="rows">
-      <div class="row"><div class="ic">CSV</div><div class="d">ตารางเปเปอร์ — เปิดใน Excel</div></div>
-      <div class="row"><div class="ic">BibTeX / RIS</div><div class="d">นำเข้า Zotero / EndNote / Mendeley ได้เลย</div></div>
-      <div class="row"><div class="ic">Markdown</div><div class="d">สรุปสังเคราะห์ พร้อมลิงก์อ้างอิง</div></div>
-      <div class="row"><div class="ic">PRISMA log</div><div class="d"><b>บันทึกการค้นหาแบบทำซ้ำได้</b> + ประโยค Methods สำเร็จรูป ใส่ paper ได้</div></div>
-      <div class="row"><div class="ic">ผลคัดกรอง</div><div class="d">CSV รวมสถานะ include/exclude + เหตุผล + ข้อมูลสกัด</div></div>
+      <div class="row"><div class="ic">CSV</div><div class="d" data-i18n="guide.export.csv.d">ตารางเปเปอร์ — เปิดใน Excel</div></div>
+      <div class="row"><div class="ic">BibTeX / RIS</div><div class="d" data-i18n="guide.export.bib.d">นำเข้า Zotero / EndNote / Mendeley ได้เลย</div></div>
+      <div class="row"><div class="ic">Markdown</div><div class="d" data-i18n="guide.export.md.d">สรุปสังเคราะห์ พร้อมลิงก์อ้างอิง</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.export.prisma.ic">PRISMA log</div><div class="d" data-i18n-html="guide.export.prisma.dHtml"><b>บันทึกการค้นหาแบบทำซ้ำได้</b> + ประโยค Methods สำเร็จรูป ใส่ paper ได้</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.export.screen.ic">ผลคัดกรอง</div><div class="d" data-i18n="guide.export.screen.d">CSV รวมสถานะ include/exclude + เหตุผล + ข้อมูลสกัด</div></div>
     </div>
   </section>
 
   <!-- TIPS -->
   <section>
-    <h2>💡 เคล็ดลับ</h2>
-    <div class="tip"><b>พิมพ์ภาษาอังกฤษ</b> — ฐานข้อมูลงานวิจัยเป็นอังกฤษเกือบทั้งหมด พิมพ์ไทยจะหาไม่ค่อยเจอ</div>
-    <div class="tip"><b>เจอน้อยไป?</b> ตัดคำให้กว้างขึ้น เช่น <code>ANK3 renal cell carcinoma</code> → <code>ANK3 kidney cancer</code></div>
-    <div class="tip"><b>อยากได้ทั้งใหม่ทั้งตรง</b> ใช้โหมด "✨ อัจฉริยะ" + ใส่ช่อง "ตั้งแต่ปี 2023"</div>
-    <div class="tip"><b>โควตาแปลหมด?</b> รอวันถัดไป หรือปิด "🌐 แปลไทย" แล้วยังค้นได้ปกติ (การแปลใช้บริการฟรีที่มีลิมิตรายวัน ไม่กิน token ใดๆ)</div>
-    <div class="tip"><b>สรุปเป็นแบบสกัด</b> — ทุกประโยคดึงจากบทคัดย่อจริง ไม่มีการกุ แต่ควรเปิดอ่านต้นฉบับก่อนอ้างอิงเสมอ</div>
+    <h2 data-i18n="guide.tips.h">💡 เคล็ดลับ</h2>
+    <div class="tip" data-i18n-html="guide.tips.1Html"><b>พิมพ์ภาษาอังกฤษ</b> — ฐานข้อมูลงานวิจัยเป็นอังกฤษเกือบทั้งหมด พิมพ์ไทยจะหาไม่ค่อยเจอ</div>
+    <div class="tip" data-i18n-html="guide.tips.2Html"><b>เจอน้อยไป?</b> ตัดคำให้กว้างขึ้น เช่น <code>ANK3 renal cell carcinoma</code> → <code>ANK3 kidney cancer</code></div>
+    <div class="tip" data-i18n-html="guide.tips.3Html"><b>อยากได้ทั้งใหม่ทั้งตรง</b> ใช้โหมด "✨ อัจฉริยะ" + ใส่ช่อง "ตั้งแต่ปี 2023"</div>
+    <div class="tip" data-i18n-html="guide.tips.4Html"><b>โควตาแปลหมด?</b> รอวันถัดไป หรือปิด "🌐 แปลไทย" แล้วยังค้นได้ปกติ (การแปลใช้บริการฟรีที่มีลิมิตรายวัน ไม่กิน token ใดๆ)</div>
+    <div class="tip" data-i18n-html="guide.tips.5Html"><b>สรุปเป็นแบบสกัด</b> — ทุกประโยคดึงจากบทคัดย่อจริง ไม่มีการกุ แต่ควรเปิดอ่านต้นฉบับก่อนอ้างอิงเสมอ</div>
   </section>
 
-  <a class="cta" href="app.html">🔬 เริ่มใช้งานเลย →</a>
+  <a class="cta" href="app.html" data-i18n="guide.cta">🔬 เริ่มใช้งานเลย →</a>
 
-  <footer>
+  <footer data-i18n-html="guide.footerHtml">
     ข้อมูลจริงจาก Europe PMC &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>
     <span style="display:inline-block;margin-top:8px">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
   </footer>

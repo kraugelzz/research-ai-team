@@ -6,6 +6,8 @@
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <title>ทีมวิจัย AI — The Research Office</title>
+<meta name="i18n-title" content="office.docTitle">
+<script src="i18n.js?v=20260912"></script>
 <style>
   :root {
     --bg: #f4f1ea;
@@ -149,13 +151,13 @@
 <body>
 <header>
   <div class="wrap">
-    <p class="eyebrow">The Research Office</p>
-    <h1>👩‍🔬 ทีม AI นักวิจัยของคุณ</h1>
-    <p class="sub">เครื่องมือ AI แต่ละตัวคือ "พนักงานออฟฟิส" ที่มีหน้าที่ต่างกัน — ทำงานส่งต่อกันเป็นสายพานงานวิจัย ตั้งแต่ค้นหา → ตรวจสอบ → สกัดข้อมูล → เช็กหลักฐาน → เขียนสรุป <br>คลิกที่ตัวละครแต่ละคนเพื่อดูรายละเอียดเครื่องมือจริง</p>
+    <p class="eyebrow" data-i18n="office.eyebrow">The Research Office</p>
+    <h1 data-i18n="office.h1">👩‍🔬 ทีม AI นักวิจัยของคุณ</h1>
+    <p class="sub" data-i18n-html="office.subHtml">เครื่องมือ AI แต่ละตัวคือ "พนักงานออฟฟิส" ที่มีหน้าที่ต่างกัน — ทำงานส่งต่อกันเป็นสายพานงานวิจัย ตั้งแต่ค้นหา → ตรวจสอบ → สกัดข้อมูล → เช็กหลักฐาน → เขียนสรุป <br>คลิกที่ตัวละครแต่ละคนเพื่อดูรายละเอียดเครื่องมือจริง</p>
     <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-      <a href="app.html" style="font-size:.84rem;padding:7px 14px;border:1px solid #ddd;border-radius:999px;background:#fff;color:#333;text-decoration:none">🔬 หน้าใช้งาน</a>
-      <a href="office.html" style="font-size:.84rem;padding:7px 14px;border-radius:999px;background:#a682e0;color:#fff;font-weight:700;text-decoration:none">👥 แนะนำทีม</a>
-      <a href="guide.html" style="font-size:.84rem;padding:7px 14px;border:1px solid #ddd;border-radius:999px;background:#fff;color:#333;text-decoration:none">📖 คู่มือใช้งาน</a>
+      <a href="app.html" style="font-size:.84rem;padding:7px 14px;border:1px solid #ddd;border-radius:999px;background:#fff;color:#333;text-decoration:none" data-i18n="nav.app">🔬 หน้าใช้งาน</a>
+      <a href="office.html" style="font-size:.84rem;padding:7px 14px;border-radius:999px;background:#a682e0;color:#fff;font-weight:700;text-decoration:none" data-i18n="nav.team">👥 แนะนำทีม</a>
+      <a href="guide.html" style="font-size:.84rem;padding:7px 14px;border:1px solid #ddd;border-radius:999px;background:#fff;color:#333;text-decoration:none" data-i18n="nav.guide">📖 คู่มือใช้งาน</a>
     </div>
   </div>
 </header>
@@ -172,11 +174,11 @@
 
   <div id="details"></div>
 
-  <h2 class="sec">🔄 สายพานงานวิจัย (Research Pipeline)</h2>
-  <p class="lead">แต่ละคนส่งงานต่อให้คนถัดไป — ผลลัพธ์สุดท้ายคือรีวิววรรณกรรมที่อ้างอิงได้จริง</p>
+  <h2 class="sec" data-i18n="office.pipeline.h">🔄 สายพานงานวิจัย (Research Pipeline)</h2>
+  <p class="lead" data-i18n="office.pipeline.lead">แต่ละคนส่งงานต่อให้คนถัดไป — ผลลัพธ์สุดท้ายคือรีวิววรรณกรรมที่อ้างอิงได้จริง</p>
   <div class="pipeline" id="pipeline"></div>
 
-  <footer>
+  <footer data-i18n-html="office.footerHtml">
     ราคาตรวจสอบ ณ ก.ค. 2026 — โปรดยืนยันที่เว็บไซต์จริงก่อนสมัคร · หลักการสำคัญ: ให้ AI <b>ค้นและจัดระเบียบ</b> แต่ทุกข้อสรุปต้องกลับไปเปิดอ่านแหล่งอ้างอิงจริงเสมอ<br>
     ลองใช้งานจริงได้ที่ <a href="app.html">app.html</a>
   </footer>
@@ -209,96 +211,95 @@ function avatar(color, skin, hair, prop){
   </svg>`;
 }
 
+// ข้อความทุกอันอยู่ใน i18n.js (key: office.t.<key>.*) — ที่นี่เก็บเฉพาะสี/หน้าตา/ลิงก์เครื่องมือ
 const team = [
-  { key:"scout", step:1, name:"สกาวต์ (Scout)", role:"Retriever · นักค้นหา",
-    color:"var(--scout)", skin:"#f6cfa8", hair:"#3a2a1a", prop:"🔍", bubble:"เดี๋ยวไปกวาดหาเปเปอร์ที่เกี่ยวข้องมาให้หมดเลย!",
-    job:"ออกไปสำรวจงานวิจัยทั้งโลกแบบ agentic — ค้นซ้ำ ปรับคำค้นเอง จนได้ครบ",
-    desc:"รับผิดชอบการค้นหาเชิงลึกแบบอัตโนมัติ ครอบคลุมทั้งงานตีพิมพ์และ preprint เหมาะกับคำถามเชิงกลไกที่ต้องการความครบถ้วนสูง",
+  { key:"scout",      step:1, color:"var(--scout)",     skin:"#f6cfa8", hair:"#3a2a1a", prop:"🔍",
     tools:[["Undermind","https://undermind.ai"],["FutureHouse Falcon","https://futurehouse.org"],["Semantic Scholar","https://semanticscholar.org"]] },
-  { key:"validator", step:2, name:"วาลิดา (Valida)", role:"Validator · ผู้ตรวจสอบ",
-    color:"var(--validator)", skin:"#e8b98c", hair:"#1f1a14", prop:"✅", bubble:"เปเปอร์นี้มีอยู่จริงไหม? ขอเช็กใน PubMed ก่อนนะ",
-    job:"ด่านกันข้อมูลมั่ว — ยืนยันว่าเปเปอร์มีอยู่จริงและดึง metadata ที่สะอาด",
-    desc:"จุดตรวจกันการ hallucination ที่สำคัญที่สุด ยืนยันการมีอยู่ของงานวิจัยจากฐานข้อมูลที่เชื่อถือได้ พร้อม metadata และ MeSH",
+  { key:"validator",  step:2, color:"var(--validator)", skin:"#e8b98c", hair:"#1f1a14", prop:"✅",
     tools:[["PubMed","https://pubmed.ncbi.nlm.nih.gov"],["Europe PMC","https://europepmc.org"]] },
-  { key:"analyst", step:3, name:"แอนนา (Anna)", role:"Analyst · นักสกัดข้อมูล",
-    color:"var(--analyst)", skin:"#f6cfa8", hair:"#6b4a2a", prop:"📊", bubble:"จัดเป็นตารางให้เลย — cell line, วิธี knockdown, ผลลัพธ์",
-    job:"อ่านทุกเปเปอร์แล้วสกัดออกมาเป็นตาราง หนึ่งแถวต่อหนึ่งงาน แต่ละช่องลิงก์กลับแหล่ง",
-    desc:"หัวใจของการรีวิวเชิงระบบ สร้างตารางสกัดข้อมูลตามคอลัมน์สาย wet-lab: cell line, วิธี knockdown (siRNA/shRNA/CRISPR), ประสิทธิภาพ, readout, ข้อค้นพบ, ข้อจำกัด",
+  { key:"analyst",    step:3, color:"var(--analyst)",   skin:"#f6cfa8", hair:"#6b4a2a", prop:"📊",
     tools:[["Elicit ⭐","https://elicit.com"],["SciSpace","https://scispace.com"]] },
-  { key:"checker", step:4, name:"เชค (Check)", role:"Fact-Checker · ผู้ตรวจหลักฐาน",
-    color:"var(--checker)", skin:"#e8b98c", hair:"#2a1f2a", prop:"⚖️", bubble:"งานนี้มีคนทำซ้ำได้ไหม? หรือมีคนแย้ง?",
-    job:"ดูทิศทางโดยรวมของหลักฐาน และเช็กว่าผลถูกยืนยันหรือถูกโต้แย้งภายหลัง",
-    desc:"ใช้ Consensus Meter สรุปทิศทางของหลักฐาน และ Smart Citations ของ scite เพื่อดูว่างานสำคัญถูก support หรือ contrast ก่อนจะเอาไปวางแผนการทดลอง",
+  { key:"checker",    step:4, color:"var(--checker)",   skin:"#e8b98c", hair:"#2a1f2a", prop:"⚖️",
     tools:[["Consensus","https://consensus.app"],["scite.ai","https://scite.ai"]] },
-  { key:"writer", step:5, name:"ไรเตอร์ (Writer)", role:"Synthesizer · นักเขียนสรุป",
-    color:"var(--writer)", skin:"#f6cfa8", hair:"#141414", prop:"✍️", bubble:"อัปโหลด PDF มา เดี๋ยวเขียนสรุปพร้อมอ้างอิงทุกประโยค",
-    job:"รวมทุกอย่างเป็นเรื่องเล่าเดียว โดยตอบจากไฟล์ที่อัปโหลดเท่านั้น — อ้างอิงระดับประโยค",
-    desc:"ขั้นสังเคราะห์สุดท้าย อัปโหลด PDF ~10–20 ไฟล์ที่คัดแล้ว ระบบตอบจากแหล่งเหล่านั้นเท่านั้น จึงแทบไม่มีการกุอ้างอิง",
+  { key:"writer",     step:5, color:"var(--writer)",    skin:"#f6cfa8", hair:"#141414", prop:"✍️",
     tools:[["NotebookLM ⭐","https://notebooklm.google.com"],["Scholarcy","https://scholarcy.com"]] },
-  { key:"translator", step:6, name:"ทรานส์ (Trans)", role:"Translator · นักแปลไทย",
-    color:"#3fb6b0", skin:"#e8b98c", hair:"#241d16", prop:"🌐", bubble:"เดี๋ยวแปลอังกฤษเป็นไทยให้ครบทุกตัวอักษร พร้อมสรุปว่าเปเปอร์นี้ทำอะไร!",
-    job:"แปลผลลัพธ์ทั้งหมดเป็นไทยแบบไม่ตกหล่น และสรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร",
-    desc:"ด่านสุดท้ายเพื่อคนไทย — แปลชื่อเรื่องและบทคัดย่ออังกฤษเป็นไทยครบทุกตัวอักษร พร้อมสรุปสั้นๆ ว่าเปเปอร์นี้ศึกษาอะไร ทำให้อ่านเข้าใจเร็วโดยไม่ต้องแปลเอง",
+  { key:"translator", step:6, color:"#3fb6b0",          skin:"#e8b98c", hair:"#241d16", prop:"🌐",
     tools:[["Google Translate","https://translate.google.com"],["MyMemory","https://mymemory.translated.net"]] },
 ];
+// ข้อความของตัวละครแต่ละคน ดึงจากพจนานุกรมตามภาษาปัจจุบัน
+const tx = (c, field) => t("office.t." + c.key + "." + field);
 
-// render team
+// render team + detail panels + pipeline — เรียกใหม่ได้ทุกครั้งที่สลับภาษา
 const teamEl = document.getElementById('team');
-team.forEach((c, i) => {
-  const col = document.createElement('div');
-  col.className = 'desk-col';
-  col.innerHTML = `
+const detailsEl = document.getElementById('details');
+const pipeEl = document.getElementById('pipeline');
+
+function renderTeam(){
+  teamEl.innerHTML = '';
+  team.forEach((c, i) => {
+    const col = document.createElement('div');
+    col.className = 'desk-col';
+    col.innerHTML = `
     <div class="char" data-key="${c.key}">
-      <div class="bubble">${c.bubble}</div>
+      <div class="bubble">${tx(c,'bubble')}</div>
       <div class="avatar-float" style="animation-delay:${i*0.4}s">${avatar(c.color, c.skin, c.hair, c.prop)}</div>
       <div class="desk"></div>
-      <div class="name">${c.name}</div>
-      <div class="role">${c.role}</div>
-      <div class="step-pill" style="background:${c.color}">ขั้นที่ ${c.step}</div>
+      <div class="name">${tx(c,'name')}</div>
+      <div class="role">${tx(c,'role')}</div>
+      <div class="step-pill" style="background:${c.color}">${t('office.stepPill',{n:c.step})}</div>
     </div>`;
-  teamEl.appendChild(col);
-  if (i < team.length - 1) {
-    const arr = document.createElement('div');
-    arr.className = 'arrow'; arr.textContent = '➜';
-    teamEl.appendChild(arr);
-  }
-});
-
-// detail panels
-const detailsEl = document.getElementById('details');
-team.forEach(c => {
-  const d = document.createElement('div');
-  d.className = 'detail'; d.id = 'detail-' + c.key;
-  d.style.borderLeftColor = c.color;
-  d.innerHTML = `
-    <h3><span style="font-size:1.6rem">${c.prop}</span> ${c.name} <span style="font-size:.85rem;color:var(--muted);font-weight:400">— ${c.role}</span></h3>
-    <p class="job">“${c.job}”</p>
-    <p>${c.desc}</p>
-    <div class="tools">${c.tools.map(t=>`<a href="${t[1]}" target="_blank" rel="noopener" style="color:${c.color}">${t[0]} ↗</a>`).join('')}</div>`;
-  detailsEl.appendChild(d);
-});
-
-// click to toggle detail
-document.querySelectorAll('.char').forEach(ch => {
-  ch.addEventListener('click', () => {
-    const key = ch.dataset.key;
-    const panel = document.getElementById('detail-' + key);
-    const wasOpen = panel.classList.contains('open');
-    document.querySelectorAll('.detail').forEach(p => p.classList.remove('open'));
-    if (!wasOpen) { panel.classList.add('open'); panel.scrollIntoView({behavior:'smooth', block:'center'}); }
+    teamEl.appendChild(col);
+    if (i < team.length - 1) {
+      const arr = document.createElement('div');
+      arr.className = 'arrow'; arr.textContent = '➜';
+      teamEl.appendChild(arr);
+    }
   });
-});
+  // คลิกตัวละครเพื่อเปิด/ปิดรายละเอียด
+  document.querySelectorAll('.char').forEach(ch => {
+    ch.addEventListener('click', () => {
+      const key = ch.dataset.key;
+      const panel = document.getElementById('detail-' + key);
+      const wasOpen = panel.classList.contains('open');
+      document.querySelectorAll('.detail').forEach(p => p.classList.remove('open'));
+      if (!wasOpen) { panel.classList.add('open'); panel.scrollIntoView({behavior:'smooth', block:'center'}); }
+    });
+  });
+}
 
-// pipeline strip
-const pipeEl = document.getElementById('pipeline');
-const labels = ["ค้นหา","ตรวจสอบ","สกัดข้อมูล","เช็กหลักฐาน","เขียนสรุป","แปลไทย"];
-team.forEach((c,i) => {
-  const n = document.createElement('div');
-  n.className = 'pipe-node';
-  n.innerHTML = `<span class="pipe-dot" style="background:${c.color}"></span>${labels[i]}`;
-  pipeEl.appendChild(n);
-  if (i < team.length-1){ const a=document.createElement('span'); a.className='pipe-arr'; a.textContent='→'; pipeEl.appendChild(a); }
-});
+function renderDetails(){
+  // จำไว้ว่าตอนนี้เปิดแผงไหนอยู่ จะได้เปิดค้างไว้หลังสลับภาษา
+  const openEl = document.querySelector('.detail.open');
+  const openKey = openEl ? openEl.id.replace('detail-','') : null;
+  detailsEl.innerHTML = '';
+  team.forEach(c => {
+    const d = document.createElement('div');
+    d.className = 'detail'; d.id = 'detail-' + c.key;
+    d.style.borderLeftColor = c.color;
+    d.innerHTML = `
+    <h3><span style="font-size:1.6rem">${c.prop}</span> ${tx(c,'name')} <span style="font-size:.85rem;color:var(--muted);font-weight:400">— ${tx(c,'role')}</span></h3>
+    <p class="job">“${tx(c,'job')}”</p>
+    <p>${tx(c,'desc')}</p>
+    <div class="tools">${c.tools.map(tl=>`<a href="${tl[1]}" target="_blank" rel="noopener" style="color:${c.color}">${tl[0]} ↗</a>`).join('')}</div>`;
+    if (c.key === openKey) d.classList.add('open');
+    detailsEl.appendChild(d);
+  });
+}
+
+function renderPipeline(){
+  pipeEl.innerHTML = '';
+  team.forEach((c,i) => {
+    const n = document.createElement('div');
+    n.className = 'pipe-node';
+    n.innerHTML = `<span class="pipe-dot" style="background:${c.color}"></span>${tx(c,'label')}`;
+    pipeEl.appendChild(n);
+    if (i < team.length-1){ const a=document.createElement('span'); a.className='pipe-arr'; a.textContent='→'; pipeEl.appendChild(a); }
+  });
+}
+
+function renderOffice(){ renderTeam(); renderDetails(); renderPipeline(); }
+renderOffice();
+document.addEventListener('langchange', renderOffice);
 </script>
 </body>
 </html>
