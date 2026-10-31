@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <title>ทีมวิจัย AI — เวอร์ชันทำงานจริง</title>
 <meta name="i18n-title" content="app.docTitle">
-<script src="i18n.js?v=20260912"></script>
+<script src="i18n.js?v=20261031"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -133,6 +133,8 @@
   .mchip{font-size:.7rem;background:#eef6f0;border:1px solid #cfe6d6;color:#2e7d52;border-radius:6px;padding:1px 6px;margin:2px 2px 0 0;display:inline-block}
   .mchip.m-method{background:#eef2fb;border-color:#cdd9f0;color:#3a5bb0}
   .mchip.m-org{background:#faf0ee;border-color:#efd3cc;color:#b05a45}
+  .schip{font-size:.66rem;background:#f4f2ee;border:1px solid #e2ddd3;color:#6b6457;border-radius:6px;padding:0 6px;margin:3px 3px 0 0;display:inline-block}
+  .schip.s-openalex{background:#f3effa;border-color:#ddd2f0;color:#6a4fa8}
   .scrn{display:flex;gap:3px}
   .scrn button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:3px 7px;font-size:.82rem;cursor:pointer;font-family:inherit;line-height:1}
   .scrn button.on[data-v=include]{background:#dff5e6;border-color:#8fd6a8;color:#1f8f4d}
@@ -176,7 +178,7 @@
 <header>
   <div class="wrap">
     <h1 data-i18n="app.h1">🔬 ทีมวิจัย AI — เวอร์ชันทำงานจริง</h1>
-    <p data-i18n-html="app.leadHtml">พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + Semantic Scholar พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล</p>
+    <p data-i18n-html="app.leadHtml">พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + OpenAlex (เสริมด้วย Semantic Scholar) พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล</p>
     <div class="navlinks"><a href="office.html" data-i18n="nav.teamLong">👥 หน้าตัวละคร (แนะนำทีม)</a> <a href="guide.html" data-i18n="nav.guide">📖 คู่มือใช้งาน</a></div>
   </div>
 </header>
@@ -190,6 +192,12 @@
       </div>
     </div>
     <div class="opts">
+      <label><span data-i18n="app.sources">แหล่งข้อมูล:</span>
+        <select id="sources">
+          <option value="both" data-i18n="app.sources.both">ทั้งสองแหล่ง (แนะนำ)</option>
+          <option value="epmc">Europe PMC</option>
+          <option value="openalex">OpenAlex</option>
+        </select></label>
       <label><span data-i18n="app.sortBy">เรียงตาม:</span>
         <select id="sortMode">
           <option value="smart" data-i18n="app.sort.smart">✨ อัจฉริยะ (ตรงคีย์เวิร์ด + ปีล่าสุด) — แนะนำ</option>
@@ -211,7 +219,7 @@
       <label><input type="checkbox" id="noPre"> <span data-i18n="app.noPre">ตัด preprint ออก</span></label>
     </div>
     <div class="chips" id="chips"></div>
-    <p class="hint" data-i18n="app.hint">💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ</p>
+    <p class="hint" data-i18n="app.hint">💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · วาง DOI หรือ PMID เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ ได้ · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ</p>
     <div class="bar" id="bar"><i></i></div>
     <div class="err" id="err"></div>
   </div>
@@ -281,7 +289,7 @@
   </div>
 
   <footer data-i18n-html="app.footerHtml">
-    ข้อมูลจริงจาก <a href="https://europepmc.org" target="_blank">Europe PMC</a> &amp; <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>
+    ข้อมูลจริงจาก <a href="https://europepmc.org" target="_blank">Europe PMC</a>, <a href="https://openalex.org" target="_blank">OpenAlex</a> &amp; <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>
     <span style="display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
   </footer>
 </div>
@@ -444,24 +452,39 @@ drop.addEventListener("drop", async e=>{
 });
 
 // ---- API helpers ----
-async function searchEuropePMC(query, limit, oaOnly, sortMode, minYear){
-  let q = query;
-  if(minYear) q += ` AND (PUB_YEAR:[${minYear} TO 3000])`;
-  if(oaOnly) q += " AND OPEN_ACCESS:Y";
-  // smart = ดึงตามความเกี่ยวข้องก้อนใหญ่ แล้วจัดอันดับใหม่ (ตรงคีย์เวิร์ด + ดันปีล่าสุด)
-  const isSmart = (sortMode==="smart") || !sortMode;
-  const sortMap = { relevance:"", newest:"P_PDATE_D desc", cited:"CITED desc" };
-  const sortParam = isSmart ? "" : (sortMap[sortMode]||"");
-  const fetchSize = isSmart ? Math.min(100, Math.max(limit*3, 45)) : limit;
-  let url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(q)}&format=json&pageSize=${fetchSize}&resultType=core`;
+// ชื่อแหล่งข้อมูลที่แสดงใน log / Methods (ไม่ต้องแปล)
+const SRC_LABEL = { EuropePMC:"Europe PMC", OpenAlex:"OpenAlex" };
+const SRC_API = { EuropePMC:"Europe PMC (REST API)", OpenAlex:"OpenAlex (API)" };
+const normDoi = d => String(d||"").trim().toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//,"").replace(/^doi:/,"");
+const normTitle = s => String(s||"").toLowerCase().replace(/<[^>]+>/g,"").replace(/[^a-z0-9]+/g," ").trim();
+
+// วาง DOI / PMID ตรงๆ → ดึงเปเปอร์นั้นเลย (คืน null ถ้าเป็นคำค้นธรรมดา)
+function parseIdQuery(q){
+  const s = q.trim();
+  const m = s.match(/^(?:https?:\/\/(?:dx\.)?doi\.org\/|doi:\s*)?(10\.\d{4,9}\/\S+)$/i);
+  if(m) return {type:"doi", value:m[1].replace(/[.,;]+$/,"")};
+  if(/^\d{6,9}$/.test(s)) return {type:"pmid", value:s};
+  return null;
+}
+
+// Europe PMC → {papers, hits, querySent}
+async function adapterEuropePMC(query, o){
+  let q = query, pageSize = o.fetchSize, sortParam = "";
+  if(o.id){
+    q = o.id.type==="doi" ? `DOI:"${o.id.value}"` : `EXT_ID:${o.id.value} AND SRC:MED`;
+    pageSize = 5;
+  } else {
+    if(o.minYear) q += ` AND (PUB_YEAR:[${o.minYear} TO 3000])`;
+    if(o.oaOnly) q += " AND OPEN_ACCESS:Y";
+    sortParam = ({ newest:"P_PDATE_D desc", cited:"CITED desc" })[o.sortMode] || "";
+  }
+  let url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(q)}&format=json&pageSize=${pageSize}&resultType=core`;
   if(sortParam) url += `&sort=${encodeURIComponent(sortParam)}`;
-  QUERY_SENT = q;
   const r = await fetch(url);
   if(!r.ok) throw new Error(t("app.err.epmc",{code:r.status}));
   const j = await r.json();
-  HIT_COUNT = +(j.hitCount)||0;
   const rows = (j.resultList && j.resultList.result) || [];
-  let out = rows.map((x,i)=>{
+  const papers = rows.map((x,i)=>{
     const abstract = x.abstractText ? x.abstractText.replace(/<[^>]+>/g,"") : "";
     const pubTypes = (x.pubTypeList && x.pubTypeList.pubType) || [];
     const ptLow = pubTypes.map(s=>String(s).toLowerCase());
@@ -482,23 +505,150 @@ async function searchEuropePMC(query, limit, oaOnly, sortMode, minYear){
       isRetracted: ptLow.some(t=>t.includes("retracted")),
       isReview: ptLow.some(t=>t.includes("review")),
       pdfUrl: pdf ? pdf.url : "",
+      oaPdfUrl: "",
+      sources: ["EuropePMC"],
+      _rel: (rows.length - i) / rows.length,
       meta: extractMeta((x.title||"")+" "+abstract),
       tldr:""
     };
   });
-  if(isSmart && out.length){
-    // คะแนนผสม: 62% ตรงคีย์เวิร์ด (อันดับความเกี่ยวข้อง) + 38% ความใหม่ (ภายใน 10 ปี)
-    const CUR = new Date().getFullYear(), N = out.length;
-    out.forEach(p=>{
-      const rel = (N - p._rank) / N;
-      const rec = p.year ? Math.max(0, Math.min(1, (p.year-(CUR-10))/10)) : 0;
-      p._smart = 0.62*rel + 0.38*rec;
-    });
-    out.sort((a,b)=> b._smart - a._smart);
-    out = out.slice(0, limit);
-    out.forEach((p,i)=> p._rank = i);   // ลำดับที่จะแสดงในตาราง
+  return { papers, hits:+(j.hitCount)||0, querySent:q };
+}
+
+// OpenAlex เก็บบทคัดย่อเป็น {คำ:[ตำแหน่ง,...]} → ประกอบกลับเป็นประโยค
+function abstractFromInverted(idx){
+  if(!idx) return "";
+  const words = [];
+  Object.entries(idx).forEach(([w,pos])=> pos.forEach(i=>{ words[i]=w; }));
+  return words.filter(w=>w!=null).join(" ");
+}
+const OPENALEX_FIELDS = "id,doi,ids,title,display_name,authorships,primary_location,publication_year,cited_by_count,open_access,abstract_inverted_index,type,is_retracted,best_oa_location";
+function normOpenAlex(w, i, n){
+  const abstract = abstractFromInverted(w.abstract_inverted_index);
+  const ids = w.ids || {};
+  const pmid = String(ids.pmid||"").replace(/\D/g,"");
+  const pmcid = (String(ids.pmcid||"").match(/PMC\d+/i)||[""])[0].toUpperCase();
+  const names = (w.authorships||[]).map(a=>a.author && a.author.display_name).filter(Boolean);
+  const title = String(w.title||w.display_name||"").replace(/<[^>]+>/g,"").replace(/\.$/,"");
+  const src = w.primary_location && w.primary_location.source;
+  const best = w.best_oa_location || {};
+  return {
+    _rank:i,
+    id:w.id, source:"OA", pmid, pmcid, doi:normDoi(w.doi),
+    title,
+    authors: names.slice(0,30).join(", ") + (names.length>30 ? " et al." : ""),
+    journal: (src && src.display_name) || "",
+    year:+(w.publication_year)||0,
+    cc:+(w.cited_by_count)||0,
+    oa: !!(w.open_access && w.open_access.is_oa),
+    abstract,
+    pubTypes: w.type ? [w.type] : [],
+    isPreprint: w.type==="preprint",
+    isRetracted: w.is_retracted===true,
+    isReview: w.type==="review",
+    pdfUrl: "",
+    oaPdfUrl: /^https?:/.test(best.pdf_url||"") ? best.pdf_url : "",
+    sources: ["OpenAlex"],
+    _rel: (n - i) / n,
+    meta: extractMeta(title+" "+abstract),
+    tldr:""
+  };
+}
+// OpenAlex → {papers, hits, querySent} (ไม่ต้องใช้ API key — ใช้โควตาฟรีต่อ IP)
+async function adapterOpenAlex(query, o){
+  const base = "https://api.openalex.org/works";
+  if(o.id){
+    const r = await fetch(`${base}/${o.id.type}:${encodeURIComponent(o.id.value)}?select=${OPENALEX_FIELDS}`);
+    if(r.status===404) return { papers:[], hits:0, querySent:`${o.id.type}:${o.id.value}` };
+    if(!r.ok) throw new Error(t(r.status===429?"app.err.openalexQuota":"app.err.openalex",{code:r.status}));
+    return { papers:[normOpenAlex(await r.json(),0,1)], hits:1, querySent:`${o.id.type}:${o.id.value}` };
   }
+  const filters = [];
+  if(o.minYear) filters.push(`publication_year:>${o.minYear-1}`);
+  if(o.oaOnly) filters.push("open_access.is_oa:true");
+  let url = `${base}?search=${encodeURIComponent(query)}&per_page=${o.fetchSize}&select=${OPENALEX_FIELDS}`;
+  if(filters.length) url += `&filter=${filters.join(",")}`;
+  const sortParam = ({ newest:"publication_date:desc", cited:"cited_by_count:desc" })[o.sortMode];
+  if(sortParam) url += `&sort=${sortParam}`;
+  const r = await fetch(url);
+  if(!r.ok) throw new Error(t(r.status===429?"app.err.openalexQuota":"app.err.openalex",{code:r.status}));
+  const j = await r.json();
+  const rows = j.results || [];
+  return { papers: rows.map((w,i)=>normOpenAlex(w,i,rows.length)),
+           hits: +(j.meta && j.meta.count)||0,
+           querySent: query + (filters.length ? ` [filter: ${filters.join(", ")}]` : "") };
+}
+
+// รวม + กันซ้ำข้ามแหล่ง: จับคู่ด้วย DOI → PMID → ชื่อเรื่อง แล้วเลือกค่าที่ดีที่สุดต่อฟิลด์
+function mergeInto(a, b){
+  if((b.abstract||"").length > (a.abstract||"").length) a.abstract = b.abstract;
+  a.cc = Math.max(a.cc||0, b.cc||0);
+  ["doi","pmid","pmcid","pdfUrl","oaPdfUrl","title","authors","journal"].forEach(k=>{ if(!a[k] && b[k]) a[k]=b[k]; });
+  if(!a.year && b.year) a.year = b.year;
+  a.oa = a.oa || b.oa;
+  a.isRetracted = a.isRetracted || b.isRetracted;
+  b.sources.forEach(s=>{ if(!a.sources.includes(s)) a.sources.push(s); });
+  a._rel = Math.max(a._rel||0, b._rel||0);
+}
+function mergeDedup(papers){
+  const out = [], byDoi = new Map(), byPmid = new Map(), byTitle = new Map();
+  papers.forEach(p0=>{
+    const p = {...p0, sources:[...(p0.sources||[])]};
+    p.doi = normDoi(p.doi);
+    const keys = () => [[byDoi,p.doi],[byPmid,p.pmid?String(p.pmid):""],[byTitle,normTitle(p.title)]];
+    let hit = null;
+    for(const [m,k] of keys()){ if(k && m.has(k)){ hit = m.get(k); break; } }
+    if(hit) mergeInto(hit, p); else { out.push(p); hit = p; }
+    [[byDoi,hit.doi],[byPmid,hit.pmid?String(hit.pmid):""],[byTitle,normTitle(hit.title)]]
+      .forEach(([m,k])=>{ if(k && !m.has(k)) m.set(k, hit); });
+  });
+  out.forEach(p=>{ p.meta = extractMeta((p.title||"")+" "+(p.abstract||"")); });
+  return out.filter(p=>p.pmid||p.doi);
+}
+
+// เรียงผลที่รวมแล้วตามโหมดที่เลือก แล้วตัดเหลือ limit
+function rankPapers(papers, sortMode, limit){
+  const CUR = new Date().getFullYear();
+  let cmp;
+  if(sortMode==="newest") cmp = (a,b)=> (b.year||0)-(a.year||0) || b._rel-a._rel;
+  else if(sortMode==="cited") cmp = (a,b)=> b.cc-a.cc || b._rel-a._rel;
+  else if(sortMode==="relevance") cmp = (a,b)=> b._rel-a._rel;
+  else {
+    // smart — คะแนนผสม: 62% ตรงคีย์เวิร์ด (อันดับความเกี่ยวข้อง) + 38% ความใหม่ (ภายใน 10 ปี)
+    papers.forEach(p=>{
+      const rec = p.year ? Math.max(0, Math.min(1, (p.year-(CUR-10))/10)) : 0;
+      p._smart = 0.62*(p._rel||0) + 0.38*rec;
+    });
+    cmp = (a,b)=> b._smart-a._smart;
+  }
+  const out = [...papers].sort(cmp).slice(0, limit);
+  out.forEach((p,i)=> p._rank = i);   // ลำดับที่จะแสดงในตาราง
   return out;
+}
+
+// Orchestrator: เรียกทุกแหล่งพร้อมกัน แหล่งไหนล่มก็ยังใช้ผลจากแหล่งที่เหลือ
+async function gatherPapers(query, o){
+  const id = parseIdQuery(query);
+  const isSmart = !o.sortMode || o.sortMode==="smart";
+  const fetchSize = isSmart ? Math.min(100, Math.max(o.limit*3, 45)) : o.limit;
+  const use = o.sources==="epmc" ? ["EuropePMC"] : o.sources==="openalex" ? ["OpenAlex"] : ["EuropePMC","OpenAlex"];
+  const fns = { EuropePMC:adapterEuropePMC, OpenAlex:adapterOpenAlex };
+  const opts = {...o, id, fetchSize};
+  const settled = await Promise.allSettled(use.map(s=>fns[s](query, opts)));
+  const sourceStats = [], errors = [], all = [];
+  settled.forEach((r,i)=>{
+    const name = use[i];
+    if(r.status==="fulfilled"){
+      sourceStats.push({name, ok:true, hits:r.value.hits, got:r.value.papers.length, querySent:r.value.querySent});
+      all.push(...r.value.papers);
+    } else {
+      console.warn(name, r.reason);
+      sourceStats.push({name, ok:false, hits:0, got:0, error:String(r.reason && r.reason.message || r.reason)});
+      errors.push(name);
+    }
+  });
+  if(errors.length===use.length) throw new Error(t("app.err.allSources",{list:sourceStats.map(s=>s.error).join(" · ")}));
+  return { papers: mergeDedup(all), retrieved: all.length, sourceStats, errors, id };
 }
 async function enrichS2(papers){
   // fetch TLDRs by DOI where missing abstract or to add one-liner; best-effort, ignore failures
@@ -587,6 +737,8 @@ function renderTable(){
     if(p.pmid) links.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}" target="_blank">PubMed↗</a>`);
     if(p.pmcid) links.push(`<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}" target="_blank">FullText↗</a>`);
     if(p.pdfUrl) links.push(`<a href="${p.pdfUrl}" target="_blank" style="color:#c0392b;font-weight:700">PDF↗</a>`);
+    if(p.oaPdfUrl && p.oaPdfUrl!==p.pdfUrl) links.push(`<a href="${escH(p.oaPdfUrl).replace(/"/g,'&quot;')}" target="_blank" style="color:#c0392b;font-weight:700" title="${escH(t("app.tbl.oaPdfTitle"))}">PDF-OA↗</a>`);
+    const srcChips = (p.sources||[]).map(s=>`<span class="schip s-${s.toLowerCase()}">${SRC_LABEL[s]}</span>`).join("");
     const tip = p.tldr ? ` title="TLDR: ${p.tldr.replace(/"/g,'&quot;')}"` : "";
     const auth = p.authors.split(",").slice(0,3).join(", ")+(p.authors.split(",").length>3?" et al.":"");
     const safe = String(p.pmid||p.doi||(p.year+"_"+p.cc)).replace(/[^a-z0-9]/gi,"_");
@@ -617,6 +769,7 @@ function renderTable(){
         ${p.title_th?`<br><span style="color:var(--writer);font-size:.82rem;font-weight:700">🌐 ${escH(p.title_th)}</span>`:""}
         <br><span style="color:var(--muted);font-size:.78rem">${escH(auth)} · ${escH(p.journal)}</span>
         ${flags?`<br>${flags}`:""}
+        ${srcChips?`<br>${srcChips}`:""}
       </td>
       <td style="max-width:240px">
         ${gist}
@@ -692,15 +845,27 @@ function logFilters(L){
   const f = (L.filterKeys||[]).map(x=> typeof x==="string" ? t(x) : t(x.k, x.vars));
   return f.length ? f.join(", ") : t("app.log.none");
 }
+// แหล่งที่ตอบกลับจริง (log เก่าที่ไม่มี sources = Europe PMC อย่างเดียว)
+function logOkSources(L){ return (L.sources||[{name:"EuropePMC",ok:true,hits:L.hitCount}]).filter(s=>s.ok); }
+function logDbNames(L){ return logOkSources(L).map(s=>SRC_LABEL[s.name]).join(" + "); }
+function logDbApi(L){ return logOkSources(L).map(s=>SRC_API[s.name]).join(" + "); }
+function logHits(L){
+  const ok = logOkSources(L);
+  if(ok.length<2) return L.hitCount.toLocaleString(i18nLocale());
+  return ok.map(s=>`${SRC_LABEL[s.name]} ${s.hits.toLocaleString(i18nLocale())}`).join(" · ");
+}
+function logFailed(L){ return (L.sources||[]).filter(s=>!s.ok).map(s=>SRC_LABEL[s.name]); }
 function renderSearchLog(){
   if(!SEARCH_LOG) return;
   const L=SEARCH_LOG;
+  const failed = logFailed(L);
   $("#searchlog").innerHTML =
     `<b>${escH(t("app.log.query"))}</b> <code>${escH(L.querySent)}</code>\n`+
-    `<b>${escH(t("app.log.db"))}</b> Europe PMC (REST API)   <b>${escH(t("app.log.date"))}</b> ${escH(logDate(L))}\n`+
+    `<b>${escH(t("app.log.db"))}</b> ${escH(logDbApi(L))}${failed.length?` <span style="color:#b05a45">(${escH(t("app.log.failed",{list:failed.join(", ")}))})</span>`:""}   <b>${escH(t("app.log.date"))}</b> ${escH(logDate(L))}\n`+
     `<b>${escH(t("app.log.sort"))}</b> ${escH(logSort(L))}   <b>${escH(t("app.log.filters"))}</b> ${escH(logFilters(L))}\n`+
-    `<b>${escH(t("app.log.hits"))}</b> ${L.hitCount.toLocaleString(i18nLocale())}   `+
-    `<b>${escH(t("app.log.retrieved"))}</b> ${L.retrieved}   <b>${escH(t("app.log.afterDedup"))}</b> ${L.afterDedup}   <b>${escH(t("app.log.afterFilter"))}</b> ${L.afterFilter}`;
+    `<b>${escH(t("app.log.hits"))}</b> ${escH(logHits(L))}   `+
+    `<b>${escH(t("app.log.retrieved"))}</b> ${L.retrieved}   <b>${escH(t("app.log.afterDedup"))}</b> ${L.afterDedup}   <b>${escH(t("app.log.afterFilter"))}</b> ${L.afterFilter}`+
+    (L.shown!=null && L.shown<L.afterFilter ? `   <b>${escH(t("app.log.shown"))}</b> ${L.shown}` : "");
 }
 
 // ===== นักแปล (ทีมคนที่ 6): อังกฤษ → ไทย ครบทุกตัวอักษร =====
@@ -788,31 +953,37 @@ async function run(){
   try{
     // 1) Scout
     setAgent("scout","active","app.st.scout.run"); progress(20);
-    let papers = await searchEuropePMC(query, limit, oaOnly, sortMode, minYear);
-    if(!papers.length){ throw new Error(t("app.err.noPapers")); }
+    const sources = $("#sources").value;
+    const G = await gatherPapers(query, {limit, oaOnly, sortMode, minYear, sources});
+    let papers = G.papers;
+    if(!papers.length){ throw new Error(t(G.id ? "app.err.idNotFound" : "app.err.noPapers")); }
     const sortKeyName = ["smart","relevance","newest","cited"].includes(sortMode) ? sortMode : "smart";
     const sortVar = {i18n:"app.sortShort."+sortKeyName};
     setAgent("scout","done","app.st.scout.done",{n:papers.length, sort:sortVar});
 
-    // 2) Validator: dedupe + filter คุณภาพ
+    // 2) Validator: กันซ้ำ (ทำใน gatherPapers แล้ว) + filter คุณภาพ
     setAgent("validator","active","app.st.validator.run"); progress(40);
-    const retrieved = papers.length;
-    const seen=new Set(); papers = papers.filter(p=>{
-      const k=(p.doi||p.title).toLowerCase(); if(seen.has(k))return false; seen.add(k); return (p.pmid||p.doi);
-    });
+    const retrieved = G.retrieved;
     const afterDedup = papers.length;
-    // ตัวกรองคุณภาพ
+    // ตัวกรองคุณภาพ (ค้นด้วยรหัส = ผู้ใช้ต้องการเปเปอร์ชิ้นนั้นเลย ไม่กรอง — ธงยังแสดงในตาราง)
     const filterKeys=[];
-    if(hideRet){ papers=papers.filter(p=>!p.isRetracted); filterKeys.push("app.filter.hideRet"); }
-    if(noReview){ papers=papers.filter(p=>!p.isReview); filterKeys.push("app.filter.noReview"); }
-    if(noPre){ papers=papers.filter(p=>!p.isPreprint); filterKeys.push("app.filter.noPre"); }
-    if(oaOnly) filterKeys.push("app.filter.oa");
-    if(minYear) filterKeys.push({k:"app.filter.minYear", vars:{y:minYear}});
+    if(!G.id){
+      if(hideRet){ papers=papers.filter(p=>!p.isRetracted); filterKeys.push("app.filter.hideRet"); }
+      if(noReview){ papers=papers.filter(p=>!p.isReview); filterKeys.push("app.filter.noReview"); }
+      if(noPre){ papers=papers.filter(p=>!p.isPreprint); filterKeys.push("app.filter.noPre"); }
+      if(oaOnly) filterKeys.push("app.filter.oa");
+      if(minYear) filterKeys.push({k:"app.filter.minYear", vars:{y:minYear}});
+    }
     const afterFilter = papers.length;
     if(!papers.length){ throw new Error(t("app.err.allFiltered")); }
+    papers = rankPapers(papers, sortKeyName, limit);
     // เก็บ log แบบทำซ้ำได้ (เก็บเป็น key/ISO เพื่อให้เปลี่ยนภาษาได้ภายหลัง)
+    const okStats = G.sourceStats.filter(s=>s.ok);
+    QUERY_SENT = G.id ? `${G.id.type.toUpperCase()}: ${G.id.value}` : ((okStats.find(s=>s.name==="EuropePMC")||okStats[0]).querySent);
+    HIT_COUNT = okStats.reduce((s,x)=>s+x.hits,0);
     SEARCH_LOG = { querySent:QUERY_SENT, dateISO:new Date().toISOString(), sortMode:sortKeyName,
-      filterKeys, hitCount:HIT_COUNT, retrieved, afterDedup, afterFilter };
+      filterKeys, hitCount:HIT_COUNT, retrieved, afterDedup, afterFilter, shown:papers.length,
+      sources:G.sourceStats, idMode:!!G.id };
     await new Promise(r=>setTimeout(r,250));
     setAgent("validator","done","app.st.validator.done",{n:papers.length});
 
@@ -832,8 +1003,10 @@ async function run(){
 
     // 5) Writer
     setAgent("writer","active","app.st.writer.run"); progress(84);
-    SCOUT_SUB = {q:query, s2: useS2 ? {i18n:"app.scoutSub.s2"} : ""};
-    $("#scoutSub").textContent = t("app.scoutSub", SCOUT_SUB);
+    const warn = G.errors.length ? {i18n: G.errors[0]==="OpenAlex" ? "app.scoutSub.warnOpenAlex" : "app.scoutSub.warnEPMC"} : "";
+    SCOUT_SUB = {key: G.id ? "app.scoutSubId" : "app.scoutSub", q: G.id ? G.id.value : query,
+      db: logDbNames(SEARCH_LOG), s2: useS2 ? {i18n:"app.scoutSub.s2"} : "", warn};
+    $("#scoutSub").textContent = t(SCOUT_SUB.key, SCOUT_SUB);
     renderStats(RESULTS); renderSearchLog(); renderTable(); updatePrisma(); renderSynth(RESULTS, query);
     await new Promise(r=>setTimeout(r,200));
     setAgent("writer","done","app.st.writer.done");
@@ -894,7 +1067,7 @@ function exportBib(){
 function synthMarkdown(){
   const {picked, kws, themes} = buildSynthesis(RESULTS, QUERY);
   let md = `# Literature synthesis: ${QUERY}\n\n`;
-  md += `*Retrieved ${RESULTS.length} papers from Europe PMC. Sentences below are extracted verbatim from real abstracts — verify each source.*\n\n## Key findings\n\n`;
+  md += `*Retrieved ${RESULTS.length} papers from ${SEARCH_LOG ? logDbNames(SEARCH_LOG) : "Europe PMC"}. Sentences below are extracted verbatim from real abstracts — verify each source.*\n\n## Key findings\n\n`;
   picked.forEach((it,i)=>{
     const src = it.p.doi?`https://doi.org/${it.p.doi}`:`https://pubmed.ncbi.nlm.nih.gov/${it.p.pmid}`;
     md += `${i+1}. ${it.s} ([${it.p.pmid?'PMID '+it.p.pmid:'source'}](${src}))\n`;
@@ -938,20 +1111,24 @@ function exportPrisma(){
   const L=SEARCH_LOG; let inc=0,exc=0,may=0,un=0;
   RESULTS.forEach(p=>{const st=getScreen(pkey(p)).status; if(st==="include")inc++;else if(st==="exclude")exc++;else if(st==="maybe")may++;else un++;});
   let out=`PRISMA / SEARCH LOG\n===================\n\n`;
-  out+=`Database        : Europe PMC (REST API)\n`;
+  out+=`Database        : ${logDbApi(L)}\n`;
+  if(logFailed(L).length) out+=`Not responding  : ${logFailed(L).join(", ")}\n`;
   out+=`Date of search  : ${logDate(L)}\n`;
   out+=`Query string    : ${L.querySent}\n`;
   out+=`Sort            : ${logSort(L)}\n`;
   out+=`Filters         : ${logFilters(L)}\n\n`;
-  out+=`Records identified (hitCount) : ${L.hitCount}\n`;
-  out+=`Records retrieved             : ${L.retrieved}\n`;
+  const ok = logOkSources(L);
+  out+=`Records identified (hitCount) : ${L.hitCount}${ok.length>1?"  ("+ok.map(s=>SRC_LABEL[s.name]+" "+s.hits).join(", ")+")":""}\n`;
+  out+=`Records retrieved             : ${L.retrieved}${ok.length>1?"  ("+ok.map(s=>SRC_LABEL[s.name]+" "+s.got).join(", ")+")":""}\n`;
   out+=`After duplicates removed      : ${L.afterDedup}\n`;
-  out+=`After quality filters         : ${L.afterFilter}\n\n`;
-  out+=`SCREENING\n  Included  : ${inc}\n  Maybe     : ${may}\n  Excluded  : ${exc}\n  Unscreened: ${un}\n\n`;
+  out+=`After quality filters         : ${L.afterFilter}\n`;
+  const shown = L.shown!=null ? L.shown : L.afterFilter;
+  if(shown<L.afterFilter) out+=`Top records kept for screening: ${shown}\n`;
+  out+=`\nSCREENING\n  Included  : ${inc}\n  Maybe     : ${may}\n  Excluded  : ${exc}\n  Unscreened: ${un}\n\n`;
   out+=`--- Suggested Methods sentence ---\n`;
-  out+=`Literature was searched in Europe PMC on ${logDate(L)} using the query "${L.querySent}" (sort: ${logSort(L)}). `;
-  out+=`${L.hitCount} records were identified; ${L.retrieved} were retrieved and ${L.afterDedup} remained after duplicate removal. `;
-  out+=`After applying filters (${logFilters(L)}), ${L.afterFilter} records were screened, of which ${inc} were included.\n`;
+  out+=`Literature was searched in ${ok.map(s=>SRC_LABEL[s.name]).join(" and ")} on ${logDate(L)} using the query "${L.querySent}" (sort: ${logSort(L)}). `;
+  out+=`${L.hitCount} records were identified; ${L.retrieved} were retrieved and ${L.afterDedup} remained after duplicate removal${ok.length>1?" across databases":""}. `;
+  out+=`After applying filters (${logFilters(L)}), ${L.afterFilter} records remained`+(shown<L.afterFilter?` and the top ${shown} (sort: ${logSort(L)}) were screened`:` and were screened`)+`, of which ${inc} were included.\n`;
   dl("prisma_search_log.txt", out);
 }
 // ผลคัดกรอง + metadata สกัด (CSV)
@@ -971,7 +1148,7 @@ document.addEventListener("langchange", ()=>{
   $("#thai").checked = (getLang()==="th");
   renderAgents();
   if(RESULTS.length){
-    if(SCOUT_SUB) $("#scoutSub").textContent = t("app.scoutSub", SCOUT_SUB);
+    if(SCOUT_SUB) $("#scoutSub").textContent = t(SCOUT_SUB.key, SCOUT_SUB);
     renderStats(RESULTS);
     renderSearchLog();
     renderTable();

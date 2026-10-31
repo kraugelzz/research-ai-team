@@ -36,11 +36,13 @@
       /* ============== app.html : ส่วนหัว ============== */
       "app.docTitle": "ทีมวิจัย AI — เวอร์ชันทำงานจริง",
       "app.h1": "🔬 ทีมวิจัย AI — เวอร์ชันทำงานจริง",
-      "app.leadHtml": "พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + Semantic Scholar พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล",
+      "app.leadHtml": "พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + OpenAlex (เสริมด้วย Semantic Scholar) พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล",
 
       /* ============== app.html : คอนโซลค้นหา ============== */
       "app.qPh": "เช่น: EGFR knockdown effects on MAPK signaling in triple-negative breast cancer",
       "app.runBtn": "▶ Run ทีม",
+      "app.sources": "แหล่งข้อมูล:",
+      "app.sources.both": "ทั้งสองแหล่ง (แนะนำ)",
       "app.sortBy": "เรียงตาม:",
       "app.sort.smart": "✨ อัจฉริยะ (ตรงคีย์เวิร์ด + ปีล่าสุด) — แนะนำ",
       "app.sort.relevance": "🎯 ความเกี่ยวข้องล้วน",
@@ -60,7 +62,7 @@
       "app.hideRet": "⛔ ซ่อนงานที่ถูกถอน (retracted)",
       "app.noReview": "📄 เฉพาะงานทดลองต้นฉบับ (ตัด review)",
       "app.noPre": "ตัด preprint ออก",
-      "app.hint": "💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ",
+      "app.hint": "💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · วาง DOI หรือ PMID เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ ได้ · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ",
 
       /* ============== app.html : ออฟฟิศ / เอเจนต์ ============== */
       "app.stageTitle": "🏢 ทีมกำลังทำงานในออฟฟิศ",
@@ -140,6 +142,7 @@
       "app.tbl.translating": "กำลังแปล…",
       "app.tbl.absHeadHtml": "<b>บทคัดย่อ (ไทย):</b><br>",
       "app.tbl.noAbs": "(เปเปอร์นี้ไม่มีบทคัดย่อให้แปล)",
+      "app.tbl.oaPdfTitle": "PDF อ่านฟรี (จาก OpenAlex)",
       "app.tbl.notePh": "เหตุผล/โน้ต…",
       "app.tbl.inc": "รับเข้า",
       "app.tbl.may": "รอพิจารณา",
@@ -166,6 +169,8 @@
       "app.log.retrieved": "ดึงมา:",
       "app.log.afterDedup": "หลังกันซ้ำ:",
       "app.log.afterFilter": "หลังกรอง:",
+      "app.log.shown": "แสดง (ตามจำนวนที่ตั้ง):",
+      "app.log.failed": "{list} ไม่ตอบ",
       "app.log.none": "—",
       "app.filter.hideRet": "ซ่อน retracted",
       "app.filter.noReview": "ตัด review",
@@ -181,7 +186,10 @@
       "app.synth.conflictNote": "⚠️ พบผลทั้งสองทิศทาง — อาจเป็นเพราะบริบทต่างกัน (cell line/วิธี) ควรอ่านต้นฉบับเทียบก่อนสรุป",
       "app.synth.themes": "🏷️ ธีม/คำที่พบบ่อยในชุดเปเปอร์นี้",
       "app.synth.themeItem": "พบใน {n} เปเปอร์",
-      "app.scoutSub": "ค้นด้วย: “{q}” — จาก Europe PMC{s2}",
+      "app.scoutSub": "ค้นด้วย: “{q}” — จาก {db}{s2}{warn}",
+      "app.scoutSubId": "ค้นด้วยรหัส: {q} — จาก {db}{s2}{warn}",
+      "app.scoutSub.warnOpenAlex": " · ⚠️ OpenAlex ไม่ตอบ ใช้ผลจาก Europe PMC",
+      "app.scoutSub.warnEPMC": " · ⚠️ Europe PMC ไม่ตอบ ใช้ผลจาก OpenAlex",
       "app.scoutSub.s2": " + Semantic Scholar (TLDR)",
 
       /* ข้อความแจ้งเตือน */
@@ -190,6 +198,10 @@
       "app.err.allFiltered": "ผลถูกกรองออกหมด — ลองปิดตัวกรองบางตัว",
       "app.err.generic": "เกิดข้อผิดพลาด",
       "app.err.epmc": "Europe PMC ตอบกลับ {code}",
+      "app.err.openalex": "OpenAlex ตอบกลับ {code}",
+      "app.err.openalexQuota": "OpenAlex: โควตาฟรีของวันนี้หมดแล้ว (429) — พรุ่งนี้ใช้ได้ใหม่",
+      "app.err.allSources": "ติดต่อแหล่งข้อมูลไม่ได้ — {list}",
+      "app.err.idNotFound": "ไม่พบเปเปอร์จากรหัสนี้ — ตรวจรหัสอีกครั้ง หรือลองค้นด้วยคำ",
       "app.err.translate": "⚠️ แปลไม่สำเร็จ (ต่ออินเทอร์เน็ตแล้วลองใหม่)",
       "app.alert.noRun": "ยังไม่มีข้อมูล — กด Run ก่อน",
       "app.confirm.clearScreen": "ล้างสถานะคัดกรองทั้งหมดที่บันทึกไว้? (ย้อนกลับไม่ได้)",
@@ -199,7 +211,7 @@
       "app.md.topCited": "Top-cited papers (พร้อมสรุปไทย)",
 
       /* footer */
-      "app.footerHtml": "ข้อมูลจริงจาก <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>",
+      "app.footerHtml": "ข้อมูลจริงจาก <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a>, <a href=\"https://openalex.org\" target=\"_blank\">OpenAlex</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>",
 
       /* ============== office.html ============== */
       "office.docTitle": "ทีมวิจัย AI — The Research Office",
@@ -300,13 +312,15 @@
       "guide.links.pubmed.d": "หน้า PubMed พร้อมบทคัดย่อและข้อมูลอ้างอิง",
       "guide.links.ft.d": "ฉบับเต็มบน Europe PMC (ถ้ามี)",
       "guide.links.pdf.dHtml": "<b>โหลด PDF ฉบับเต็มฟรี</b> — เฉพาะงาน open access",
+      "guide.links.oapdf.d": "PDF อ่านฟรีอีกแหล่ง ที่ OpenAlex หาเจอ (แสดงเมื่อไม่ซ้ำกับ PDF↗)",
+      "guide.links.src.d": "บอกว่าเปเปอร์นี้เจอจากแหล่งไหน — ถ้าเจอทั้งสองแหล่ง ระบบรวมเป็นแถวเดียวแล้ว",
       "guide.links.oa.d": "Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก",
 
       "guide.team.h": "👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)",
       "guide.team.scout.ic": "🔍 สกาวต์",
-      "guide.team.scout.d": "ค้นหาเปเปอร์จาก Europe PMC",
+      "guide.team.scout.d": "ค้นหาเปเปอร์จาก Europe PMC + OpenAlex (หรือวาง DOI/PMID ดึงตรง)",
       "guide.team.validator.ic": "✅ วาลิดา",
-      "guide.team.validator.d": "ตรวจสอบ กันซ้ำ กรองคุณภาพ (retracted/review)",
+      "guide.team.validator.d": "รวมผลข้ามแหล่ง กันซ้ำ กรองคุณภาพ (retracted/review)",
       "guide.team.analyst.ic": "📊 แอนนา",
       "guide.team.analyst.d": "สกัดเป็นตาราง + ดึงข้อมูล wet-lab",
       "guide.team.checker.ic": "⚖️ เชค",
@@ -334,7 +348,7 @@
       "guide.tips.5Html": "<b>สรุปเป็นแบบสกัด</b> — ทุกประโยคดึงจากบทคัดย่อจริง ไม่มีการกุ แต่ควรเปิดอ่านต้นฉบับก่อนอ้างอิงเสมอ",
 
       "guide.cta": "🔬 เริ่มใช้งานเลย →",
-      "guide.footerHtml": "ข้อมูลจริงจาก Europe PMC &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:8px\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>"
+      "guide.footerHtml": "ข้อมูลจริงจาก Europe PMC, OpenAlex &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:8px\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>"
     },
 
     /* =====================================================
@@ -354,11 +368,13 @@
       /* ============== app.html : header ============== */
       "app.docTitle": "AI Research Team — working build",
       "app.h1": "🔬 AI Research Team — working build",
-      "app.leadHtml": "Type a research question (English works best) or <b>drop a .txt file</b>, then hit Run — six agents work as a pipeline, pulling real papers from Europe PMC + Semantic Scholar with genuine links and citation counts, then <b>translating to Thai + summarizing what each paper actually did</b>. Nothing is invented.",
+      "app.leadHtml": "Type a research question (English works best) or <b>drop a .txt file</b>, then hit Run — six agents work as a pipeline, pulling real papers from Europe PMC + OpenAlex (plus Semantic Scholar) with genuine links and citation counts, then <b>translating to Thai + summarizing what each paper actually did</b>. Nothing is invented.",
 
       /* ============== app.html : search console ============== */
       "app.qPh": "e.g. EGFR knockdown effects on MAPK signaling in triple-negative breast cancer",
       "app.runBtn": "▶ Run the team",
+      "app.sources": "Sources:",
+      "app.sources.both": "Both (recommended)",
       "app.sortBy": "Sort by:",
       "app.sort.smart": "✨ Smart (keyword match + recency) — recommended",
       "app.sort.relevance": "🎯 Pure relevance",
@@ -378,7 +394,7 @@
       "app.hideRet": "⛔ Hide retracted work",
       "app.noReview": "📄 Primary research only (drop reviews)",
       "app.noPre": "Drop preprints",
-      "app.hint": "💡 Drop a .txt file (a question or a keyword list) straight into the box above · everything runs in your browser — nothing leaves it except calls to public research APIs",
+      "app.hint": "💡 Drop a .txt file (a question or a keyword list) straight into the box above · paste a DOI or PMID to fetch that exact paper · everything runs in your browser — nothing leaves it except calls to public research APIs",
 
       /* ============== app.html : office / agents ============== */
       "app.stageTitle": "🏢 The team at work",
@@ -458,6 +474,7 @@
       "app.tbl.translating": "Translating…",
       "app.tbl.absHeadHtml": "<b>Abstract (Thai):</b><br>",
       "app.tbl.noAbs": "(this paper has no abstract to translate)",
+      "app.tbl.oaPdfTitle": "Free PDF (found by OpenAlex)",
       "app.tbl.notePh": "Reason / note…",
       "app.tbl.inc": "Include",
       "app.tbl.may": "Maybe",
@@ -484,6 +501,8 @@
       "app.log.retrieved": "Retrieved:",
       "app.log.afterDedup": "After de-duplication:",
       "app.log.afterFilter": "After filters:",
+      "app.log.shown": "Shown (your limit):",
+      "app.log.failed": "{list} not responding",
       "app.log.none": "—",
       "app.filter.hideRet": "hide retracted",
       "app.filter.noReview": "drop reviews",
@@ -499,7 +518,10 @@
       "app.synth.conflictNote": "⚠️ Findings point both ways — often because the context differs (cell line/method). Compare the originals before concluding.",
       "app.synth.themes": "🏷️ Recurring themes across this set",
       "app.synth.themeItem": "in {n} papers",
-      "app.scoutSub": "Searched for: “{q}” — via Europe PMC{s2}",
+      "app.scoutSub": "Searched for: “{q}” — via {db}{s2}{warn}",
+      "app.scoutSubId": "Looked up ID: {q} — via {db}{s2}{warn}",
+      "app.scoutSub.warnOpenAlex": " · ⚠️ OpenAlex didn't respond, showing Europe PMC results",
+      "app.scoutSub.warnEPMC": " · ⚠️ Europe PMC didn't respond, showing OpenAlex results",
       "app.scoutSub.s2": " + Semantic Scholar (TLDR)",
 
       /* messages */
@@ -508,6 +530,10 @@
       "app.err.allFiltered": "Everything was filtered out — try switching some filters off",
       "app.err.generic": "Something went wrong",
       "app.err.epmc": "Europe PMC returned {code}",
+      "app.err.openalex": "OpenAlex returned {code}",
+      "app.err.openalexQuota": "OpenAlex: today's free quota is used up (429) — try again tomorrow",
+      "app.err.allSources": "Couldn't reach any source — {list}",
+      "app.err.idNotFound": "No paper found for this ID — check it, or search with words instead",
       "app.err.translate": "⚠️ Translation failed (check your connection and retry)",
       "app.alert.noRun": "Nothing to export yet — press Run first",
       "app.confirm.clearScreen": "Clear every saved screening status? (this cannot be undone)",
@@ -517,7 +543,7 @@
       "app.md.topCited": "Top-cited papers (with Thai summary)",
 
       /* footer */
-      "app.footerHtml": "Real data from <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · this tool <b>finds and organizes</b> — the scientific judgement still means reading the originals yourself<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026</span>",
+      "app.footerHtml": "Real data from <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a>, <a href=\"https://openalex.org\" target=\"_blank\">OpenAlex</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · this tool <b>finds and organizes</b> — the scientific judgement still means reading the originals yourself<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026</span>",
 
       /* ============== office.html ============== */
       "office.docTitle": "AI Research Team — The Research Office",
@@ -618,11 +644,13 @@
       "guide.links.pubmed.d": "The PubMed record, with abstract and citation data",
       "guide.links.ft.d": "Full text on Europe PMC (where available)",
       "guide.links.pdf.dHtml": "<b>Download the full PDF free</b> — open access papers only",
+      "guide.links.oapdf.d": "Another free PDF that OpenAlex found (shown when it differs from PDF↗)",
+      "guide.links.src.d": "Which source found the paper — if both did, they're merged into one row",
       "guide.links.oa.d": "Open Access — read the full text free, no subscription",
 
       "guide.team.h": "👥 The six agents (one per pipeline stage)",
       "guide.team.scout.ic": "🔍 Scout",
-      "guide.team.scout.d": "Finds papers on Europe PMC",
+      "guide.team.scout.d": "Finds papers on Europe PMC + OpenAlex (or fetches a pasted DOI/PMID)",
       "guide.team.validator.ic": "✅ Valida",
       "guide.team.validator.d": "Verifies, de-duplicates, filters on quality (retracted/review)",
       "guide.team.analyst.ic": "📊 Anna",
@@ -652,7 +680,7 @@
       "guide.tips.5Html": "<b>The summary is extractive</b> — every sentence is lifted from a real abstract, so nothing is invented, but always open the original before citing it",
 
       "guide.cta": "🔬 Start using it →",
-      "guide.footerHtml": "Real data from Europe PMC &amp; Semantic Scholar · the tool finds and organizes; the scientific judgement still means reading the originals<br>\n    <span style=\"display:inline-block;margin-top:8px\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026</span>"
+      "guide.footerHtml": "Real data from Europe PMC, OpenAlex &amp; Semantic Scholar · the tool finds and organizes; the scientific judgement still means reading the originals<br>\n    <span style=\"display:inline-block;margin-top:8px\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026</span>"
     }
   };
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <title>คู่มือใช้งาน — ทีมวิจัย AI</title>
 <meta name="i18n-title" content="guide.docTitle">
-<script src="i18n.js?v=20260912"></script>
+<script src="i18n.js?v=20261031"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -153,6 +153,8 @@
       <div class="row"><div class="ic">PubMed↗</div><div class="d" data-i18n="guide.links.pubmed.d">หน้า PubMed พร้อมบทคัดย่อและข้อมูลอ้างอิง</div></div>
       <div class="row"><div class="ic">FullText↗</div><div class="d" data-i18n="guide.links.ft.d">ฉบับเต็มบน Europe PMC (ถ้ามี)</div></div>
       <div class="row"><div class="ic" style="color:#c0392b">PDF↗</div><div class="d" data-i18n-html="guide.links.pdf.dHtml"><b>โหลด PDF ฉบับเต็มฟรี</b> — เฉพาะงาน open access</div></div>
+      <div class="row"><div class="ic" style="color:#c0392b">PDF-OA↗</div><div class="d" data-i18n="guide.links.oapdf.d">PDF อ่านฟรีอีกแหล่ง ที่ OpenAlex หาเจอ (แสดงเมื่อไม่ซ้ำกับ PDF↗)</div></div>
+      <div class="row"><div class="ic"><span class="badge" style="background:#f3effa;color:#6a4fa8">OpenAlex</span></div><div class="d" data-i18n="guide.links.src.d">บอกว่าเปเปอร์นี้เจอจากแหล่งไหน — ถ้าเจอทั้งสองแหล่ง ระบบรวมเป็นแถวเดียวแล้ว</div></div>
       <div class="row"><div class="ic"><span class="badge" style="background:#e7f6ee;color:#2e9e5b">OA</span></div><div class="d" data-i18n="guide.links.oa.d">Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก</div></div>
     </div>
   </section>
@@ -161,8 +163,8 @@
   <section>
     <h2 data-i18n="guide.team.h">👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)</h2>
     <div class="rows">
-      <div class="row"><div class="ic" data-i18n="guide.team.scout.ic">🔍 สกาวต์</div><div class="d" data-i18n="guide.team.scout.d">ค้นหาเปเปอร์จาก Europe PMC</div></div>
-      <div class="row"><div class="ic" data-i18n="guide.team.validator.ic">✅ วาลิดา</div><div class="d" data-i18n="guide.team.validator.d">ตรวจสอบ กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.scout.ic">🔍 สกาวต์</div><div class="d" data-i18n="guide.team.scout.d">ค้นหาเปเปอร์จาก Europe PMC + OpenAlex (หรือวาง DOI/PMID ดึงตรง)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.validator.ic">✅ วาลิดา</div><div class="d" data-i18n="guide.team.validator.d">รวมผลข้ามแหล่ง กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
       <div class="row"><div class="ic" data-i18n="guide.team.analyst.ic">📊 แอนนา</div><div class="d" data-i18n="guide.team.analyst.d">สกัดเป็นตาราง + ดึงข้อมูล wet-lab</div></div>
       <div class="row"><div class="ic" data-i18n="guide.team.checker.ic">⚖️ เชค</div><div class="d" data-i18n="guide.team.checker.d">จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน</div></div>
       <div class="row"><div class="ic" data-i18n="guide.team.writer.ic">✍️ ไรเตอร์</div><div class="d" data-i18n="guide.team.writer.d">สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)</div></div>
@@ -196,7 +198,7 @@
   <a class="cta" href="app.html" data-i18n="guide.cta">🔬 เริ่มใช้งานเลย →</a>
 
   <footer data-i18n-html="guide.footerHtml">
-    ข้อมูลจริงจาก Europe PMC &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>
+    ข้อมูลจริงจาก Europe PMC, OpenAlex &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>
     <span style="display:inline-block;margin-top:8px">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
   </footer>
 </div>
