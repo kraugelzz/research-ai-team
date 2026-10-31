@@ -7,10 +7,10 @@
 <meta http-equiv="Pragma" content="no-cache">
 <title>คู่มือใช้งาน — ทีมวิจัย AI</title>
 <meta name="i18n-title" content="guide.docTitle">
-<script src="i18n.js?v=20261031b"></script>
+<script src="i18n.js?v=20261031d"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#fbfbfc; --ink:#2c2f36; --muted:#646a76; --line:#ecedf1;
@@ -22,17 +22,22 @@
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* top nav */
-  .topnav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:22px 0 0}
-  .topnav a{font-size:.84rem;padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:#fff}
-  .topnav a.here{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
-  .topnav a:hover{text-decoration:none;border-color:var(--accent)}
+  .navlinks{padding-top:22px}
 
   header{text-align:center;padding:34px 0 10px}
   header h1{font-size:1.9rem;letter-spacing:-.01em}
   header p{color:var(--muted);margin-top:6px}
 
-  section{margin:34px 0}
+  section{margin:34px 0;scroll-margin-top:16px}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:18px 0 0;font-size:.92rem}
+  .toc b{display:block;margin-bottom:4px}
+  .toc ol{margin:0 0 0 20px}
+  .toc li{margin:2px 0}
+  .toc a{display:inline-block;padding:4px 0}
+  /* จอกว้าง: สารบัญเป็นแถบด้านข้างที่ติดอยู่ตอนเลื่อน */
+  @media (min-width:1300px){
+    .toc{position:fixed;top:96px;left:calc(50% - 380px - 250px);width:230px;margin:0;max-height:calc(100vh - 120px);overflow:auto}
+  }
   h2{font-size:1.15rem;padding-bottom:8px;border-bottom:2px solid var(--line);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 
   /* quick start steps */
@@ -55,17 +60,17 @@
 
   /* small badge samples reused from app */
   .badge{font-size:.7rem;font-weight:800;padding:2px 7px;border-radius:5px;display:inline-block}
-  .b-ret{background:#fde0e0;color:#c0392b;border:1px solid #f3b0b0}
-  .b-pre{background:#fff2d6;color:#9a6b00;border:1px solid #f0d69a}
+  .b-ret{background:#fde0e0;color:#a8291d;border:1px solid #f3b0b0}
+  .b-pre{background:#fff2d6;color:#7d5600;border:1px solid #f0d69a}
   .b-rev{background:#e7e0fb;color:#6b4bc0;border:1px solid #cdbef0}
   .chip{font-size:.72rem;border-radius:6px;padding:1px 7px;display:inline-block}
   .c-method{background:#eef2fb;border:1px solid #cdd9f0;color:#3a5bb0}
   .c-cell{background:#eef6f0;border:1px solid #cfe6d6;color:#2e7d52}
-  .c-org{background:#faf0ee;border:1px solid #efd3cc;color:#b05a45}
+  .c-org{background:#faf0ee;border:1px solid #efd3cc;color:#8f4535}
   .sbtn{border:1px solid var(--line);background:#fff;border-radius:7px;padding:2px 8px;font-weight:700;display:inline-block}
-  .sb-i{background:#dff5e6;border-color:#8fd6a8;color:#1f8f4d}
-  .sb-m{background:#fff3cf;border-color:#e8cf7a;color:#9a7400}
-  .sb-e{background:#fde0e6;border-color:#eaa3b5;color:#c03a5b}
+  .sb-i{background:#dff5e6;border-color:#8fd6a8;color:#17703c}
+  .sb-m{background:#fff3cf;border-color:#e8cf7a;color:#7a5c00}
+  .sb-e{background:#fde0e6;border-color:#eaa3b5;color:#a12d4b}
 
   /* tips */
   .tip{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:14px 16px;margin:10px 0;font-size:.92rem}
@@ -81,7 +86,7 @@
 </head>
 <body>
 <div class="wrap">
-  <nav class="topnav" data-i18n-aria="nav.aria" aria-label="เมนูหลัก">
+  <nav class="navlinks" data-i18n-aria="nav.aria" aria-label="เมนูหลัก">
     <a href="app.html" data-i18n="nav.app">🔬 หน้าใช้งาน</a>
     <a href="office.html" data-i18n="nav.team">👥 แนะนำทีม</a>
     <a href="guide.html" class="here" aria-current="page" data-i18n="nav.guide">📖 คู่มือใช้งาน</a>
@@ -93,19 +98,35 @@
     <p data-i18n="guide.sub">วิธีใช้งาน + ความหมายของไอคอนทุกตัวในเว็บ</p>
   </header>
 
+  <nav class="toc" data-i18n-aria="guide.toc.aria" aria-label="สารบัญ">
+    <b data-i18n="guide.toc.h">สารบัญ</b>
+    <ol>
+      <li><a href="#quick" data-toc="guide.quick.h">quick</a></li>
+      <li><a href="#sort" data-toc="guide.sort.h">sort</a></li>
+      <li><a href="#flags" data-toc="guide.flags.h">flags</a></li>
+      <li><a href="#chips" data-toc="guide.chips.h">chips</a></li>
+      <li><a href="#screen" data-toc="guide.screen.h">screen</a></li>
+      <li><a href="#links" data-toc="guide.links.h">links</a></li>
+      <li><a href="#team" data-toc="guide.team.h">team</a></li>
+      <li><a href="#export" data-toc="guide.export.h">export</a></li>
+      <li><a href="#verify" data-toc="guide.verify.h">verify</a></li>
+      <li><a href="#tips" data-toc="guide.tips.h">tips</a></li>
+    </ol>
+  </nav>
+
   <!-- QUICK START -->
-  <section>
+  <section id="quick">
     <h2 data-i18n="guide.quick.h">🚀 เริ่มใช้งานใน 4 ขั้น</h2>
     <div class="steps">
       <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.1.t">พิมพ์คำค้นเป็นภาษาอังกฤษ</b><br><span data-i18n-html="guide.quick.1.dHtml">เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง ลากไฟล์ .txt มาวาง หรือ<b>วาง DOI / PMID</b> เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ</span></div></div>
       <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.2.t">ตั้งค่า (ถ้าต้องการ)</b><br><span data-i18n-html="guide.quick.2.dHtml">เลือกแหล่งข้อมูล (Europe PMC / OpenAlex / ทั้งสองแหล่ง) / วิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ</span></div></div>
-      <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.3.t">กดปุ่ม ▶ Run ทีม</b><br><span data-i18n-html="guide.quick.3.dHtml">ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.3.t">กดปุ่ม 🔍 ค้นหาเปเปอร์</b><br><span data-i18n-html="guide.quick.3.dHtml">ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย</span></div></div>
       <div class="step"><div class="n"></div><div class="t"><b data-i18n="guide.quick.4.t">อ่านผล + คัดกรอง + ดาวน์โหลด</b><br><span data-i18n-html="guide.quick.4.dHtml">กดปุ่มคัดกรองแต่ละเปเปอร์ (บันทึกอัตโนมัติ) แล้ว export เป็น CSV / RIS / PRISMA</span></div></div>
     </div>
   </section>
 
   <!-- SORT MODES -->
-  <section>
+  <section id="sort">
     <h2 data-i18n="guide.sort.h">🔀 โหมดการเรียงผลลัพธ์</h2>
     <div class="rows">
       <div class="row"><div class="ic" data-i18n="guide.sort.smart.ic">✨ อัจฉริยะ</div><div class="d" data-i18n-html="guide.sort.smart.dHtml">ตรงคีย์เวิร์ดเป็นหลัก + ดันเปเปอร์ปีล่าสุดขึ้นมา <small>(แนะนำ — ค่าเริ่มต้น)</small></div></div>
@@ -116,17 +137,17 @@
   </section>
 
   <!-- FLAGS -->
-  <section>
+  <section id="flags">
     <h2 data-i18n="guide.flags.h">🚩 ธงเตือนคุณภาพงาน</h2>
     <div class="rows">
-      <div class="row"><div class="ic"><span class="badge b-ret">⛔ RETRACTED</span></div><div class="d" data-i18n-html="guide.flags.ret.dHtml"><b>งานถูกถอน</b> — ห้ามอ้างอิง! (ระบบซ่อนให้อัตโนมัติ เปิดดูได้ในตัวกรอง)</div></div>
-      <div class="row"><div class="ic"><span class="badge b-pre">📄 preprint</span></div><div class="d" data-i18n-html="guide.flags.pre.dHtml">ยังไม่ผ่าน peer review — ใช้อย่างระวัง ยังไม่ถือว่าตรวจสอบแล้ว</div></div>
-      <div class="row"><div class="ic"><span class="badge b-rev">📚 review</span></div><div class="d" data-i18n-html="guide.flags.rev.dHtml">บทความรีวิว ไม่ใช่งานทดลองต้นฉบับ <small>(ตัดออกได้ในตัวกรอง)</small></div></div>
+      <div class="row"><div class="ic"><span class="badge b-ret" data-i18n="app.flag.ret">⛔ ถูกถอน (retracted)</span></div><div class="d" data-i18n-html="guide.flags.ret.dHtml"><b>งานถูกถอน</b> — ห้ามอ้างอิง! (ระบบซ่อนให้อัตโนมัติ เปิดดูได้ในตัวกรอง)</div></div>
+      <div class="row"><div class="ic"><span class="badge b-pre" data-i18n="app.flag.pre">⏳ preprint</span></div><div class="d" data-i18n-html="guide.flags.pre.dHtml">ยังไม่ผ่าน peer review — ใช้อย่างระวัง ยังไม่ถือว่าตรวจสอบแล้ว</div></div>
+      <div class="row"><div class="ic"><span class="badge b-rev" data-i18n="app.flag.rev">📚 review</span></div><div class="d" data-i18n-html="guide.flags.rev.dHtml">บทความรีวิว ไม่ใช่งานทดลองต้นฉบับ <small>(ตัดออกได้ในตัวกรอง)</small></div></div>
     </div>
   </section>
 
   <!-- META CHIPS -->
-  <section>
+  <section id="chips">
     <h2 data-i18n="guide.chips.h">🧪 ชิปข้อมูลสกัด (คอลัมน์ "สกัด")</h2>
     <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px" data-i18n="guide.chips.lead">ระบบดึงข้อมูลสาย wet-lab จากบทคัดย่ออัตโนมัติ แยกด้วยสี</p>
     <div class="rows">
@@ -137,7 +158,7 @@
   </section>
 
   <!-- SCREENING -->
-  <section>
+  <section id="screen">
     <h2 data-i18n="guide.screen.h">✅ ปุ่มคัดกรอง (คอลัมน์ "คัดกรอง")</h2>
     <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px" data-i18n="guide.screen.lead">กดเพื่อจัดสถานะแต่ละเปเปอร์ — บันทึกในเครื่องอัตโนมัติ เปิดใหม่ก็ยังอยู่</p>
     <div class="rows">
@@ -148,7 +169,7 @@
   </section>
 
   <!-- LINKS -->
-  <section>
+  <section id="links">
     <h2 data-i18n="guide.links.h">🔗 ลิงก์แหล่งข้อมูล (คอลัมน์ "ลิงก์")</h2>
     <div class="rows">
       <div class="row"><div class="ic">DOI↗</div><div class="d" data-i18n="guide.links.doi.d">ไปหน้าทางการของเปเปอร์ (สำนักพิมพ์)</div></div>
@@ -157,26 +178,26 @@
       <div class="row"><div class="ic" style="color:#c0392b">PDF↗</div><div class="d" data-i18n-html="guide.links.pdf.dHtml"><b>โหลด PDF ฉบับเต็มฟรี</b> — เฉพาะงาน open access</div></div>
       <div class="row"><div class="ic" style="color:#c0392b">PDF-OA↗</div><div class="d" data-i18n="guide.links.oapdf.d">PDF อ่านฟรีอีกแหล่ง ที่ OpenAlex หาเจอ (แสดงเมื่อไม่ซ้ำกับ PDF↗)</div></div>
       <div class="row"><div class="ic"><span class="badge" style="background:#f3effa;color:#6a4fa8">OpenAlex</span></div><div class="d" data-i18n="guide.links.src.d">บอกว่าเปเปอร์นี้เจอจากแหล่งไหน — ถ้าเจอทั้งสองแหล่ง ระบบรวมเป็นแถวเดียวแล้ว</div></div>
-      <div class="row"><div class="ic"><span class="badge" style="background:#e7f6ee;color:#2e9e5b">OA</span></div><div class="d" data-i18n="guide.links.oa.d">Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก</div></div>
+      <div class="row"><div class="ic"><span class="badge" style="background:#e7f6ee;color:#1f7a45">OA</span></div><div class="d" data-i18n="guide.links.oa.d">Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก</div></div>
     </div>
   </section>
 
   <!-- TEAM -->
-  <section>
+  <section id="team">
     <h2 data-i18n="guide.team.h">👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)</h2>
     <div class="rows">
-      <div class="row"><div class="ic" data-i18n="guide.team.scout.ic">🔍 สกาวต์</div><div class="d" data-i18n="guide.team.scout.d">ค้นหาเปเปอร์จาก Europe PMC + OpenAlex (หรือวาง DOI/PMID ดึงตรง)</div></div>
-      <div class="row"><div class="ic" data-i18n="guide.team.validator.ic">✅ วาลิดา</div><div class="d" data-i18n="guide.team.validator.d">รวมผลข้ามแหล่ง กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
-      <div class="row"><div class="ic" data-i18n="guide.team.analyst.ic">📊 แอนนา</div><div class="d" data-i18n="guide.team.analyst.d">สกัดเป็นตาราง + ดึงข้อมูล wet-lab</div></div>
-      <div class="row"><div class="ic" data-i18n="guide.team.checker.ic">⚖️ เชค</div><div class="d" data-i18n="guide.team.checker.d">จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน</div></div>
-      <div class="row"><div class="ic" data-i18n="guide.team.writer.ic">✍️ ไรเตอร์</div><div class="d" data-i18n="guide.team.writer.d">สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)</div></div>
-      <div class="row"><div class="ic" data-i18n="guide.team.translator.ic">🌐 ทรานส์</div><div class="d" data-i18n="guide.team.translator.d">แปลอังกฤษ→ไทย + สรุปว่าเปเปอร์ทำอะไร</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.scout.ic">🔍 นักค้นหา</div><div class="d" data-i18n="guide.team.scout.d">ค้นหาเปเปอร์จาก Europe PMC + OpenAlex (หรือวาง DOI/PMID ดึงตรง)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.validator.ic">✅ ผู้ตรวจสอบ</div><div class="d" data-i18n="guide.team.validator.d">รวมผลข้ามแหล่ง กันซ้ำ กรองคุณภาพ (retracted/review)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.analyst.ic">📊 นักสกัดข้อมูล</div><div class="d" data-i18n="guide.team.analyst.d">สกัดเป็นตาราง + ดึงข้อมูล wet-lab</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.checker.ic">⚖️ ผู้เช็กหลักฐาน</div><div class="d" data-i18n="guide.team.checker.d">จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.writer.ic">✍️ นักเขียนสรุป</div><div class="d" data-i18n="guide.team.writer.d">สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)</div></div>
+      <div class="row"><div class="ic" data-i18n="guide.team.translator.ic">🌐 นักแปล</div><div class="d" data-i18n="guide.team.translator.d">แปลอังกฤษ→ไทย + สรุปว่าเปเปอร์ทำอะไร</div></div>
     </div>
     <p style="font-size:.86rem;color:var(--muted);margin-top:10px" data-i18n-html="guide.team.moreHtml">ดูรายละเอียดตัวละครแต่ละคน + เครื่องมือจริงได้ที่ <a href="office.html">หน้าแนะนำทีม →</a></p>
   </section>
 
   <!-- EXPORT -->
-  <section>
+  <section id="export">
     <h2 data-i18n="guide.export.h">⬇️ ปุ่มดาวน์โหลด (Export)</h2>
     <div class="rows">
       <div class="row"><div class="ic">CSV</div><div class="d" data-i18n="guide.export.csv.d">ตารางเปเปอร์ — เปิดใน Excel</div></div>
@@ -188,7 +209,17 @@
   </section>
 
   <!-- TIPS -->
-  <section>
+  <section id="verify">
+    <h2 data-i18n="guide.verify.h">🔎 ตรวจว่าเปเปอร์มีจริงอย่างไร</h2>
+    <div class="steps">
+      <div class="step"><div class="n"></div><div class="t"><span data-i18n-html="guide.verify.1Html"><b>กดลิงก์ DOI↗ หรือ PubMed↗</b> ของเปเปอร์นั้น จะเปิดหน้าทางการของวารสารหรือ PubMed</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><span data-i18n-html="guide.verify.2Html"><b>เทียบชื่อเรื่อง ผู้เขียน และปี</b> กับที่เห็นในตาราง ต้องตรงกัน</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><span data-i18n-html="guide.verify.3Html"><b>สรุปและคำแปลมาจากบทคัดย่อจริง</b> ระบบไม่แต่งประโยคเอง แต่ควรอ่านต้นฉบับก่อนอ้างอิงทุกครั้ง</span></div></div>
+      <div class="step"><div class="n"></div><div class="t"><span data-i18n-html="guide.verify.4Html"><b>ดูธงเตือน</b> ถ้ามี ⛔ ถูกถอน ห้ามอ้างอิง ถ้าเป็น ⏳ preprint ยังไม่ผ่านการตรวจโดยผู้ทรงคุณวุฒิ</span></div></div>
+    </div>
+  </section>
+
+  <section id="tips">
     <h2 data-i18n="guide.tips.h">💡 เคล็ดลับ</h2>
     <div class="tip" data-i18n-html="guide.tips.1Html"><b>พิมพ์ภาษาอังกฤษ</b> — ฐานข้อมูลงานวิจัยเป็นอังกฤษเกือบทั้งหมด พิมพ์ไทยจะหาไม่ค่อยเจอ</div>
     <div class="tip" data-i18n-html="guide.tips.2Html"><b>เจอน้อยไป?</b> ตัดคำให้กว้างขึ้น เช่น <code>ANK3 renal cell carcinoma</code> → <code>ANK3 kidney cancer</code></div>
@@ -202,8 +233,19 @@
 </main>
   <footer data-i18n-html="guide.footerHtml">
     ข้อมูลจริงจาก Europe PMC, OpenAlex &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>
-    <span style="display:inline-block;margin-top:8px">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
+    <span style="display:inline-block;margin-top:8px">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026 · <a href="https://github.com/kraugelzz/research-ai-team/issues" target="_blank" rel="noopener">แจ้งปัญหา / ติดต่อ</a></span>
   </footer>
 </div>
+<script>
+function fillToc(){
+  document.querySelectorAll(".toc a[href^='#']").forEach(a=>{
+    const h = document.querySelector(a.getAttribute("href")+" h2");
+    if(h) a.textContent = h.textContent.trim();
+  });
+}
+fillToc();
+document.addEventListener("DOMContentLoaded", fillToc);
+document.addEventListener("langchange", fillToc);
+</script>
 </body>
 </html>

@@ -37,12 +37,13 @@
       /* ============== app.html : ส่วนหัว ============== */
       "app.docTitle": "ทีมวิจัย AI — เวอร์ชันทำงานจริง",
       "app.h1": "🔬 ทีมวิจัย AI — เวอร์ชันทำงานจริง",
-      "app.leadHtml": "พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + OpenAlex (เสริมด้วย Semantic Scholar) พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล",
+      "app.leadHtml": "<b>ค้นเปเปอร์จริง แปลไทย และสรุปให้ในหน้าเดียว</b><br><span class=\"lead-pts\">• ดึงจาก Europe PMC + OpenAlex พร้อมลิงก์ตรวจได้</span> <span class=\"lead-pts\">• ไม่กุอ้างอิง</span>",
 
       /* ============== app.html : คอนโซลค้นหา ============== */
-      "app.qPh": "เช่น: EGFR knockdown effects on MAPK signaling in triple-negative breast cancer",
+      "app.qPh": "เช่น: EGFR breast cancer",
       "app.qAria": "คำค้น คำถามวิจัย หรือ DOI/PMID",
-      "app.runBtn": "▶ Run ทีม",
+      "app.qTip": "💡 พิมพ์คำค้นภาษาอังกฤษได้ผลดีที่สุด หรือวาง DOI / PMID เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ",
+      "app.runBtn": "🔍 ค้นหาเปเปอร์",
       "app.sources": "แหล่งข้อมูล:",
       "app.sources.both": "ทั้งสองแหล่ง (แนะนำ)",
       "app.sortBy": "เรียงตาม:",
@@ -57,29 +58,44 @@
       "app.minYear": "ตั้งแต่ปี:",
       "app.minYearPh": "ทุกปี",
       "app.limit": "จำนวนเปเปอร์:",
-      "app.oaOnly": "เฉพาะ Open Access",
-      "app.s2": "เสริม TLDR",
+      "app.oaOnly": "เฉพาะ Open Access (อ่านฟรี)",
+      "app.s2": "เสริม TLDR (สรุป 1 บรรทัด)",
       "app.thai": "🌐 แปลไทย",
       "app.qualityFilters": "ตัวกรองคุณภาพ:",
+      "app.moreOpts": "⚙️ ตัวกรองเพิ่มเติม",
+      "app.sum.both": "ทั้งสองแหล่ง",
+      "app.sum.epmc": "Europe PMC",
+      "app.sum.openalex": "OpenAlex",
+      "app.sum.n": "{n} เปเปอร์",
+      "app.sum.thai": "แปลไทย",
+      "app.sum.s2": "TLDR",
       "app.hideRet": "⛔ ซ่อนงานที่ถูกถอน (retracted)",
       "app.noReview": "📄 เฉพาะงานทดลองต้นฉบับ (ตัด review)",
-      "app.noPre": "ตัด preprint ออก",
+      "app.noPre": "ตัด preprint (ยังไม่ผ่านการตรวจ)",
+      "app.terms.sum": "ⓘ ศัพท์เหล่านี้หมายถึงอะไร",
+      "app.terms.html": "<dl class=\"terms-list\"><dt>Europe PMC</dt><dd>ฐานข้อมูลชีวการแพทย์ (รวม PubMed)</dd><dt>OpenAlex</dt><dd>ฐานข้อมูลงานวิจัยทุกสาขา</dd><dt>ทั้งสองแหล่ง</dt><dd>ค้นทั้งสองที่แล้วรวมผล ไม่ซ้ำกัน</dd><dt>TLDR</dt><dd>สรุปหนึ่งบรรทัดจาก Semantic Scholar</dd><dt>Open Access</dt><dd>อ่านฉบับเต็มได้ฟรี</dd><dt>retracted</dt><dd>งานที่ถูกวารสารถอนเพราะมีปัญหา</dd><dt>review</dt><dd>บทความรวบรวมงานอื่น ไม่ใช่งานทดลองเอง</dd><dt>preprint</dt><dd>งานที่ยังไม่ผ่านการตรวจโดยผู้ทรงคุณวุฒิ</dd></dl>",
       "app.hint": "💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · วาง DOI หรือ PMID เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ ได้ · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ",
+      "app.trustHtml": "✅ ทุกเปเปอร์มาจากฐานข้อมูลจริง มีลิงก์ DOI/PMID ให้กดตรวจได้ · ระบบไม่สร้างอ้างอิงขึ้นมาเอง · <a href=\"guide.html#verify\">วิธีตรวจ →</a>",
+      "app.sample.tag": "ตัวอย่างผลลัพธ์",
+      "app.sample.note": "หน้าตาของผลแต่ละชิ้นหลังค้น — เปเปอร์จริง กดลิงก์ตรวจได้",
+      "app.sample.th": "เฟอร์รอปโทซิส: การตายของเซลล์แบบที่อาศัยเหล็กและไม่ใช่อะพอพโทซิส",
+      "app.sample.gist": "รายงานการตายของเซลล์รูปแบบใหม่ที่ขึ้นกับเหล็กภายในเซลล์ แยกจากอะพอพโทซิส เนโครซิส และออโตฟาจี และพบสาร ferrostatin-1 ที่ยับยั้งได้",
+      "app.sample.cites": "อ้างอิง 15,000+ ครั้ง",
 
       /* ============== app.html : ออฟฟิศ / เอเจนต์ ============== */
       "app.stageTitle": "🏢 ทีมกำลังทำงานในออฟฟิศ",
-      "app.agent.scout.nm": "สกาวต์",
-      "app.agent.scout.role": "ค้นหา",
-      "app.agent.validator.nm": "วาลิดา",
-      "app.agent.validator.role": "ตรวจสอบ",
-      "app.agent.analyst.nm": "แอนนา",
-      "app.agent.analyst.role": "สกัดข้อมูล",
-      "app.agent.checker.nm": "เชค",
-      "app.agent.checker.role": "เช็กหลักฐาน",
-      "app.agent.writer.nm": "ไรเตอร์",
-      "app.agent.writer.role": "เขียนสรุป",
-      "app.agent.translator.nm": "ทรานส์",
-      "app.agent.translator.role": "แปลไทย",
+      "app.agent.scout.nm": "นักค้นหา",
+      "app.agent.scout.role": "Scout",
+      "app.agent.validator.nm": "ผู้ตรวจสอบ",
+      "app.agent.validator.role": "Validator",
+      "app.agent.analyst.nm": "นักสกัดข้อมูล",
+      "app.agent.analyst.role": "Analyst",
+      "app.agent.checker.nm": "ผู้เช็กหลักฐาน",
+      "app.agent.checker.role": "Checker",
+      "app.agent.writer.nm": "นักเขียนสรุป",
+      "app.agent.writer.role": "Writer",
+      "app.agent.translator.nm": "นักแปล",
+      "app.agent.translator.role": "Translator",
       "app.stepNo": "ขั้นที่ {n}",
 
       /* สถานะของเอเจนต์ */
@@ -101,13 +117,13 @@
       "app.st.translator.off": "ปิดการแปล",
 
       /* ============== app.html : หัวข้อผลลัพธ์ ============== */
-      "app.sec.scout.hHtml": "🔍 สกาวต์ + ✅ วาลิดา <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— ค้นหา &amp; ตรวจสอบ</span>",
+      "app.sec.scout.hHtml": "🔍 นักค้นหา + ✅ ผู้ตรวจสอบ <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— ค้นหา &amp; ตรวจสอบ</span>",
       "app.sec.log.h": "🧾 บันทึกการค้นหา (ทำซ้ำได้) + คัดกรอง PRISMA",
       "app.sec.log.sub": "คัดลอกไปใส่ Methods/Supplementary ได้ · สถานะคัดกรองถูกบันทึกในเครื่องอัตโนมัติ (localStorage)",
-      "app.sec.analyst.hHtml": "📊 แอนนา <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— ตารางสกัดข้อมูล (คลิกหัวคอลัมน์เพื่อเรียง)</span>",
+      "app.sec.analyst.hHtml": "📊 นักสกัดข้อมูล <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— ตารางสกัดข้อมูล (คลิกหัวคอลัมน์เพื่อเรียง)</span>",
       "app.sec.analyst.sub": "แต่ละแถว = เปเปอร์จริงหนึ่งชิ้น · 🧪 = ข้อมูลสกัด (cell line / วิธี / สิ่งมีชีวิต) · ✅ = คัดกรอง include/exclude/maybe",
-      "app.sec.writer.hHtml": "✍️ ไรเตอร์ <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— สังเคราะห์เชิงสกัด (ทุกประโยคมาจากบทคัดย่อจริง)</span>",
-      "app.sec.writer.sub": "⚖️ เชค: เรียงตามจำนวนอ้างอิง + ธีมที่พบบ่อย — สรุปนี้ดึงประโยคจากบทคัดย่อจริงเท่านั้น จึงไม่มีการกุ ควรเปิดอ่านต้นฉบับก่อนอ้างอิงจริงเสมอ",
+      "app.sec.writer.hHtml": "✍️ นักเขียนสรุป <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— สังเคราะห์เชิงสกัด (ทุกประโยคมาจากบทคัดย่อจริง)</span>",
+      "app.sec.writer.sub": "⚖️ ผู้เช็กหลักฐาน: เรียงตามจำนวนอ้างอิง + ธีมที่พบบ่อย — สรุปนี้ดึงประโยคจากบทคัดย่อจริงเท่านั้น จึงไม่มีการกุ ควรเปิดอ่านต้นฉบับก่อนอ้างอิงจริงเสมอ",
 
       /* ปุ่ม export */
       "app.btn.prisma": "⬇ PRISMA / search log",
@@ -138,7 +154,8 @@
 
       /* ตาราง : เนื้อหาในเซลล์ */
       "app.tbl.noTitle": "(ไม่มีชื่อ)",
-      "app.tbl.needThai": "— (เปิด \"แปลไทย\" แล้วกด Run)",
+      "app.tbl.why": "ตรงคำค้น: {kw}",
+      "app.tbl.needThai": "— (ติ๊ก \"แปลไทย\" ในตัวกรอง แล้วค้นใหม่)",
       "app.tbl.fullAbs": "🌐 บทคัดย่อไทยเต็ม",
       "app.tbl.fullAbsToggle": "🌐 ซ่อน/แสดงบทคัดย่อไทย",
       "app.tbl.translating": "กำลังแปล…",
@@ -154,6 +171,9 @@
       "app.flag.retTitle": "งานนี้ถูกถอน (retracted) — อย่าอ้างอิง",
       "app.flag.preTitle": "preprint ยังไม่ผ่าน peer review",
       "app.flag.revTitle": "เป็นบทความรีวิว ไม่ใช่งานทดลองต้นฉบับ",
+      "app.flag.ret": "⛔ ถูกถอน (retracted)",
+      "app.flag.pre": "⏳ preprint",
+      "app.flag.rev": "📚 review",
 
       /* PRISMA */
       "app.prisma.inc": "✓ รับเข้า {n}",
@@ -174,7 +194,7 @@
       "app.log.shown": "แสดง (ตามจำนวนที่ตั้ง):",
       "app.log.failed": "{list} ไม่ตอบ",
       "app.log.none": "—",
-      "app.filter.hideRet": "ซ่อน retracted",
+      "app.filter.hideRet": "ซ่อนงานที่ถูกถอน",
       "app.filter.noReview": "ตัด review",
       "app.filter.noPre": "ตัด preprint",
       "app.filter.oa": "เฉพาะ OA",
@@ -190,12 +210,12 @@
       "app.synth.themeItem": "พบใน {n} เปเปอร์",
       "app.scoutSub": "ค้นด้วย: “{q}” — จาก {db}{s2}{warn}",
       "app.scoutSubId": "ค้นด้วยรหัส: {q} — จาก {db}{s2}{warn}",
-      "app.scoutSub.warnOpenAlex": " · ⚠️ OpenAlex ไม่ตอบ ใช้ผลจาก Europe PMC",
-      "app.scoutSub.warnEPMC": " · ⚠️ Europe PMC ไม่ตอบ ใช้ผลจาก OpenAlex",
+      "app.scoutSub.warnOpenAlex": " · ℹ️ รอบนี้ใช้ผลจาก Europe PMC อย่างเดียว (OpenAlex ไม่ว่าง) — ผลยังใช้ได้ ลองใหม่ภายหลังถ้าอยากได้ครบสองแหล่ง",
+      "app.scoutSub.warnEPMC": " · ℹ️ รอบนี้ใช้ผลจาก OpenAlex อย่างเดียว (Europe PMC ไม่ว่าง) — ผลยังใช้ได้ ลองใหม่ภายหลังถ้าอยากได้ครบสองแหล่ง",
       "app.scoutSub.s2": " + Semantic Scholar (TLDR)",
 
       /* ข้อความแจ้งเตือน */
-      "app.err.needQuery": "พิมพ์คำค้น หรือวาง DOI/PMID ก่อนกด Run",
+      "app.err.needQuery": "พิมพ์คำค้น หรือวาง DOI/PMID ก่อนกด \"ค้นหาเปเปอร์\"",
       "app.err.noPapers": "ไม่พบเปเปอร์ — ลองปรับคำค้น หรือลดปีกรอง/ปิด Open Access",
       "app.err.allFiltered": "ผลถูกกรองออกหมด — ลองปิดตัวกรองบางตัว",
       "app.err.generic": "เกิดข้อผิดพลาด",
@@ -205,7 +225,7 @@
       "app.err.allSources": "ติดต่อแหล่งข้อมูลไม่ได้ — {list}",
       "app.err.idNotFound": "ไม่พบเปเปอร์จากรหัสนี้ — ตรวจรหัสอีกครั้ง หรือลองค้นด้วยคำ",
       "app.err.translate": "⚠️ แปลไม่สำเร็จ (ต่ออินเทอร์เน็ตแล้วลองใหม่)",
-      "app.alert.noRun": "ยังไม่มีข้อมูล — กด Run ก่อน",
+      "app.alert.noRun": "ยังไม่มีข้อมูล — กด \"ค้นหาเปเปอร์\" ก่อน",
       "app.confirm.clearScreen": "ล้างสถานะคัดกรองทั้งหมดที่บันทึกไว้? (ย้อนกลับไม่ได้)",
 
       /* export markdown */
@@ -213,7 +233,7 @@
       "app.md.topCited": "Top-cited papers (พร้อมสรุปไทย)",
 
       /* footer */
-      "app.footerHtml": "ข้อมูลจริงจาก <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a>, <a href=\"https://openalex.org\" target=\"_blank\">OpenAlex</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>",
+      "app.footerHtml": "ข้อมูลจริงจาก <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a>, <a href=\"https://openalex.org\" target=\"_blank\">OpenAlex</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026 · <a href=\"https://github.com/kraugelzz/research-ai-team/issues\" target=\"_blank\" rel=\"noopener\">แจ้งปัญหา / ติดต่อ</a></span>",
 
       /* ============== office.html ============== */
       "office.docTitle": "ทีมวิจัย AI — The Research Office",
@@ -222,45 +242,46 @@
       "office.subHtml": "เครื่องมือ AI แต่ละตัวคือ \"พนักงานออฟฟิศ\" ที่มีหน้าที่ต่างกัน — ทำงานส่งต่อกันเป็นสายพานงานวิจัย ตั้งแต่ค้นหา → ตรวจสอบ → สกัดข้อมูล → เช็กหลักฐาน → เขียนสรุป → แปลไทย <br>คลิกที่ตัวละครแต่ละคนเพื่อดูรายละเอียดเครื่องมือจริง",
       "office.pipeline.h": "🔄 สายพานงานวิจัย (Research Pipeline)",
       "office.pipeline.lead": "แต่ละคนส่งงานต่อให้คนถัดไป — ผลลัพธ์สุดท้ายคือรีวิววรรณกรรมที่อ้างอิงได้จริง",
+      "office.goSearch": "🔍 ไปหน้าค้นหาเปเปอร์",
       "office.stepPill": "ขั้นที่ {n}",
-      "office.footerHtml": "ราคาตรวจสอบ ณ ก.ค. 2026 — โปรดยืนยันที่เว็บไซต์จริงก่อนสมัคร · หลักการสำคัญ: ให้ AI <b>ค้นและจัดระเบียบ</b> แต่ทุกข้อสรุปต้องกลับไปเปิดอ่านแหล่งอ้างอิงจริงเสมอ<br>\n    ลองใช้งานจริงได้ที่ <a href=\"app.html\">app.html</a>",
+      "office.footerHtml": "ราคาตรวจสอบ ณ ก.ค. 2026 — โปรดยืนยันที่เว็บไซต์จริงก่อนสมัคร · หลักการสำคัญ: ให้ AI <b>ค้นและจัดระเบียบ</b> แต่ทุกข้อสรุปต้องกลับไปเปิดอ่านแหล่งอ้างอิงจริงเสมอ<br>\n    ลองใช้งานจริงได้ที่ <a href=\"app.html\">app.html</a> · พัฒนาโดย <b>Apiwit Prakat</b> · <a href=\"https://github.com/kraugelzz/research-ai-team/issues\" target=\"_blank\" rel=\"noopener\">แจ้งปัญหา / ติดต่อ</a>",
 
-      "office.t.scout.name": "สกาวต์ (Scout)",
+      "office.t.scout.name": "นักค้นหา (Scout)",
       "office.t.scout.role": "Retriever · นักค้นหา",
       "office.t.scout.bubble": "เดี๋ยวไปกวาดหาเปเปอร์ที่เกี่ยวข้องมาให้หมดเลย!",
       "office.t.scout.job": "ออกไปสำรวจงานวิจัยทั้งโลกแบบ agentic — ค้นซ้ำ ปรับคำค้นเอง จนได้ครบ",
       "office.t.scout.desc": "รับผิดชอบการค้นหาเชิงลึกแบบอัตโนมัติ ครอบคลุมทั้งงานตีพิมพ์และ preprint เหมาะกับคำถามเชิงกลไกที่ต้องการความครบถ้วนสูง",
       "office.t.scout.label": "ค้นหา",
 
-      "office.t.validator.name": "วาลิดา (Valida)",
+      "office.t.validator.name": "ผู้ตรวจสอบ (Validator)",
       "office.t.validator.role": "Validator · ผู้ตรวจสอบ",
       "office.t.validator.bubble": "เปเปอร์นี้มีอยู่จริงไหม? ขอเช็กใน PubMed ก่อนนะ",
       "office.t.validator.job": "ด่านกันข้อมูลมั่ว — ยืนยันว่าเปเปอร์มีอยู่จริงและดึง metadata ที่สะอาด",
       "office.t.validator.desc": "จุดตรวจกันการ hallucination ที่สำคัญที่สุด ยืนยันการมีอยู่ของงานวิจัยจากฐานข้อมูลที่เชื่อถือได้ พร้อม metadata และ MeSH",
       "office.t.validator.label": "ตรวจสอบ",
 
-      "office.t.analyst.name": "แอนนา (Anna)",
+      "office.t.analyst.name": "นักสกัดข้อมูล (Analyst)",
       "office.t.analyst.role": "Analyst · นักสกัดข้อมูล",
       "office.t.analyst.bubble": "จัดเป็นตารางให้เลย — cell line, วิธี knockdown, ผลลัพธ์",
       "office.t.analyst.job": "อ่านทุกเปเปอร์แล้วสกัดออกมาเป็นตาราง หนึ่งแถวต่อหนึ่งงาน แต่ละช่องลิงก์กลับแหล่ง",
       "office.t.analyst.desc": "หัวใจของการรีวิวเชิงระบบ สร้างตารางสกัดข้อมูลตามคอลัมน์สาย wet-lab: cell line, วิธี knockdown (siRNA/shRNA/CRISPR), ประสิทธิภาพ, readout, ข้อค้นพบ, ข้อจำกัด",
       "office.t.analyst.label": "สกัดข้อมูล",
 
-      "office.t.checker.name": "เชค (Check)",
+      "office.t.checker.name": "ผู้เช็กหลักฐาน (Checker)",
       "office.t.checker.role": "Fact-Checker · ผู้ตรวจหลักฐาน",
       "office.t.checker.bubble": "งานนี้มีคนทำซ้ำได้ไหม? หรือมีคนแย้ง?",
       "office.t.checker.job": "ดูทิศทางโดยรวมของหลักฐาน และเช็กว่าผลถูกยืนยันหรือถูกโต้แย้งภายหลัง",
       "office.t.checker.desc": "ใช้ Consensus Meter สรุปทิศทางของหลักฐาน และ Smart Citations ของ scite เพื่อดูว่างานสำคัญถูก support หรือ contrast ก่อนจะเอาไปวางแผนการทดลอง",
       "office.t.checker.label": "เช็กหลักฐาน",
 
-      "office.t.writer.name": "ไรเตอร์ (Writer)",
+      "office.t.writer.name": "นักเขียนสรุป (Writer)",
       "office.t.writer.role": "Synthesizer · นักเขียนสรุป",
       "office.t.writer.bubble": "อัปโหลด PDF มา เดี๋ยวเขียนสรุปพร้อมอ้างอิงทุกประโยค",
       "office.t.writer.job": "รวมทุกอย่างเป็นเรื่องเล่าเดียว โดยตอบจากไฟล์ที่อัปโหลดเท่านั้น — อ้างอิงระดับประโยค",
       "office.t.writer.desc": "ขั้นสังเคราะห์สุดท้าย อัปโหลด PDF ~10–20 ไฟล์ที่คัดแล้ว ระบบตอบจากแหล่งเหล่านั้นเท่านั้น จึงแทบไม่มีการกุอ้างอิง",
       "office.t.writer.label": "เขียนสรุป",
 
-      "office.t.translator.name": "ทรานส์ (Trans)",
+      "office.t.translator.name": "นักแปล (Translator)",
       "office.t.translator.role": "Translator · นักแปลไทย",
       "office.t.translator.bubble": "เดี๋ยวแปลอังกฤษเป็นไทยให้ครบทุกตัวอักษร พร้อมสรุปว่าเปเปอร์นี้ทำอะไร!",
       "office.t.translator.job": "แปลผลลัพธ์ทั้งหมดเป็นไทยแบบไม่ตกหล่น และสรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร",
@@ -271,13 +292,15 @@
       "guide.docTitle": "คู่มือใช้งาน — ทีมวิจัย AI",
       "guide.h1": "📖 คู่มือใช้งานเบื้องต้น",
       "guide.sub": "วิธีใช้งาน + ความหมายของไอคอนทุกตัวในเว็บ",
+      "guide.toc.h": "สารบัญ",
+      "guide.toc.aria": "สารบัญ",
 
       "guide.quick.h": "🚀 เริ่มใช้งานใน 4 ขั้น",
       "guide.quick.1.t": "พิมพ์คำค้นเป็นภาษาอังกฤษ",
       "guide.quick.1.dHtml": "เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง ลากไฟล์ .txt มาวาง หรือ<b>วาง DOI / PMID</b> เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ",
       "guide.quick.2.t": "ตั้งค่า (ถ้าต้องการ)",
       "guide.quick.2.dHtml": "เลือกแหล่งข้อมูล (Europe PMC / OpenAlex / ทั้งสองแหล่ง) / วิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ",
-      "guide.quick.3.t": "กดปุ่ม ▶ Run ทีม",
+      "guide.quick.3.t": "กดปุ่ม 🔍 ค้นหาเปเปอร์",
       "guide.quick.3.dHtml": "ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย",
       "guide.quick.4.t": "อ่านผล + คัดกรอง + ดาวน์โหลด",
       "guide.quick.4.dHtml": "กดปุ่มคัดกรองแต่ละเปเปอร์ (บันทึกอัตโนมัติ) แล้ว export เป็น CSV / RIS / PRISMA",
@@ -319,17 +342,17 @@
       "guide.links.oa.d": "Open Access — อ่านฉบับเต็มได้ฟรี ไม่ติดค่าสมาชิก",
 
       "guide.team.h": "👥 ทีมงาน 6 คน (แต่ละขั้นของสายพาน)",
-      "guide.team.scout.ic": "🔍 สกาวต์",
+      "guide.team.scout.ic": "🔍 นักค้นหา",
       "guide.team.scout.d": "ค้นหาเปเปอร์จาก Europe PMC + OpenAlex (หรือวาง DOI/PMID ดึงตรง)",
-      "guide.team.validator.ic": "✅ วาลิดา",
+      "guide.team.validator.ic": "✅ ผู้ตรวจสอบ",
       "guide.team.validator.d": "รวมผลข้ามแหล่ง กันซ้ำ กรองคุณภาพ (retracted/review)",
-      "guide.team.analyst.ic": "📊 แอนนา",
+      "guide.team.analyst.ic": "📊 นักสกัดข้อมูล",
       "guide.team.analyst.d": "สกัดเป็นตาราง + ดึงข้อมูล wet-lab",
-      "guide.team.checker.ic": "⚖️ เชค",
+      "guide.team.checker.ic": "⚖️ ผู้เช็กหลักฐาน",
       "guide.team.checker.d": "จัดลำดับหลักฐาน + หาผลที่ขัดแย้งกัน",
-      "guide.team.writer.ic": "✍️ ไรเตอร์",
+      "guide.team.writer.ic": "✍️ นักเขียนสรุป",
       "guide.team.writer.d": "สังเคราะห์สรุปจากบทคัดย่อจริง (ไม่กุ)",
-      "guide.team.translator.ic": "🌐 ทรานส์",
+      "guide.team.translator.ic": "🌐 นักแปล",
       "guide.team.translator.d": "แปลอังกฤษ→ไทย + สรุปว่าเปเปอร์ทำอะไร",
       "guide.team.moreHtml": "ดูรายละเอียดตัวละครแต่ละคน + เครื่องมือจริงได้ที่ <a href=\"office.html\">หน้าแนะนำทีม →</a>",
 
@@ -343,6 +366,16 @@
       "guide.export.screen.d": "CSV รวมสถานะ include/exclude + เหตุผล + ข้อมูลสกัด",
 
       "guide.tips.h": "💡 เคล็ดลับ",
+
+      "guide.verify.h": "🔎 ตรวจว่าเปเปอร์มีจริงอย่างไร",
+
+      "guide.verify.1Html": "<b>กดลิงก์ DOI↗ หรือ PubMed↗</b> ของเปเปอร์นั้น จะเปิดหน้าทางการของวารสารหรือ PubMed",
+
+      "guide.verify.2Html": "<b>เทียบชื่อเรื่อง ผู้เขียน และปี</b> กับที่เห็นในตาราง ต้องตรงกัน",
+
+      "guide.verify.3Html": "<b>สรุปและคำแปลมาจากบทคัดย่อจริง</b> ระบบไม่แต่งประโยคเอง แต่ควรอ่านต้นฉบับก่อนอ้างอิงทุกครั้ง",
+
+      "guide.verify.4Html": "<b>ดูธงเตือน</b> ถ้ามี ⛔ ถูกถอน ห้ามอ้างอิง ถ้าเป็น ⏳ preprint ยังไม่ผ่านการตรวจโดยผู้ทรงคุณวุฒิ",
       "guide.tips.1Html": "<b>พิมพ์ภาษาอังกฤษ</b> — ฐานข้อมูลงานวิจัยเป็นอังกฤษเกือบทั้งหมด พิมพ์ไทยจะหาไม่ค่อยเจอ",
       "guide.tips.2Html": "<b>เจอน้อยไป?</b> ตัดคำให้กว้างขึ้น เช่น <code>ANK3 renal cell carcinoma</code> → <code>ANK3 kidney cancer</code>",
       "guide.tips.3Html": "<b>อยากได้ทั้งใหม่ทั้งตรง</b> ใช้โหมด \"✨ อัจฉริยะ\" + ใส่ช่อง \"ตั้งแต่ปี 2023\"",
@@ -350,7 +383,7 @@
       "guide.tips.5Html": "<b>สรุปเป็นแบบสกัด</b> — ทุกประโยคดึงจากบทคัดย่อจริง ไม่มีการกุ แต่ควรเปิดอ่านต้นฉบับก่อนอ้างอิงเสมอ",
 
       "guide.cta": "🔬 เริ่มใช้งานเลย →",
-      "guide.footerHtml": "ข้อมูลจริงจาก Europe PMC, OpenAlex &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:8px\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>"
+      "guide.footerHtml": "ข้อมูลจริงจาก Europe PMC, OpenAlex &amp; Semantic Scholar · เครื่องมือช่วยค้นและจัดระเบียบ การตัดสินทางวิทยาศาสตร์ยังต้องอ่านต้นฉบับเอง<br>\n    <span style=\"display:inline-block;margin-top:8px\">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026 · <a href=\"https://github.com/kraugelzz/research-ai-team/issues\" target=\"_blank\" rel=\"noopener\">แจ้งปัญหา / ติดต่อ</a></span>"
     },
 
     /* =====================================================
@@ -371,12 +404,13 @@
       /* ============== app.html : header ============== */
       "app.docTitle": "AI Research Team — working build",
       "app.h1": "🔬 AI Research Team — working build",
-      "app.leadHtml": "Type a research question (English works best) or <b>drop a .txt file</b>, then hit Run — six agents work as a pipeline, pulling real papers from Europe PMC + OpenAlex (plus Semantic Scholar) with genuine links and citation counts, then <b>translating to Thai + summarizing what each paper actually did</b>. Nothing is invented.",
+      "app.leadHtml": "<b>Find real papers, translated to Thai and summarized, on one page</b><br><span class=\"lead-pts\">• From Europe PMC + OpenAlex, with links you can check</span> <span class=\"lead-pts\">• No invented citations</span>",
 
       /* ============== app.html : search console ============== */
-      "app.qPh": "e.g. EGFR knockdown effects on MAPK signaling in triple-negative breast cancer",
+      "app.qPh": "e.g. EGFR breast cancer",
       "app.qAria": "Search terms, research question, or DOI/PMID",
-      "app.runBtn": "▶ Run the team",
+      "app.qTip": "💡 English search terms work best — or paste a DOI / PMID to fetch that exact paper",
+      "app.runBtn": "🔍 Find papers",
       "app.sources": "Sources:",
       "app.sources.both": "Both (recommended)",
       "app.sortBy": "Sort by:",
@@ -391,28 +425,43 @@
       "app.minYear": "From year:",
       "app.minYearPh": "any",
       "app.limit": "Papers:",
-      "app.oaOnly": "Open Access only",
-      "app.s2": "Add TLDR",
+      "app.oaOnly": "Open Access only (free to read)",
+      "app.s2": "Add TLDR (one-line summary)",
       "app.thai": "🌐 Thai translation",
       "app.qualityFilters": "Quality filters:",
+      "app.moreOpts": "⚙️ More filters",
+      "app.sum.both": "both sources",
+      "app.sum.epmc": "Europe PMC",
+      "app.sum.openalex": "OpenAlex",
+      "app.sum.n": "{n} papers",
+      "app.sum.thai": "Thai translation",
+      "app.sum.s2": "TLDR",
       "app.hideRet": "⛔ Hide retracted work",
       "app.noReview": "📄 Primary research only (drop reviews)",
-      "app.noPre": "Drop preprints",
+      "app.noPre": "Drop preprints (not yet peer reviewed)",
+      "app.terms.sum": "ⓘ What do these terms mean?",
+      "app.terms.html": "<dl class=\"terms-list\"><dt>Europe PMC</dt><dd>Biomedical database (includes PubMed)</dd><dt>OpenAlex</dt><dd>Research database covering every field</dd><dt>Both</dt><dd>Searches both and merges the results, no duplicates</dd><dt>TLDR</dt><dd>One-line summary from Semantic Scholar</dd><dt>Open Access</dt><dd>Full text is free to read</dd><dt>retracted</dt><dd>Withdrawn by the journal because of a problem</dd><dt>review</dt><dd>Summarizes other studies rather than reporting new experiments</dd><dt>preprint</dt><dd>Not yet peer reviewed</dd></dl>",
       "app.hint": "💡 Drop a .txt file (a question or a keyword list) straight into the box above · paste a DOI or PMID to fetch that exact paper · everything runs in your browser — nothing leaves it except calls to public research APIs",
+      "app.trustHtml": "✅ Every paper comes from a real database, with a DOI/PMID link you can check · the tool never makes up a citation · <a href=\"guide.html#verify\">How to check →</a>",
+      "app.sample.tag": "Example result",
+      "app.sample.note": "What each result looks like after a search — a real paper, links you can check",
+      "app.sample.th": "(the Thai translation of the title appears here)",
+      "app.sample.gist": "Describes a new iron-dependent form of cell death, distinct from apoptosis, necrosis and autophagy, and identifies ferrostatin-1 as an inhibitor",
+      "app.sample.cites": "15,000+ citations",
 
       /* ============== app.html : office / agents ============== */
       "app.stageTitle": "🏢 The team at work",
       "app.agent.scout.nm": "Scout",
       "app.agent.scout.role": "search",
-      "app.agent.validator.nm": "Valida",
+      "app.agent.validator.nm": "Validator",
       "app.agent.validator.role": "verify",
-      "app.agent.analyst.nm": "Anna",
+      "app.agent.analyst.nm": "Analyst",
       "app.agent.analyst.role": "extract",
-      "app.agent.checker.nm": "Check",
+      "app.agent.checker.nm": "Checker",
       "app.agent.checker.role": "weigh evidence",
       "app.agent.writer.nm": "Writer",
       "app.agent.writer.role": "synthesize",
-      "app.agent.translator.nm": "Trans",
+      "app.agent.translator.nm": "Translator",
       "app.agent.translator.role": "translate",
       "app.stepNo": "Step {n}",
 
@@ -435,13 +484,13 @@
       "app.st.translator.off": "Translation off",
 
       /* ============== app.html : result sections ============== */
-      "app.sec.scout.hHtml": "🔍 Scout + ✅ Valida <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— search &amp; verify</span>",
+      "app.sec.scout.hHtml": "🔍 Scout + ✅ Validator <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— search &amp; verify</span>",
       "app.sec.log.h": "🧾 Search log (reproducible) + PRISMA screening",
       "app.sec.log.sub": "Paste it into your Methods/Supplementary · screening status is saved on this device automatically (localStorage)",
-      "app.sec.analyst.hHtml": "📊 Anna <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— extraction table (click a column header to sort)</span>",
+      "app.sec.analyst.hHtml": "📊 Analyst <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— extraction table (click a column header to sort)</span>",
       "app.sec.analyst.sub": "Each row = one real paper · 🧪 = extracted data (cell line / method / organism) · ✅ = include/exclude/maybe screening",
       "app.sec.writer.hHtml": "✍️ Writer <span style=\"font-size:.8rem;color:var(--muted);font-weight:400\">— extractive synthesis (every sentence comes from a real abstract)</span>",
-      "app.sec.writer.sub": "⚖️ Check: ranked by citation count + recurring themes — this summary only lifts sentences from real abstracts, so nothing is invented; always open the original before you cite it",
+      "app.sec.writer.sub": "⚖️ Checker: ranked by citation count + recurring themes — this summary only lifts sentences from real abstracts, so nothing is invented; always open the original before you cite it",
 
       /* export buttons */
       "app.btn.prisma": "⬇ PRISMA / search log",
@@ -472,7 +521,8 @@
 
       /* table cells */
       "app.tbl.noTitle": "(untitled)",
-      "app.tbl.needThai": "— (tick \"Thai translation\" and press Run)",
+      "app.tbl.why": "Matches: {kw}",
+      "app.tbl.needThai": "— (tick \"Thai translation\" in the filters and search again)",
       "app.tbl.fullAbs": "🌐 Full Thai abstract",
       "app.tbl.fullAbsToggle": "🌐 Show/hide Thai abstract",
       "app.tbl.translating": "Translating…",
@@ -488,6 +538,9 @@
       "app.flag.retTitle": "This work has been retracted — do not cite it",
       "app.flag.preTitle": "Preprint — not yet peer reviewed",
       "app.flag.revTitle": "A review article, not primary research",
+      "app.flag.ret": "⛔ RETRACTED",
+      "app.flag.pre": "⏳ preprint",
+      "app.flag.rev": "📚 review",
 
       /* PRISMA */
       "app.prisma.inc": "✓ Included {n}",
@@ -524,12 +577,12 @@
       "app.synth.themeItem": "in {n} papers",
       "app.scoutSub": "Searched for: “{q}” — via {db}{s2}{warn}",
       "app.scoutSubId": "Looked up ID: {q} — via {db}{s2}{warn}",
-      "app.scoutSub.warnOpenAlex": " · ⚠️ OpenAlex didn't respond, showing Europe PMC results",
-      "app.scoutSub.warnEPMC": " · ⚠️ Europe PMC didn't respond, showing OpenAlex results",
+      "app.scoutSub.warnOpenAlex": " · ℹ️ This search used Europe PMC only (OpenAlex was busy) — the results are fine; try again later for both sources",
+      "app.scoutSub.warnEPMC": " · ℹ️ This search used OpenAlex only (Europe PMC was busy) — the results are fine; try again later for both sources",
       "app.scoutSub.s2": " + Semantic Scholar (TLDR)",
 
       /* messages */
-      "app.err.needQuery": "Type a search, or paste a DOI/PMID, before pressing Run",
+      "app.err.needQuery": "Type a search, or paste a DOI/PMID, then press \"Find papers\"",
       "app.err.noPapers": "No papers found — try different terms, a looser year filter, or turn off Open Access",
       "app.err.allFiltered": "Everything was filtered out — try switching some filters off",
       "app.err.generic": "Something went wrong",
@@ -539,7 +592,7 @@
       "app.err.allSources": "Couldn't reach any source — {list}",
       "app.err.idNotFound": "No paper found for this ID — check it, or search with words instead",
       "app.err.translate": "⚠️ Translation failed (check your connection and retry)",
-      "app.alert.noRun": "Nothing to export yet — press Run first",
+      "app.alert.noRun": "Nothing to export yet — press \"Find papers\" first",
       "app.confirm.clearScreen": "Clear every saved screening status? (this cannot be undone)",
 
       /* markdown export */
@@ -547,7 +600,7 @@
       "app.md.topCited": "Top-cited papers (with Thai summary)",
 
       /* footer */
-      "app.footerHtml": "Real data from <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a>, <a href=\"https://openalex.org\" target=\"_blank\">OpenAlex</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · this tool <b>finds and organizes</b> — the scientific judgement still means reading the originals yourself<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026</span>",
+      "app.footerHtml": "Real data from <a href=\"https://europepmc.org\" target=\"_blank\">Europe PMC</a>, <a href=\"https://openalex.org\" target=\"_blank\">OpenAlex</a> &amp; <a href=\"https://www.semanticscholar.org\" target=\"_blank\">Semantic Scholar</a> · this tool <b>finds and organizes</b> — the scientific judgement still means reading the originals yourself<br>\n    <span style=\"display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026 · <a href=\"https://github.com/kraugelzz/research-ai-team/issues\" target=\"_blank\" rel=\"noopener\">Report a problem / contact</a></span>",
 
       /* ============== office.html ============== */
       "office.docTitle": "AI Research Team — The Research Office",
@@ -556,8 +609,9 @@
       "office.subHtml": "Each AI tool is an \"office worker\" with its own job — they hand work down a research pipeline: search → verify → extract → weigh evidence → write → translate to Thai. <br>Click a character to see the real tools behind them.",
       "office.pipeline.h": "🔄 The research pipeline",
       "office.pipeline.lead": "Each one hands off to the next — the end product is a literature review you can actually cite",
+      "office.goSearch": "🔍 Go to paper search",
       "office.stepPill": "Step {n}",
-      "office.footerHtml": "Prices checked Jul 2026 — please confirm on the vendor's own site before subscribing · The core principle: let AI <b>find and organize</b>, but every conclusion means going back and reading the real source<br>\n    Try it for real at <a href=\"app.html\">app.html</a>",
+      "office.footerHtml": "Prices checked July 2026 — confirm on each site before subscribing · the key rule: let AI <b>find and organize</b>, but always go back and read the real source behind every conclusion<br>\n    Try it for real at <a href=\"app.html\">app.html</a> · Built by <b>Apiwit Prakat</b> · <a href=\"https://github.com/kraugelzz/research-ai-team/issues\" target=\"_blank\" rel=\"noopener\">Report a problem / contact</a>",
 
       "office.t.scout.name": "Scout",
       "office.t.scout.role": "Retriever · the finder",
@@ -566,21 +620,21 @@
       "office.t.scout.desc": "Handles automated deep search across both published work and preprints. Best for mechanistic questions where you need high recall.",
       "office.t.scout.label": "search",
 
-      "office.t.validator.name": "Valida",
+      "office.t.validator.name": "Validator",
       "office.t.validator.role": "Validator · the checker",
       "office.t.validator.bubble": "Does this paper actually exist? Let me check PubMed first.",
       "office.t.validator.job": "The gate against made-up data — confirms each paper is real and pulls clean metadata",
       "office.t.validator.desc": "The single most important anti-hallucination checkpoint: confirms a paper exists in a trusted database, with metadata and MeSH terms.",
       "office.t.validator.label": "verify",
 
-      "office.t.analyst.name": "Anna",
+      "office.t.analyst.name": "Analyst",
       "office.t.analyst.role": "Analyst · the extractor",
       "office.t.analyst.bubble": "I'll lay it out as a table — cell line, knockdown method, results.",
       "office.t.analyst.job": "Reads every paper and extracts it into a table, one row per study, each cell linking back to its source",
       "office.t.analyst.desc": "The heart of a systematic review: builds an extraction table along wet-lab columns — cell line, knockdown method (siRNA/shRNA/CRISPR), efficiency, readout, findings, limitations.",
       "office.t.analyst.label": "extract",
 
-      "office.t.checker.name": "Check",
+      "office.t.checker.name": "Checker",
       "office.t.checker.role": "Fact-Checker · the evidence auditor",
       "office.t.checker.bubble": "Has anyone replicated this? Or contradicted it?",
       "office.t.checker.job": "Reads the overall direction of the evidence and checks whether findings were later supported or disputed",
@@ -594,7 +648,7 @@
       "office.t.writer.desc": "The final synthesis step: upload ~10–20 screened PDFs and the system answers from those sources alone, so fabricated citations are almost impossible.",
       "office.t.writer.label": "synthesize",
 
-      "office.t.translator.name": "Trans",
+      "office.t.translator.name": "Translator",
       "office.t.translator.role": "Translator · Thai translation",
       "office.t.translator.bubble": "I'll translate every last character into Thai — plus a summary of what the paper did!",
       "office.t.translator.job": "Translates all results into Thai without dropping anything, and summarizes what each paper actually did",
@@ -605,13 +659,15 @@
       "guide.docTitle": "User guide — AI Research Team",
       "guide.h1": "📖 Getting started",
       "guide.sub": "How to use it + what every icon on the site means",
+      "guide.toc.h": "Contents",
+      "guide.toc.aria": "Contents",
 
       "guide.quick.h": "🚀 Four steps to start",
       "guide.quick.1.t": "Type your query in English",
       "guide.quick.1.dHtml": "e.g. <code>ANK3 renal cell carcinoma</code> — or click an example under the box, drop a .txt file, or <b>paste a DOI / PMID</b> to fetch that exact paper",
       "guide.quick.2.t": "Adjust the settings (optional)",
       "guide.quick.2.dHtml": "Pick the source (Europe PMC / OpenAlex / both) / sort / from year / number of papers / quality filters",
-      "guide.quick.3.t": "Press ▶ Run the team",
+      "guide.quick.3.t": "Press 🔍 Find papers",
       "guide.quick.3.dHtml": "Six agents run in sequence: search → verify → extract → check → synthesize → translate",
       "guide.quick.4.t": "Read, screen, download",
       "guide.quick.4.dHtml": "Screen each paper with the buttons (saved automatically), then export as CSV / RIS / PRISMA",
@@ -655,15 +711,15 @@
       "guide.team.h": "👥 The six agents (one per pipeline stage)",
       "guide.team.scout.ic": "🔍 Scout",
       "guide.team.scout.d": "Finds papers on Europe PMC + OpenAlex (or fetches a pasted DOI/PMID)",
-      "guide.team.validator.ic": "✅ Valida",
+      "guide.team.validator.ic": "✅ Validator",
       "guide.team.validator.d": "Verifies, de-duplicates, filters on quality (retracted/review)",
-      "guide.team.analyst.ic": "📊 Anna",
+      "guide.team.analyst.ic": "📊 Analyst",
       "guide.team.analyst.d": "Extracts into a table + pulls wet-lab details",
-      "guide.team.checker.ic": "⚖️ Check",
+      "guide.team.checker.ic": "⚖️ Checker",
       "guide.team.checker.d": "Ranks the evidence + surfaces contradictory findings",
       "guide.team.writer.ic": "✍️ Writer",
       "guide.team.writer.d": "Synthesizes from real abstracts (nothing invented)",
-      "guide.team.translator.ic": "🌐 Trans",
+      "guide.team.translator.ic": "🌐 Translator",
       "guide.team.translator.d": "Translates English→Thai + summarizes what each paper did",
       "guide.team.moreHtml": "See each character and the real tools behind them on the <a href=\"office.html\">team page →</a>",
 
@@ -677,6 +733,16 @@
       "guide.export.screen.d": "CSV with include/exclude status + reasons + extracted data",
 
       "guide.tips.h": "💡 Tips",
+
+      "guide.verify.h": "🔎 How to check a paper is real",
+
+      "guide.verify.1Html": "<b>Click the paper's DOI↗ or PubMed↗ link</b> — it opens the journal's official page or PubMed",
+
+      "guide.verify.2Html": "<b>Compare the title, authors and year</b> with what the table shows — they must match",
+
+      "guide.verify.3Html": "<b>Summaries and translations come from the real abstract</b> — the tool writes no sentences of its own, but read the original before you cite it",
+
+      "guide.verify.4Html": "<b>Check the flags</b> — never cite ⛔ retracted work; ⏳ preprints are not yet peer reviewed",
       "guide.tips.1Html": "<b>Search in English</b> — research databases are almost entirely English, Thai queries find very little",
       "guide.tips.2Html": "<b>Too few hits?</b> Broaden the terms, e.g. <code>ANK3 renal cell carcinoma</code> → <code>ANK3 kidney cancer</code>",
       "guide.tips.3Html": "<b>Want recent AND relevant?</b> Use \"✨ Smart\" and set \"From year 2023\"",
@@ -684,7 +750,7 @@
       "guide.tips.5Html": "<b>The summary is extractive</b> — every sentence is lifted from a real abstract, so nothing is invented, but always open the original before citing it",
 
       "guide.cta": "🔬 Start using it →",
-      "guide.footerHtml": "Real data from Europe PMC, OpenAlex &amp; Semantic Scholar · the tool finds and organizes; the scientific judgement still means reading the originals<br>\n    <span style=\"display:inline-block;margin-top:8px\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026</span>"
+      "guide.footerHtml": "Real data from Europe PMC, OpenAlex &amp; Semantic Scholar · the tool finds and organizes; the scientific judgement still means reading the originals<br>\n    <span style=\"display:inline-block;margin-top:8px\">Built by <b>Apiwit Prakat</b> · Research AI Team © 2026 · <a href=\"https://github.com/kraugelzz/research-ai-team/issues\" target=\"_blank\" rel=\"noopener\">Report a problem / contact</a></span>"
     }
   };
 
@@ -740,12 +806,18 @@
     "  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);",
     "  box-shadow:0 6px 20px -10px rgba(30,45,90,.45);font-size:.78rem;font-family:inherit}",
     ".lang-switch button{border:0;background:transparent;cursor:pointer;border-radius:999px;padding:5px 12px;",
-    "  font:inherit;font-weight:700;color:#5a6480;line-height:1.4;transition:.15s}",
+    "  font:inherit;font-weight:700;color:#5a6480;line-height:1.4;transition:.15s;min-height:36px;min-width:40px}",
     ".lang-switch button:hover{color:#1c2740}",
     ".lang-switch button[aria-pressed=true]{background:linear-gradient(120deg,#6d4bf0,#0e93b0);color:#fff;",
     "  box-shadow:0 3px 10px -3px rgba(80,70,200,.6)}",
     ".lang-switch button:focus-visible{outline:2px solid #6d4bf0;outline-offset:2px}",
-    "@media (max-width:640px){.lang-switch{top:8px;right:8px;font-size:.72rem}",
+    /* เมนูหลัก ใช้ร่วมกันทั้ง 3 หน้า (สีหลัก #2f6aad เดียวกันทั้งเว็บ) */
+    ".navlinks{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:.88rem}",
+    ".navlinks a{display:inline-flex;align-items:center;min-height:40px;padding:6px 14px;border-radius:999px;",
+    "  background:#fff;border:1px solid #e3e6ee;color:#31384a;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(70,80,110,.08)}",
+    ".navlinks a:hover{border-color:#2f6aad;text-decoration:none}",
+    ".navlinks a.here,.navlinks a[aria-current=page]{background:#2f6aad;border-color:#2f6aad;color:#fff}",
+    "@media (max-width:640px){.lang-switch{position:absolute;top:8px;right:8px;font-size:.8rem}",
     "  .lang-switch button{padding:4px 10px}",
     /* จอแคบ: ดันเนื้อหาลงนิดหน่อย ปุ่มจะได้ไม่ทับหัวเรื่อง */
     "  body{padding-top:44px}}"
