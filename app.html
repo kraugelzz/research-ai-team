@@ -30,8 +30,8 @@
   header{text-align:center;padding:42px 18px 8px}
   header h1{font-size:2.15rem;letter-spacing:-.01em}
   header p{color:var(--muted);max-width:660px;margin:6px auto 0;font-size:.98rem}
-  .navlinks{margin-top:14px;font-size:.85rem}
-  .navlinks a{margin:0 6px;background:#fff;padding:6px 13px;border-radius:999px;box-shadow:var(--shadow-sm);font-weight:700}
+  .navlinks{margin-top:14px;font-size:.85rem;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+  .navlinks a{background:#fff;padding:6px 13px;border-radius:999px;box-shadow:var(--shadow-sm);font-weight:700}
   .navlinks a:hover{text-decoration:none;transform:translateY(-1px);display:inline-block}
   .navlinks a.here{background:#2f6aad;color:#fff}
 
@@ -45,13 +45,13 @@
   :focus-visible{outline:3px solid #2f6aad;outline-offset:2px}
   .btn{border:0;border-radius:13px;padding:0 26px;font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;color:#fff;background:linear-gradient(135deg,#3a7fc6,#2a62a3);box-shadow:0 6px 16px rgba(63,125,196,.35);transition:.15s}
   .btn:hover{filter:brightness(1.05);transform:translateY(-1px)} .btn:disabled{opacity:.5;cursor:wait;transform:none}
-  .opts{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:.86rem;color:var(--muted)}
-  .opts label{display:flex;gap:6px;align-items:center;cursor:pointer}
+  .opts{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:.92rem;color:var(--muted)}
+  .opts label{display:flex;gap:6px;align-items:center;cursor:pointer;max-width:100%;min-width:0}
   .opts input[type=number]{width:56px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;font-family:inherit}
-  .opts select{padding:5px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;background:#fff;color:var(--ink);cursor:pointer}
-  .hint{font-size:.8rem;color:var(--muted);margin-top:11px}
+  .opts select{max-width:100%;min-width:0;text-overflow:ellipsis;padding:5px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;background:#fff;color:var(--ink);cursor:pointer}
+  .hint{font-size:.9rem;color:var(--muted);margin-top:11px}
   .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
-  .chip{font-family:inherit;color:var(--ink);font-size:.8rem;background:#f2f4fa;border:1px solid var(--line);padding:6px 13px;border-radius:999px;cursor:pointer;transition:.15s}
+  .chip{font-family:inherit;color:var(--ink);font-size:.86rem;background:#f2f4fa;border:1px solid var(--line);padding:6px 13px;border-radius:999px;cursor:pointer;transition:.15s}
   .chip:hover{border-color:var(--scout);color:#3f7dc4;background:#fff}
 
   /* ===== OFFICE SCENE ===== */
@@ -105,7 +105,7 @@
   .desk::after{content:"";position:absolute;left:50%;top:-9px;transform:translateX(-50%);width:26px;height:10px;
     background:#454b5c;border-radius:4px 4px 0 0;box-shadow:inset 0 2px 0 #6b7280}
   .nm{margin-top:16px;font-weight:800;font-size:.98rem;color:var(--ink)}
-  .role{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:-2px}
+  .role{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:-2px}
   .step-no{font-size:.68rem;font-weight:800;color:#1f2430;background:var(--c);border-radius:999px;padding:2px 9px;margin-top:6px}
 
   /* output */
@@ -113,9 +113,9 @@
   .out.show{display:block}
   .section{background:var(--panel);border-radius:20px;box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;border:1px solid var(--line)}
   .section h2{font-size:1.25rem;display:flex;align-items:center;gap:9px;margin-bottom:4px}
-  .section .sub{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .section .sub{color:var(--muted);font-size:.92rem;margin-bottom:12px}
   .stat{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 4px}
-  .stat b{font-size:1.6rem;font-family:"Baloo 2",sans-serif} .stat .lab{font-size:.78rem;color:var(--muted)}
+  .stat b{font-size:1.6rem;font-family:"Baloo 2",sans-serif} .stat .lab{font-size:.85rem;color:var(--muted)}
   .stat > div{background:#f7f8fc;border:1px solid var(--line);border-radius:14px;padding:12px 18px;text-align:center;min-width:100px}
 
   table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:640px}
@@ -128,14 +128,14 @@
   .cc{font-weight:800}
   .paper-links a{margin-right:8px;font-size:.8rem;white-space:nowrap}
   /* flags / meta chips / screening / prisma */
-  .flag{font-size:.66rem;font-weight:800;padding:2px 6px;border-radius:5px;white-space:nowrap;display:inline-block;margin-top:3px}
+  .flag{font-size:.74rem;font-weight:800;padding:2px 6px;border-radius:5px;white-space:nowrap;display:inline-block;margin-top:3px}
   .flag-ret{background:#fde0e0;color:#c0392b;border:1px solid #f3b0b0}
   .flag-pre{background:#fff2d6;color:#9a6b00;border:1px solid #f0d69a}
   .flag-rev{background:#e7e0fb;color:#6b4bc0;border:1px solid #cdbef0}
-  .mchip{font-size:.7rem;background:#eef6f0;border:1px solid #cfe6d6;color:#2e7d52;border-radius:6px;padding:1px 6px;margin:2px 2px 0 0;display:inline-block}
+  .mchip{font-size:.76rem;background:#eef6f0;border:1px solid #cfe6d6;color:#2e7d52;border-radius:6px;padding:1px 6px;margin:2px 2px 0 0;display:inline-block}
   .mchip.m-method{background:#eef2fb;border-color:#cdd9f0;color:#3a5bb0}
   .mchip.m-org{background:#faf0ee;border-color:#efd3cc;color:#b05a45}
-  .schip{font-size:.66rem;background:#f4f2ee;border:1px solid #e2ddd3;color:#6b6457;border-radius:6px;padding:0 6px;margin:3px 3px 0 0;display:inline-block}
+  .schip{font-size:.74rem;background:#f4f2ee;border:1px solid #e2ddd3;color:#6b6457;border-radius:6px;padding:0 6px;margin:3px 3px 0 0;display:inline-block}
   .schip.s-openalex{background:#f3effa;border-color:#ddd2f0;color:#6a4fa8}
   .scrn{display:flex;gap:3px}
   .scrn button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:3px 7px;font-size:.82rem;cursor:pointer;font-family:inherit;line-height:1}
@@ -172,7 +172,7 @@
   .bar{height:7px;background:#e3e6f0;border-radius:7px;overflow:hidden;margin-top:14px;display:none}
   .bar.show{display:block}
   .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--scout),var(--analyst),var(--writer));transition:width .3s}
-  footer{text-align:center;color:var(--muted);font-size:.8rem;padding:30px 18px 50px}
+  footer{text-align:center;color:var(--muted);font-size:.86rem;padding:30px 18px 50px}
   @media(max-width:820px){ .poster,.wall-clock{display:none} header h1{font-size:1.75rem} }
   /* จอแคบ: ตารางผล → การ์ดทีละเปเปอร์ (ไม่ต้องเลื่อนซ้าย-ขวาหาปุ่มคัดกรอง/ลิงก์) */
   @media(max-width:700px){
@@ -502,7 +502,7 @@ async function adapterEuropePMC(query, o){
   const j = await r.json();
   const rows = (j.resultList && j.resultList.result) || [];
   const papers = rows.map((x,i)=>{
-    const abstract = x.abstractText ? x.abstractText.replace(/<[^>]+>/g,"") : "";
+    const abstract = plainText(x.abstractText);
     const pubTypes = (x.pubTypeList && x.pubTypeList.pubType) || [];
     const ptLow = pubTypes.map(s=>String(s).toLowerCase());
     const ft = (x.fullTextUrlList && x.fullTextUrlList.fullTextUrl) || [];
@@ -510,7 +510,7 @@ async function adapterEuropePMC(query, o){
     return {
       _rank:i,
       id:x.id, source:x.source, pmid:x.pmid, pmcid:x.pmcid, doi:x.doi,
-      title:(x.title||"").replace(/\.$/,""),
+      title:plainText(x.title).replace(/\.$/,""),
       authors:x.authorString||"",
       journal:(x.journalInfo && x.journalInfo.journal && x.journalInfo.journal.title) || x.journalTitle || "",
       year:+(x.pubYear)||0,
@@ -532,6 +532,14 @@ async function adapterEuropePMC(query, o){
   return { papers, hits:+(j.hitCount)||0, querySent:q };
 }
 
+// ชื่อเรื่อง/บทคัดย่อจากฐานข้อมูลบางทีมีแท็ก <i> หรือมาเป็น &lt;i&gt; (เข้ารหัสซ้ำ) → ถอดรหัสแล้วตัดแท็กออก
+function plainText(s){
+  let v = String(s||"");
+  const ta = document.createElement("textarea");
+  for(let k=0; k<2 && /&[#a-z0-9]+;/i.test(v); k++){ ta.innerHTML = v; v = ta.value; }
+  return v.replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
+}
+
 // OpenAlex เก็บบทคัดย่อเป็น {คำ:[ตำแหน่ง,...]} → ประกอบกลับเป็นประโยค
 function abstractFromInverted(idx){
   if(!idx) return "";
@@ -546,7 +554,7 @@ function normOpenAlex(w, i, n){
   const pmid = String(ids.pmid||"").replace(/\D/g,"");
   const pmcid = (String(ids.pmcid||"").match(/PMC\d+/i)||[""])[0].toUpperCase();
   const names = (w.authorships||[]).map(a=>a.author && a.author.display_name).filter(Boolean);
-  const title = String(w.title||w.display_name||"").replace(/<[^>]+>/g,"").replace(/\.$/,"");
+  const title = plainText(w.title||w.display_name).replace(/\.$/,"");
   const src = w.primary_location && w.primary_location.source;
   const best = w.best_oa_location || {};
   return {
@@ -791,7 +799,7 @@ function renderTable(){
       <td class="c-title" style="max-width:290px">
         <b>${escH(p.title)||escH(t("app.tbl.noTitle"))}</b>
         ${p.title_th?`<br><span style="color:var(--writer);font-size:.82rem;font-weight:700">🌐 ${escH(p.title_th)}</span>`:""}
-        <br><span style="color:var(--muted);font-size:.78rem">${escH(auth)} · ${escH(p.journal)}</span>
+        <br><span style="color:var(--muted);font-size:.84rem">${escH(auth)} · ${escH(p.journal)}</span>
         ${flags?`<br>${flags}`:""}
         ${srcChips?`<br>${srcChips}`:""}
       </td>
