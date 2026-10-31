@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#eef1f6; --panel:#fff; --ink:#31384a; --muted:#8890a3; --line:#e7e9f0;
+    --bg:#eef1f6; --panel:#fff; --ink:#31384a; --muted:#5d6475; --line:#e7e9f0;
     --scout:#4f9dde; --validator:#f0a441; --analyst:#5cc08a; --checker:#e0688a; --writer:#a682e0;
     --wall:#e7edf7; --floor:#f0e7db;
     --shadow:0 10px 30px rgba(70,80,110,.10);
@@ -24,7 +24,7 @@
     radial-gradient(1100px 500px at 50% -160px,rgba(166,130,224,.14),transparent),
     var(--bg);color:var(--ink);line-height:1.55}
   h1,h2,.stage-title,.nm,.section h2{font-family:"Baloo 2","Nunito","Tahoma",sans-serif}
-  a{color:#3f7dc4;text-decoration:none} a:hover{text-decoration:underline}
+  a{color:#2f6aad;text-decoration:none} a:hover{text-decoration:underline}
   .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
 
   header{text-align:center;padding:42px 18px 8px}
@@ -41,7 +41,7 @@
   .qrow{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
   #q{flex:1;min-width:240px;font-size:1rem;font-family:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:#f7f8fc;color:var(--ink)}
   #q:focus{outline:none;border-color:var(--scout);background:#fff}
-  .btn{border:0;border-radius:13px;padding:0 26px;font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;color:#fff;background:linear-gradient(135deg,#5aa6e6,#3f7dc4);box-shadow:0 6px 16px rgba(63,125,196,.35);transition:.15s}
+  .btn{border:0;border-radius:13px;padding:0 26px;font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;color:#fff;background:linear-gradient(135deg,#3a7fc6,#2a62a3);box-shadow:0 6px 16px rgba(63,125,196,.35);transition:.15s}
   .btn:hover{filter:brightness(1.05);transform:translateY(-1px)} .btn:disabled{opacity:.5;cursor:wait;transform:none}
   .opts{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:.86rem;color:var(--muted)}
   .opts label{display:flex;gap:6px;align-items:center;cursor:pointer}
@@ -104,7 +104,7 @@
     background:#454b5c;border-radius:4px 4px 0 0;box-shadow:inset 0 2px 0 #6b7280}
   .nm{margin-top:16px;font-weight:800;font-size:.98rem;color:var(--ink)}
   .role{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:-2px}
-  .step-no{font-size:.68rem;font-weight:800;color:#fff;background:var(--c);border-radius:999px;padding:2px 9px;margin-top:6px}
+  .step-no{font-size:.68rem;font-weight:800;color:#1f2430;background:var(--c);border-radius:999px;padding:2px 9px;margin-top:6px}
 
   /* output */
   .out{display:none}
@@ -172,6 +172,19 @@
   .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--scout),var(--analyst),var(--writer));transition:width .3s}
   footer{text-align:center;color:var(--muted);font-size:.8rem;padding:30px 18px 50px}
   @media(max-width:820px){ .poster,.wall-clock{display:none} header h1{font-size:1.75rem} }
+  /* จอแคบ: ตารางผล → การ์ดทีละเปเปอร์ (ไม่ต้องเลื่อนซ้าย-ขวาหาปุ่มคัดกรอง/ลิงก์) */
+  @media(max-width:700px){
+    .tscroll{border:0;overflow:visible}
+    #tbl{min-width:0}
+    #tbl thead{display:none}
+    #tbl tr{display:block;border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:12px;background:#fff}
+    #tbl tr:hover td{background:transparent}
+    #tbl td{display:block;border:0;padding:6px 0;max-width:none!important;min-width:0!important}
+    #tbl td[data-l]::before{content:attr(data-l);display:block;font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+    #tbl td.c-year::before{display:inline;margin-right:6px}
+    #tbl td.cc br{display:none} #tbl td.cc .oa{margin-left:8px}
+    .paper-links a{display:inline-block;padding:4px 0;margin-right:12px}
+  }
 </style>
 </head>
 <body>
@@ -229,7 +242,7 @@
     <span class="win win-a"></span>
     <span class="win win-b"></span>
     <div class="wall-clock">🕘</div>
-    <span class="poster">📚<small>PubMed</small></span>
+    <span class="poster" aria-hidden="true">📚<small>PubMed</small></span>
     <span class="pot pot-a">🪴</span>
     <span class="pot pot-b">🌿</span>
     <div class="agents" id="agents"></div>
@@ -595,9 +608,13 @@ function mergeDedup(papers){
   papers.forEach(p0=>{
     const p = {...p0, sources:[...(p0.sources||[])]};
     p.doi = normDoi(p.doi);
-    const keys = () => [[byDoi,p.doi],[byPmid,p.pmid?String(p.pmid):""],[byTitle,normTitle(p.title)]];
-    let hit = null;
-    for(const [m,k] of keys()){ if(k && m.has(k)){ hit = m.get(k); break; } }
+    let hit = (p.doi && byDoi.get(p.doi)) || (p.pmid && byPmid.get(String(p.pmid))) || null;
+    // ชื่อเรื่องซ้ำใช้จับคู่ได้เฉพาะเมื่อรหัสไม่ขัดกัน ("Correction"/"Editorial" คนละ DOI ต้องแยกแถว)
+    if(!hit){
+      const c = byTitle.get(normTitle(p.title));
+      const clash = c && ((c.doi && p.doi && c.doi!==p.doi) || (c.pmid && p.pmid && String(c.pmid)!==String(p.pmid)));
+      if(c && !clash) hit = c;
+    }
     if(hit) mergeInto(hit, p); else { out.push(p); hit = p; }
     [[byDoi,hit.doi],[byPmid,hit.pmid?String(hit.pmid):""],[byTitle,normTitle(hit.title)]]
       .forEach(([m,k])=>{ if(k && !m.has(k)) m.set(k, hit); });
@@ -763,23 +780,23 @@ function renderTable(){
       <input class="scrn-note" placeholder="${escH(t("app.tbl.notePh"))}" value="${escH(note).replace(/"/g,'&quot;')}" onchange="scrnNote('${safe}',this.value)">`;
     const flags = paperFlags(p);
     return `<tr id="row_${safe}" class="${st?'screen-'+st:''}"${tip}>
-      <td>${p.year||"–"}</td>
-      <td style="max-width:290px">
+      <td class="c-year" data-l="${escH(t('app.th.year'))}">${p.year||"–"}</td>
+      <td class="c-title" style="max-width:290px">
         <b>${escH(p.title)||escH(t("app.tbl.noTitle"))}</b>
         ${p.title_th?`<br><span style="color:var(--writer);font-size:.82rem;font-weight:700">🌐 ${escH(p.title_th)}</span>`:""}
         <br><span style="color:var(--muted);font-size:.78rem">${escH(auth)} · ${escH(p.journal)}</span>
         ${flags?`<br>${flags}`:""}
         ${srcChips?`<br>${srcChips}`:""}
       </td>
-      <td style="max-width:240px">
+      <td style="max-width:240px" data-l="${escH(t('app.th.thai'))}">
         ${gist}
         <div><button style="margin-top:5px;font-size:.72rem;background:#e9f6f5;border:1px solid #cfe9e7;border-radius:8px;padding:3px 9px;cursor:pointer;font-family:inherit;color:#207d78" onclick="fullTranslate(this,'${safe}')">${escH(t("app.tbl.fullAbs"))}</button></div>
         <div id="absth_${safe}" style="display:none;margin-top:6px;font-size:.82rem;background:#f2fbfa;border:1px solid #d8efed;border-radius:8px;padding:8px 10px;white-space:pre-wrap"></div>
       </td>
-      <td style="max-width:150px">${metaHtml}</td>
-      <td style="min-width:120px">${scrn}</td>
-      <td class="cc">${p.cc}${p.oa?'<br><span class="oa">OA</span>':''}</td>
-      <td class="paper-links">${links.join(" ")||"–"}</td>
+      <td style="max-width:150px" data-l="${escH(t('app.th.extract'))}">${metaHtml}</td>
+      <td style="min-width:120px" data-l="${escH(t('app.th.screen'))}">${scrn}</td>
+      <td class="cc" data-l="${escH(t('app.th.cites'))}">${p.cc}${p.oa?'<br><span class="oa">OA</span>':''}</td>
+      <td class="paper-links" data-l="${escH(t('app.th.links'))}">${links.join(" ")||"–"}</td>
     </tr>`;
   }).join("");
 }
@@ -1041,7 +1058,7 @@ async function run(){
   }
 }
 $("#run").onclick = run;
-$("#q").addEventListener("keydown", e=>{ if(e.key==="Enter") run(); });
+$("#q").addEventListener("keydown", e=>{ if(e.key==="Enter" && !$("#run").disabled) run(); });
 
 // ---- exports ----
 function dl(name, text, type){
