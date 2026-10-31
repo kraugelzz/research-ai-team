@@ -32,6 +32,7 @@
       "nav.team": "👥 แนะนำทีม",
       "nav.teamLong": "👥 หน้าตัวละคร (แนะนำทีม)",
       "nav.guide": "📖 คู่มือใช้งาน",
+      "nav.aria": "เมนูหลัก",
 
       /* ============== app.html : ส่วนหัว ============== */
       "app.docTitle": "ทีมวิจัย AI — เวอร์ชันทำงานจริง",
@@ -40,11 +41,12 @@
 
       /* ============== app.html : คอนโซลค้นหา ============== */
       "app.qPh": "เช่น: EGFR knockdown effects on MAPK signaling in triple-negative breast cancer",
+      "app.qAria": "คำค้น คำถามวิจัย หรือ DOI/PMID",
       "app.runBtn": "▶ Run ทีม",
       "app.sources": "แหล่งข้อมูล:",
       "app.sources.both": "ทั้งสองแหล่ง (แนะนำ)",
       "app.sortBy": "เรียงตาม:",
-      "app.sort.smart": "✨ อัจฉริยะ (ตรงคีย์เวิร์ด + ปีล่าสุด) — แนะนำ",
+      "app.sort.smart": "✨ อัจฉริยะ (แนะนำ)",
       "app.sort.relevance": "🎯 ความเกี่ยวข้องล้วน",
       "app.sort.newest": "🆕 ใหม่สุดก่อน",
       "app.sort.cited": "⭐ อ้างอิงมากสุด",
@@ -193,7 +195,7 @@
       "app.scoutSub.s2": " + Semantic Scholar (TLDR)",
 
       /* ข้อความแจ้งเตือน */
-      "app.err.needQuery": "พิมพ์คำถามวิจัยก่อนนะครับ",
+      "app.err.needQuery": "พิมพ์คำค้น หรือวาง DOI/PMID ก่อนกด Run",
       "app.err.noPapers": "ไม่พบเปเปอร์ — ลองปรับคำค้น หรือลดปีกรอง/ปิด Open Access",
       "app.err.allFiltered": "ผลถูกกรองออกหมด — ลองปิดตัวกรองบางตัว",
       "app.err.generic": "เกิดข้อผิดพลาด",
@@ -217,7 +219,7 @@
       "office.docTitle": "ทีมวิจัย AI — The Research Office",
       "office.eyebrow": "The Research Office",
       "office.h1": "👩‍🔬 ทีม AI นักวิจัยของคุณ",
-      "office.subHtml": "เครื่องมือ AI แต่ละตัวคือ \"พนักงานออฟฟิส\" ที่มีหน้าที่ต่างกัน — ทำงานส่งต่อกันเป็นสายพานงานวิจัย ตั้งแต่ค้นหา → ตรวจสอบ → สกัดข้อมูล → เช็กหลักฐาน → เขียนสรุป <br>คลิกที่ตัวละครแต่ละคนเพื่อดูรายละเอียดเครื่องมือจริง",
+      "office.subHtml": "เครื่องมือ AI แต่ละตัวคือ \"พนักงานออฟฟิศ\" ที่มีหน้าที่ต่างกัน — ทำงานส่งต่อกันเป็นสายพานงานวิจัย ตั้งแต่ค้นหา → ตรวจสอบ → สกัดข้อมูล → เช็กหลักฐาน → เขียนสรุป → แปลไทย <br>คลิกที่ตัวละครแต่ละคนเพื่อดูรายละเอียดเครื่องมือจริง",
       "office.pipeline.h": "🔄 สายพานงานวิจัย (Research Pipeline)",
       "office.pipeline.lead": "แต่ละคนส่งงานต่อให้คนถัดไป — ผลลัพธ์สุดท้ายคือรีวิววรรณกรรมที่อ้างอิงได้จริง",
       "office.stepPill": "ขั้นที่ {n}",
@@ -272,9 +274,9 @@
 
       "guide.quick.h": "🚀 เริ่มใช้งานใน 4 ขั้น",
       "guide.quick.1.t": "พิมพ์คำค้นเป็นภาษาอังกฤษ",
-      "guide.quick.1.dHtml": "เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง หรือลากไฟล์ .txt มาวาง",
+      "guide.quick.1.dHtml": "เช่น <code>ANK3 renal cell carcinoma</code> — หรือคลิกตัวอย่างใต้ช่อง ลากไฟล์ .txt มาวาง หรือ<b>วาง DOI / PMID</b> เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ",
       "guide.quick.2.t": "ตั้งค่า (ถ้าต้องการ)",
-      "guide.quick.2.dHtml": "เลือกวิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ",
+      "guide.quick.2.dHtml": "เลือกแหล่งข้อมูล (Europe PMC / OpenAlex / ทั้งสองแหล่ง) / วิธีเรียง / ตั้งแต่ปี / จำนวนเปเปอร์ / ตัวกรองคุณภาพ",
       "guide.quick.3.t": "กดปุ่ม ▶ Run ทีม",
       "guide.quick.3.dHtml": "ทีมงาน 6 คนทำงานต่อกัน: ค้นหา → ตรวจสอบ → สกัด → เช็ก → สรุป → แปลไทย",
       "guide.quick.4.t": "อ่านผล + คัดกรอง + ดาวน์โหลด",
@@ -364,6 +366,7 @@
       "nav.team": "👥 Meet the team",
       "nav.teamLong": "👥 Character page (meet the team)",
       "nav.guide": "📖 User guide",
+      "nav.aria": "Main menu",
 
       /* ============== app.html : header ============== */
       "app.docTitle": "AI Research Team — working build",
@@ -372,11 +375,12 @@
 
       /* ============== app.html : search console ============== */
       "app.qPh": "e.g. EGFR knockdown effects on MAPK signaling in triple-negative breast cancer",
+      "app.qAria": "Search terms, research question, or DOI/PMID",
       "app.runBtn": "▶ Run the team",
       "app.sources": "Sources:",
       "app.sources.both": "Both (recommended)",
       "app.sortBy": "Sort by:",
-      "app.sort.smart": "✨ Smart (keyword match + recency) — recommended",
+      "app.sort.smart": "✨ Smart (recommended)",
       "app.sort.relevance": "🎯 Pure relevance",
       "app.sort.newest": "🆕 Newest first",
       "app.sort.cited": "⭐ Most cited",
@@ -525,7 +529,7 @@
       "app.scoutSub.s2": " + Semantic Scholar (TLDR)",
 
       /* messages */
-      "app.err.needQuery": "Type a research question first",
+      "app.err.needQuery": "Type a search, or paste a DOI/PMID, before pressing Run",
       "app.err.noPapers": "No papers found — try different terms, a looser year filter, or turn off Open Access",
       "app.err.allFiltered": "Everything was filtered out — try switching some filters off",
       "app.err.generic": "Something went wrong",
@@ -549,7 +553,7 @@
       "office.docTitle": "AI Research Team — The Research Office",
       "office.eyebrow": "The Research Office",
       "office.h1": "👩‍🔬 Your AI research team",
-      "office.subHtml": "Each AI tool is an \"office worker\" with its own job — they hand work down a research pipeline: search → verify → extract → weigh evidence → write. <br>Click a character to see the real tools behind them.",
+      "office.subHtml": "Each AI tool is an \"office worker\" with its own job — they hand work down a research pipeline: search → verify → extract → weigh evidence → write → translate to Thai. <br>Click a character to see the real tools behind them.",
       "office.pipeline.h": "🔄 The research pipeline",
       "office.pipeline.lead": "Each one hands off to the next — the end product is a literature review you can actually cite",
       "office.stepPill": "Step {n}",
@@ -604,9 +608,9 @@
 
       "guide.quick.h": "🚀 Four steps to start",
       "guide.quick.1.t": "Type your query in English",
-      "guide.quick.1.dHtml": "e.g. <code>ANK3 renal cell carcinoma</code> — or click an example below the box, or drop in a .txt file",
+      "guide.quick.1.dHtml": "e.g. <code>ANK3 renal cell carcinoma</code> — or click an example under the box, drop a .txt file, or <b>paste a DOI / PMID</b> to fetch that exact paper",
       "guide.quick.2.t": "Adjust the settings (optional)",
-      "guide.quick.2.dHtml": "Pick a sort order / from-year / number of papers / quality filters",
+      "guide.quick.2.dHtml": "Pick the source (Europe PMC / OpenAlex / both) / sort / from year / number of papers / quality filters",
       "guide.quick.3.t": "Press ▶ Run the team",
       "guide.quick.3.dHtml": "Six agents run in sequence: search → verify → extract → check → synthesize → translate",
       "guide.quick.4.t": "Read, screen, download",
@@ -696,8 +700,9 @@
 
   /* t("key", {n:5}) — {placeholder} ในสตริงจะถูกแทนด้วยค่าใน vars
      ถ้า value เป็น {i18n:"key"} จะถูกแปลซ้อนอีกชั้น (ใช้กับ label ที่ต้องเปลี่ยนภาษาด้วย) */
-  function t(key, vars) {
-    var pack = DICT[lang] || DICT.th;
+  function t(key, vars) { return tl(lang, key, vars); }
+  function tl(l, key, vars) {
+    var pack = DICT[l] || DICT.th;
     var s = pack[key];
     if (s == null) s = DICT.th[key];
     if (s == null) return key;
@@ -705,7 +710,7 @@
       s = s.replace(/\{(\w+)\}/g, function (m, k) {
         var v = vars[k];
         if (v == null) return m;
-        if (typeof v === "object" && v.i18n) return t(v.i18n);
+        if (typeof v === "object" && v.i18n) return tl(l, v.i18n);
         return String(v);
       });
     }
@@ -794,6 +799,7 @@
 
   /* ================= exports ================= */
   window.t = t;
+  window.tl = tl;
   window.LANG = lang;
   window.getLang = function () { return lang; };
   window.setLang = setLang;

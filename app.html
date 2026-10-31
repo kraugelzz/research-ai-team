@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <title>ทีมวิจัย AI — เวอร์ชันทำงานจริง</title>
 <meta name="i18n-title" content="app.docTitle">
-<script src="i18n.js?v=20261031"></script>
+<script src="i18n.js?v=20261031b"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -33,6 +33,7 @@
   .navlinks{margin-top:14px;font-size:.85rem}
   .navlinks a{margin:0 6px;background:#fff;padding:6px 13px;border-radius:999px;box-shadow:var(--shadow-sm);font-weight:700}
   .navlinks a:hover{text-decoration:none;transform:translateY(-1px);display:inline-block}
+  .navlinks a.here{background:#2f6aad;color:#fff}
 
   /* input console */
   .console{background:var(--panel);border-radius:22px;box-shadow:var(--shadow);padding:22px;margin:20px 0 10px;border:1px solid var(--line)}
@@ -40,7 +41,8 @@
   .drop.hot{border-color:var(--scout);background:rgba(79,157,222,.07)}
   .qrow{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
   #q{flex:1;min-width:240px;font-size:1rem;font-family:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:#f7f8fc;color:var(--ink)}
-  #q:focus{outline:none;border-color:var(--scout);background:#fff}
+  #q:focus{outline:none;border-color:#2f6aad;background:#fff;box-shadow:0 0 0 3px rgba(47,106,173,.25)}
+  :focus-visible{outline:3px solid #2f6aad;outline-offset:2px}
   .btn{border:0;border-radius:13px;padding:0 26px;font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;color:#fff;background:linear-gradient(135deg,#3a7fc6,#2a62a3);box-shadow:0 6px 16px rgba(63,125,196,.35);transition:.15s}
   .btn:hover{filter:brightness(1.05);transform:translateY(-1px)} .btn:disabled{opacity:.5;cursor:wait;transform:none}
   .opts{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:.86rem;color:var(--muted)}
@@ -49,7 +51,7 @@
   .opts select{padding:5px 8px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;background:#fff;color:var(--ink);cursor:pointer}
   .hint{font-size:.8rem;color:var(--muted);margin-top:11px}
   .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
-  .chip{font-size:.8rem;background:#f2f4fa;border:1px solid var(--line);padding:6px 13px;border-radius:999px;cursor:pointer;transition:.15s}
+  .chip{font-family:inherit;color:var(--ink);font-size:.8rem;background:#f2f4fa;border:1px solid var(--line);padding:6px 13px;border-radius:999px;cursor:pointer;transition:.15s}
   .chip:hover{border-color:var(--scout);color:#3f7dc4;background:#fff}
 
   /* ===== OFFICE SCENE ===== */
@@ -185,6 +187,7 @@
     #tbl td.cc br{display:none} #tbl td.cc .oa{margin-left:8px}
     .paper-links a{display:inline-block;padding:4px 0;margin-right:12px}
   }
+  @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important} }
 </style>
 </head>
 <body>
@@ -192,15 +195,15 @@
   <div class="wrap">
     <h1 data-i18n="app.h1">🔬 ทีมวิจัย AI — เวอร์ชันทำงานจริง</h1>
     <p data-i18n-html="app.leadHtml">พิมพ์คำถามวิจัย (ภาษาอังกฤษได้ผลดีสุด) หรือ<b>ลากไฟล์ .txt มาวาง</b> แล้วกด Run — เอเจนต์ทั้ง 6 จะทำงานต่อกันเป็นสายพาน ดึงเปเปอร์จริงจาก Europe PMC + OpenAlex (เสริมด้วย Semantic Scholar) พร้อมลิงก์และอ้างอิงจริง แล้ว<b>แปลเป็นไทย + สรุปคร่าวๆ ว่าแต่ละเปเปอร์ทำอะไร</b> ไม่มีการกุข้อมูล</p>
-    <div class="navlinks"><a href="office.html" data-i18n="nav.teamLong">👥 หน้าตัวละคร (แนะนำทีม)</a> <a href="guide.html" data-i18n="nav.guide">📖 คู่มือใช้งาน</a></div>
+    <nav class="navlinks" data-i18n-aria="nav.aria" aria-label="เมนูหลัก"><a href="app.html" class="here" aria-current="page" data-i18n="nav.app">🔬 หน้าใช้งาน</a> <a href="office.html" data-i18n="nav.team">👥 แนะนำทีม</a> <a href="guide.html" data-i18n="nav.guide">📖 คู่มือใช้งาน</a></nav>
   </div>
 </header>
 
-<div class="wrap">
+<main class="wrap">
   <div class="console">
     <div class="drop" id="drop">
       <div class="qrow">
-        <input id="q" type="text" data-i18n-ph="app.qPh" placeholder="เช่น: EGFR knockdown effects on MAPK signaling in triple-negative breast cancer" />
+        <input id="q" type="text" data-i18n-aria="app.qAria" aria-label="คำค้น คำถามวิจัย หรือ DOI/PMID" data-i18n-ph="app.qPh" placeholder="เช่น: EGFR knockdown effects on MAPK signaling in triple-negative breast cancer" />
         <button class="btn" id="run" data-i18n="app.runBtn">▶ Run ทีม</button>
       </div>
     </div>
@@ -213,7 +216,7 @@
         </select></label>
       <label><span data-i18n="app.sortBy">เรียงตาม:</span>
         <select id="sortMode">
-          <option value="smart" data-i18n="app.sort.smart">✨ อัจฉริยะ (ตรงคีย์เวิร์ด + ปีล่าสุด) — แนะนำ</option>
+          <option value="smart" data-i18n="app.sort.smart">✨ อัจฉริยะ (แนะนำ)</option>
           <option value="relevance" data-i18n="app.sort.relevance">🎯 ความเกี่ยวข้องล้วน</option>
           <option value="newest" data-i18n="app.sort.newest">🆕 ใหม่สุดก่อน</option>
           <option value="cited" data-i18n="app.sort.cited">⭐ อ้างอิงมากสุด</option>
@@ -234,7 +237,7 @@
     <div class="chips" id="chips"></div>
     <p class="hint" data-i18n="app.hint">💡 ลากไฟล์ .txt (คำถามหรือรายการคีย์เวิร์ด) มาวางในกล่องด้านบนได้เลย · วาง DOI หรือ PMID เพื่อดึงเปเปอร์ชิ้นนั้นตรงๆ ได้ · ข้อมูลทั้งหมดประมวลผลในเบราว์เซอร์ ไม่มีการส่งออกนอกจากเรียก API งานวิจัยสาธารณะ</p>
     <div class="bar" id="bar"><i></i></div>
-    <div class="err" id="err"></div>
+    <div class="err" id="err" role="alert"></div>
   </div>
 
   <div class="stage-title" data-i18n="app.stageTitle">🏢 ทีมกำลังทำงานในออฟฟิศ</div>
@@ -305,7 +308,7 @@
     ข้อมูลจริงจาก <a href="https://europepmc.org" target="_blank">Europe PMC</a>, <a href="https://openalex.org" target="_blank">OpenAlex</a> &amp; <a href="https://www.semanticscholar.org" target="_blank">Semantic Scholar</a> · เครื่องมือนี้ช่วย<b>ค้นและจัดระเบียบ</b> — การตัดสินทางวิทยาศาสตร์ยังต้องเปิดอ่านต้นฉบับเอง<br>
     <span style="display:inline-block;margin-top:10px;font-size:.92rem;color:var(--ink)">พัฒนาโดย <b>Apiwit Prakat</b> · Research AI Team © 2026</span>
   </footer>
-</div>
+</main>
 
 <script>
 const $ = s => document.querySelector(s);
@@ -314,6 +317,7 @@ let LAST_SYNTH = null, THAI_SYNTH = null, TR_MAP = {};
 let SEARCH_LOG = null, HIT_COUNT = 0, QUERY_SENT = "";
 let SCOUT_SUB = null;   // เก็บไว้ re-render บรรทัด "ค้นด้วย: …" ตอนสลับภาษา
 const escH = s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const escA = s => escH(s).replace(/"/g,"&quot;");   // สำหรับค่าใน attribute (href/title)
 const pkey = p => String(p.pmid || p.doi || p.title || "").toLowerCase();
 
 // ===== ระบบคัดกรอง (screening) เก็บถาวรใน localStorage =====
@@ -449,7 +453,7 @@ const EX = [
   "CRISPR PTEN loss PI3K AKT",
   "ferroptosis GPX4 inhibition tumor",
 ];
-$("#chips").innerHTML = EX.map(e=>`<span class="chip">${e}</span>`).join("");
+$("#chips").innerHTML = EX.map(e=>`<button type="button" class="chip">${e}</button>`).join("");
 document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{ $("#q").value=c.textContent; });
 
 // drag & drop
@@ -670,17 +674,20 @@ async function gatherPapers(query, o){
 async function enrichS2(papers){
   // fetch TLDRs by DOI where missing abstract or to add one-liner; best-effort, ignore failures
   const withDoi = papers.filter(p=>p.doi).slice(0,20);
-  for(const p of withDoi){
-    try{
-      const u = `https://api.semanticscholar.org/graph/v1/paper/DOI:${encodeURIComponent(p.doi)}?fields=tldr,abstract,citationCount`;
-      const r = await fetch(u);
-      if(!r.ok) continue;
-      const j = await r.json();
-      if(j.tldr && j.tldr.text) p.tldr = j.tldr.text;
-      if(!p.abstract && j.abstract) p.abstract = j.abstract;
-      if(j.citationCount && j.citationCount>p.cc) p.cc = j.citationCount;
-    }catch(e){}
-  }
+  let limited = false;
+  await mapPool(withDoi, 3, async p=>{
+    if(limited) return;
+    const u = `https://api.semanticscholar.org/graph/v1/paper/DOI:${encodeURIComponent(p.doi)}?fields=tldr,abstract,citationCount`;
+    // ตอนโดนจำกัด S2 ตอบ 429 แบบไม่มี CORS header → เบราว์เซอร์เห็นเป็น network error แทน
+    let r;
+    try{ r = await fetch(u); }catch(e){ limited = true; return; }
+    if(r.status===429){ limited = true; return; }
+    if(!r.ok) return;
+    const j = await r.json();
+    if(j.tldr && j.tldr.text) p.tldr = j.tldr.text;
+    if(!p.abstract && j.abstract) p.abstract = j.abstract;
+    if(j.citationCount && j.citationCount>p.cc) p.cc = j.citationCount;
+  });
 }
 
 // ---- extractive synthesis (no LLM, no hallucination) ----
@@ -750,13 +757,13 @@ function renderTable(){
   TR_MAP = {};
   $("#tbody").innerHTML = ps.map(p=>{
     const links = [];
-    if(p.doi) links.push(`<a href="https://doi.org/${p.doi}" target="_blank">DOI↗</a>`);
-    if(p.pmid) links.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}" target="_blank">PubMed↗</a>`);
-    if(p.pmcid) links.push(`<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}" target="_blank">FullText↗</a>`);
-    if(p.pdfUrl) links.push(`<a href="${p.pdfUrl}" target="_blank" style="color:#c0392b;font-weight:700">PDF↗</a>`);
-    if(p.oaPdfUrl && p.oaPdfUrl!==p.pdfUrl) links.push(`<a href="${escH(p.oaPdfUrl).replace(/"/g,'&quot;')}" target="_blank" style="color:#c0392b;font-weight:700" title="${escH(t("app.tbl.oaPdfTitle"))}">PDF-OA↗</a>`);
+    if(p.doi) links.push(`<a href="https://doi.org/${escA(p.doi)}" target="_blank" rel="noopener">DOI↗</a>`);
+    if(p.pmid) links.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${escA(p.pmid)}" target="_blank" rel="noopener">PubMed↗</a>`);
+    if(p.pmcid) links.push(`<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/${escA(p.pmcid)}" target="_blank" rel="noopener">FullText↗</a>`);
+    if(p.pdfUrl) links.push(`<a href="${escA(p.pdfUrl)}" target="_blank" rel="noopener" style="color:#c0392b;font-weight:700">PDF↗</a>`);
+    if(p.oaPdfUrl && p.oaPdfUrl!==p.pdfUrl) links.push(`<a href="${escA(p.oaPdfUrl)}" rel="noopener" target="_blank" style="color:#c0392b;font-weight:700" title="${escH(t("app.tbl.oaPdfTitle"))}">PDF-OA↗</a>`);
     const srcChips = (p.sources||[]).map(s=>`<span class="schip s-${s.toLowerCase()}">${SRC_LABEL[s]}</span>`).join("");
-    const tip = p.tldr ? ` title="TLDR: ${p.tldr.replace(/"/g,'&quot;')}"` : "";
+    const tip = p.tldr ? ` title="TLDR: ${escA(p.tldr)}"` : "";
     const auth = p.authors.split(",").slice(0,3).join(", ")+(p.authors.split(",").length>3?" et al.":"");
     const safe = String(p.pmid||p.doi||(p.year+"_"+p.cc)).replace(/[^a-z0-9]/gi,"_");
     TR_MAP[safe] = p;
@@ -810,9 +817,13 @@ function scrnSet(safe, status){
   const row=document.getElementById("row_"+safe); if(row) row.className = cur.status?("screen-"+cur.status):"";
 }
 function scrnNote(safe, v){ const p=TR_MAP[safe]; if(!p) return; const cur=getScreen(pkey(p)); cur.note=v; SCREEN[pkey(p)]=cur; saveScreen(); }
-document.querySelectorAll("#tbl th[data-s]").forEach(th=>th.onclick=()=>{
-  const k=th.dataset.s; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=(k==="title"||k==="journal")?1:-1;}
-  renderTable();
+document.querySelectorAll("#tbl th[data-s]").forEach(th=>{
+  th.tabIndex = 0;
+  th.onclick=()=>{
+    const k=th.dataset.s; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=(k==="title"||k==="journal")?1:-1;}
+    renderTable();
+  };
+  th.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); th.onclick(); } };
 });
 function renderSynth(papers, query, thaiMap){
   const {picked, kws, themes} = buildSynthesis(papers, query);
@@ -824,7 +835,7 @@ function renderSynth(papers, query, thaiMap){
     picked.forEach((it,i)=>{
       const cite = it.p.pmid ? `[PMID ${it.p.pmid}]` : it.p.doi ? `[doi]` : "";
       const link = it.p.doi?'https://doi.org/'+it.p.doi:'https://pubmed.ncbi.nlm.nih.gov/'+it.p.pmid;
-      html += `${i+1}. ${hl(it.s, kws)} <a href="${link}" target="_blank">${cite}</a>`;
+      html += `${i+1}. ${hl(it.s, kws)} <a href="${escA(link)}" target="_blank" rel="noopener">${cite}</a>`;
       const th = thaiMap && thaiMap.get(it.s);
       if(th) html += `\n   🌐 <span class="th-line">${escH(th)}</span>`;
       html += `\n\n`;
@@ -856,11 +867,13 @@ function renderSynth(papers, query, thaiMap){
 }
 // บันทึกการค้นหา (reproducible)
 // แปลง log ที่เก็บเป็น key ให้เป็นข้อความตามภาษาปัจจุบัน
-function logDate(L){ return L.dateISO ? new Date(L.dateISO).toLocaleString(i18nLocale()) : (L.date||""); }
-function logSort(L){ return t("app.sortShort."+(L.sortMode||"smart")); }
-function logFilters(L){
-  const f = (L.filterKeys||[]).map(x=> typeof x==="string" ? t(x) : t(x.k, x.vars));
-  return f.length ? f.join(", ") : t("app.log.none");
+// ส่ง l="en" เมื่อต้องการภาษาอังกฤษเสมอ (ไฟล์ PRISMA สำหรับใส่ Methods)
+function logDate(L, l){ return L.dateISO ? new Date(L.dateISO).toLocaleString(l==="en"?"en-GB":i18nLocale()) : (L.date||""); }
+function logSort(L, l){ return tl(l||getLang(), "app.sortShort."+(L.sortMode||"smart")); }
+function logFilters(L, l){
+  l = l||getLang();
+  const f = (L.filterKeys||[]).map(x=> typeof x==="string" ? tl(l, x) : tl(l, x.k, x.vars));
+  return f.length ? f.join(", ") : tl(l, "app.log.none");
 }
 // แหล่งที่ตอบกลับจริง (log เก่าที่ไม่มี sources = Europe PMC อย่างเดียว)
 function logOkSources(L){ return (L.sources||[{name:"EuropePMC",ok:true,hits:L.hitCount}]).filter(s=>s.ok); }
@@ -1130,10 +1143,10 @@ function exportPrisma(){
   let out=`PRISMA / SEARCH LOG\n===================\n\n`;
   out+=`Database        : ${logDbApi(L)}\n`;
   if(logFailed(L).length) out+=`Not responding  : ${logFailed(L).join(", ")}\n`;
-  out+=`Date of search  : ${logDate(L)}\n`;
+  out+=`Date of search  : ${logDate(L,"en")}\n`;
   out+=`Query string    : ${L.querySent}\n`;
-  out+=`Sort            : ${logSort(L)}\n`;
-  out+=`Filters         : ${logFilters(L)}\n\n`;
+  out+=`Sort            : ${logSort(L,"en")}\n`;
+  out+=`Filters         : ${logFilters(L,"en")}\n\n`;
   const ok = logOkSources(L);
   out+=`Records identified (hitCount) : ${L.hitCount}${ok.length>1?"  ("+ok.map(s=>SRC_LABEL[s.name]+" "+s.hits).join(", ")+")":""}\n`;
   out+=`Records retrieved             : ${L.retrieved}${ok.length>1?"  ("+ok.map(s=>SRC_LABEL[s.name]+" "+s.got).join(", ")+")":""}\n`;
@@ -1143,9 +1156,9 @@ function exportPrisma(){
   if(shown<L.afterFilter) out+=`Top records kept for screening: ${shown}\n`;
   out+=`\nSCREENING\n  Included  : ${inc}\n  Maybe     : ${may}\n  Excluded  : ${exc}\n  Unscreened: ${un}\n\n`;
   out+=`--- Suggested Methods sentence ---\n`;
-  out+=`Literature was searched in ${ok.map(s=>SRC_LABEL[s.name]).join(" and ")} on ${logDate(L)} using the query "${L.querySent}" (sort: ${logSort(L)}). `;
+  out+=`Literature was searched in ${ok.map(s=>SRC_LABEL[s.name]).join(" and ")} on ${logDate(L,"en")} using the query "${L.querySent}" (sort: ${logSort(L,"en")}). `;
   out+=`${L.hitCount} records were identified; ${L.retrieved} were retrieved and ${L.afterDedup} remained after duplicate removal${ok.length>1?" across databases":""}. `;
-  out+=`After applying filters (${logFilters(L)}), ${L.afterFilter} records remained`+(shown<L.afterFilter?` and the top ${shown} (sort: ${logSort(L)}) were screened`:` and were screened`)+`, of which ${inc} were included.\n`;
+  out+=`After applying filters (${logFilters(L,"en")}), ${L.afterFilter} records remained`+(shown<L.afterFilter?` and the top ${shown} (sort: ${logSort(L,"en")}) were screened`:` and were screened`)+`, of which ${inc} were included.\n`;
   dl("prisma_search_log.txt", out);
 }
 // ผลคัดกรอง + metadata สกัด (CSV)
