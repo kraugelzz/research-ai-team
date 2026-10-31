@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <title>ทีมวิจัย AI — เวอร์ชันทำงานจริง</title>
 <meta name="i18n-title" content="app.docTitle">
-<script src="i18n.js?v=20261031d"></script>
+<script src="i18n.js?v=20261031e"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;800&display=swap" rel="stylesheet">
@@ -259,8 +259,8 @@
         </select></label>
       <label><span data-i18n="app.sortBy">เรียงตาม:</span>
         <select id="sortMode">
-          <option value="smart" data-i18n="app.sort.smart">✨ อัจฉริยะ (แนะนำ)</option>
-          <option value="relevance" data-i18n="app.sort.relevance">🎯 ความเกี่ยวข้องล้วน</option>
+          <option value="relevance" selected data-i18n="app.sort.relevance">🎯 ตรงคำค้นที่สุด (แนะนำ)</option>
+          <option value="smart" data-i18n="app.sort.smart">✨ อัจฉริยะ (ดันงานใหม่ขึ้น)</option>
           <option value="newest" data-i18n="app.sort.newest">🆕 ใหม่สุดก่อน</option>
           <option value="cited" data-i18n="app.sort.cited">⭐ อ้างอิงมากสุด</option>
         </select>
@@ -1091,7 +1091,7 @@ async function run(){
     const G = await gatherPapers(query, {limit, oaOnly, sortMode, minYear, sources});
     let papers = G.papers;
     if(!papers.length){ throw new Error(t(G.id ? "app.err.idNotFound" : "app.err.noPapers")); }
-    const sortKeyName = ["smart","relevance","newest","cited"].includes(sortMode) ? sortMode : "smart";
+    const sortKeyName = ["smart","relevance","newest","cited"].includes(sortMode) ? sortMode : "relevance";
     const sortVar = {i18n:"app.sortShort."+sortKeyName};
     setAgent("scout","done","app.st.scout.done",{n:papers.length, sort:sortVar});
 
